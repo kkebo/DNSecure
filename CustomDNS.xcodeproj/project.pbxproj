@@ -13,6 +13,7 @@
 		8940024324ACBD2800EBE74B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940024224ACBD2800EBE74B /* Preview Assets.xcassets */; };
 		8940024E24ACBD2800EBE74B /* CustomDNSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* CustomDNSTests.swift */; };
 		8940025924ACBD2800EBE74B /* CustomDNSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* CustomDNSUITests.swift */; };
+		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8924EDF324C9CDF1004AF871 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8940023824ACBD2700EBE74B /* CustomDNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomDNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8940023B24ACBD2700EBE74B /* CustomDNSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDNSApp.swift; sourceTree = "<group>"; };
 		8940023D24ACBD2700EBE74B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		8940025424ACBD2800EBE74B /* CustomDNSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomDNSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8940025824ACBD2800EBE74B /* CustomDNSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDNSUITests.swift; sourceTree = "<group>"; };
 		8940025A24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8940026624ACBE4900EBE74B /* CustomDNS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomDNS.entitlements; sourceTree = "<group>"; };
+		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +80,12 @@
 		8940022F24ACBD2700EBE74B = {
 			isa = PBXGroup;
 			children = (
+				8924EDF324C9CDF1004AF871 /* README.md */,
 				8940023A24ACBD2700EBE74B /* CustomDNS */,
 				8940024C24ACBD2800EBE74B /* CustomDNSTests */,
 				8940025724ACBD2800EBE74B /* CustomDNSUITests */,
 				8940023924ACBD2700EBE74B /* Products */,
+				8940026724ACBE4900EBE74B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +102,7 @@
 		8940023A24ACBD2700EBE74B /* CustomDNS */ = {
 			isa = PBXGroup;
 			children = (
+				8940026624ACBE4900EBE74B /* CustomDNS.entitlements */,
 				8940023B24ACBD2700EBE74B /* CustomDNSApp.swift */,
 				8940023D24ACBD2700EBE74B /* ContentView.swift */,
 				8940023F24ACBD2800EBE74B /* Assets.xcassets */,
@@ -128,6 +136,14 @@
 				8940025A24ACBD2800EBE74B /* Info.plist */,
 			);
 			path = CustomDNSUITests;
+			sourceTree = "<group>";
+		};
+		8940026724ACBE4900EBE74B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8940026824ACBE4900EBE74B /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CustomDNS/CustomDNS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CustomDNS/Preview Content\"";
 				DEVELOPMENT_TEAM = X4678G5DL2;
@@ -429,8 +446,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.CustomDNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -439,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CustomDNS/CustomDNS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CustomDNS/Preview Content\"";
 				DEVELOPMENT_TEAM = X4678G5DL2;
@@ -451,8 +470,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.CustomDNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};

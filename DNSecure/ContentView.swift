@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  CustomDNS
+//  DNSecure
 //
 //  Created by Kenta Kubo on 7/1/20.
 //

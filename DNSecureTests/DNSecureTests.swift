@@ -1,14 +1,14 @@
 //
-//  CustomDNSTests.swift
-//  CustomDNSTests
+//  DNSecureTests.swift
+//  DNSecureTests
 //
 //  Created by Kenta Kubo on 7/1/20.
 //
 
 import XCTest
-@testable import CustomDNS
+@testable import DNSecure
 
-class CustomDNSTests: XCTestCase {
+class DNSecureTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

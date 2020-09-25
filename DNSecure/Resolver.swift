@@ -1,6 +1,6 @@
 //
 //  Resolver.swift
-//  CustomDNS
+//  DNSecure
 //
 //  Created by Kenta Kubo on 9/25/20.
 //

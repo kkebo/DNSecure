@@ -186,7 +186,9 @@ extension ContentView: View {
                 )
             }
 
-            HowToActivateView(isSheet: false)
+            if !self.isEnabled {
+                HowToActivateView(isSheet: false)
+            }
         }
     }
 }

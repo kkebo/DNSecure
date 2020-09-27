@@ -38,6 +38,21 @@ struct ContentView {
         self.selection = self.servers.count - 1
     }
 
+    func removeServers(at indexSet: IndexSet) {
+        if let current = self.selection, indexSet.contains(current) {
+            self.selection = min(
+                current,
+                self.servers.count - 1 - indexSet.count
+            )
+        }
+        self.servers.remove(atOffsets: indexSet)
+    }
+
+    func moveServers(from src: IndexSet, to dst: Int) {
+        // TODO: Change self.selection if needed
+        self.servers.move(fromOffsets: src, toOffset: dst)
+    }
+
     func updateStatus() {
         let manager = NEDNSSettingsManager.shared()
         manager.loadFromPreferences {
@@ -121,19 +136,8 @@ extension ContentView: View {
                             }
                         }
                     }
-                    .onDelete { indexSet in
-                        if let current = self.selection, indexSet.contains(current) {
-                            self.selection = min(
-                                current,
-                                self.servers.count - 1 - indexSet.count
-                            )
-                        }
-                        self.servers.remove(atOffsets: indexSet)
-                    }
-                    .onMove { src, dst in
-                        // TODO: Change self.selection if needed
-                        self.servers.move(fromOffsets: src, toOffset: dst)
-                    }
+                    .onDelete(perform: self.removeServers)
+                    .onMove(perform: self.moveServers)
                 }
             }
             .listStyle(SidebarListStyle())

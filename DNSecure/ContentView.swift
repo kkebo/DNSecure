@@ -73,18 +73,29 @@ struct ContentView {
                 self.alert("Load Error", loadError.localizedDescription)
                 return
             }
-            manager.dnsSettings = self.usedID
-                .flatMap(UUID.init)
-                .flatMap(self.servers.find)
-                .map(\.configuration)
-                .map { $0.toDNSSettings() }
-            manager.saveToPreferences { saveError in
-                if let saveError = saveError {
-                    logger.error("\(saveError.localizedDescription)")
-                    self.alert("Save Error", saveError.localizedDescription)
-                    return
+            if let usedID = self.usedID,
+               let uuid = UUID(uuidString: usedID),
+               let server = self.servers.find(by: uuid) {
+                manager.dnsSettings = server.configuration.toDNSSettings()
+                manager.saveToPreferences { saveError in
+                    self.updateStatus()
+                    if let saveError = saveError {
+                        logger.error("\(saveError.localizedDescription)")
+                        self.alert("Save Error", saveError.localizedDescription)
+                        return
+                    }
+                    logger.debug("DNS settings was saved")
                 }
-                logger.debug("DNS settings are saved")
+            } else {
+                manager.removeFromPreferences { removeError in
+                    self.updateStatus()
+                    if let removeError = removeError {
+                        logger.error("\(removeError.localizedDescription)")
+                        self.alert("Remove Error", removeError.localizedDescription)
+                        return
+                    }
+                    logger.debug("DNS settings was removed")
+                }
             }
         }
     }

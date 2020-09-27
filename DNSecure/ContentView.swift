@@ -16,6 +16,7 @@ struct ContentView {
     @State var alertIsPresented = false
     @State var alertTitle = ""
     @State var alertMessage = ""
+    @State var guideIsPresented = false
 
     func addNewDoTServer() {
         self.servers.append(
@@ -155,11 +156,16 @@ extension ContentView: View {
                                 .foregroundColor(self.isEnabled ? .green : .secondary)
                             Text(self.isEnabled ? "Active" : "Inactive")
                         }
-                        .onAppear(perform: self.updateStatus)
                         if !self.isEnabled {
-                            Link("Activate", destination: URL(string: "App-prefs:root=General&path=Network/VPN")!)
+                            Button("How to Activate") {
+                                self.guideIsPresented = true
+                            }
+                            .sheet(isPresented: self.$guideIsPresented) {
+                                HowToActivateView(isSheet: true)
+                            }
                         }
                     }
+                    .onAppear(perform: self.updateStatus)
                 }
             }
             .alert(isPresented: self.$alertIsPresented) {
@@ -168,6 +174,8 @@ extension ContentView: View {
                     message: Text(self.alertMessage)
                 )
             }
+
+            HowToActivateView(isSheet: false)
         }
     }
 }

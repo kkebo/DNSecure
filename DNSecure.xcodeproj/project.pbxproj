@@ -18,6 +18,7 @@
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
 		8963FDFB251DF1BC00E3DFE7 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
+		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				8940026624ACBE4900EBE74B /* DNSecure.entitlements */,
 				8940023B24ACBD2700EBE74B /* DNSecureApp.swift */,
 				8940023D24ACBD2700EBE74B /* ContentView.swift */,
+				89CB922025209DD100B6983C /* HowToActivateView.swift */,
 				8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */,
 				890B80DE251DC6B50046BAA0 /* Presets.swift */,
 				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */,
+				89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */,
 				890B80D5251DC3A20046BAA0 /* DetailView.swift in Sources */,
 				8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */,
 				890B80DF251DC6B50046BAA0 /* Presets.swift in Sources */,

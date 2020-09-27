@@ -13,6 +13,9 @@ struct ContentView {
     @AppStorage("usedID") var usedID: String?
     @State var isEnabled = false
     @State var selection: Int?
+    @State var alertIsPresented = false
+    @State var alertTitle = ""
+    @State var alertMessage = ""
 
     func addNewDoTServer() {
         self.servers.append(
@@ -39,6 +42,7 @@ struct ContentView {
         manager.loadFromPreferences {
             if let err = $0 {
                 logger.error("\(err.localizedDescription)")
+                self.alert("Load Error", err.localizedDescription)
             } else {
                 self.isEnabled = manager.isEnabled
             }
@@ -50,6 +54,7 @@ struct ContentView {
         manager.loadFromPreferences { loadError in
             if let loadError = loadError {
                 logger.error("\(loadError.localizedDescription)")
+                self.alert("Load Error", loadError.localizedDescription)
                 return
             }
             manager.dnsSettings = self.usedID
@@ -60,11 +65,18 @@ struct ContentView {
             manager.saveToPreferences { saveError in
                 if let saveError = saveError {
                     logger.error("\(saveError.localizedDescription)")
+                    self.alert("Save Error", saveError.localizedDescription)
                     return
                 }
                 logger.debug("DNS settings are saved")
             }
         }
+    }
+
+    func alert(_ title: String, _ message: String) {
+        self.alertTitle = title
+        self.alertMessage = message
+        self.alertIsPresented = true
     }
 }
 
@@ -149,6 +161,12 @@ extension ContentView: View {
                         }
                     }
                 }
+            }
+            .alert(isPresented: self.$alertIsPresented) {
+                Alert(
+                    title: Text(self.alertTitle),
+                    message: Text(self.alertMessage)
+                )
             }
         }
     }

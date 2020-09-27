@@ -170,6 +170,13 @@ extension ContentView: View {
                         }
                     }
                     .onAppear(perform: self.updateStatus)
+                    .onReceive(
+                        NotificationCenter.default.publisher(
+                            for: UIScene.willEnterForegroundNotification
+                        )
+                    ) { _ in
+                        self.updateStatus()
+                    }
                 }
             }
             .alert(isPresented: self.$alertIsPresented) {

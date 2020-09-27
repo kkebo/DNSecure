@@ -35,7 +35,7 @@ struct ContentView {
         let manager = NEDNSSettingsManager.shared()
         manager.loadFromPreferences {
             if let err = $0 {
-                print("\(err.localizedDescription)")
+                logger.error("\(err.localizedDescription)")
             } else {
                 self.isEnabled = manager.isEnabled
             }
@@ -46,7 +46,7 @@ struct ContentView {
         let manager = NEDNSSettingsManager.shared()
         manager.loadFromPreferences { loadError in
             if let loadError = loadError {
-                print("\(loadError.localizedDescription)")
+                logger.error("\(loadError.localizedDescription)")
                 return
             }
             manager.dnsSettings = self.usedID
@@ -56,10 +56,10 @@ struct ContentView {
                 .map { $0.toDNSSettings() }
             manager.saveToPreferences { saveError in
                 if let saveError = saveError {
-                    print("\(saveError.localizedDescription)")
+                    logger.error("\(saveError.localizedDescription)")
                     return
                 }
-                print("saved")
+                logger.debug("DNS settings are saved")
             }
         }
     }

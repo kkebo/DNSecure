@@ -12,6 +12,7 @@ struct ContentView {
     @AppStorage("servers") var servers = Presets.servers
     @AppStorage("usedID") var usedID: String?
     @State var isEnabled = false
+    @State var selection: Int?
 
     func addNewDoTServer() {
         self.servers.append(
@@ -20,6 +21,7 @@ struct ContentView {
                 configuration: .dnsOverTLS(DoTConfiguration())
             )
         )
+        self.selection = self.servers.count - 1
     }
 
     func addNewDoHServer() {
@@ -29,6 +31,7 @@ struct ContentView {
                 configuration: .dnsOverHTTPS(DoHConfiguration())
             )
         )
+        self.selection = self.servers.count - 1
     }
 
     func updateStatus() {
@@ -70,43 +73,52 @@ extension ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("Servers")) {
-                    ForEach(0..<self.servers.count, id: \.self) { i in
+                    ForEach(Array(self.servers.enumerated()), id: \.offset.self) { i, server in
                         NavigationLink(
                             destination: DetailView(
                                 server: .init(
-                                    get: { self.servers[i] },
+                                    get: { server },
                                     set: { self.servers[i] = $0 }
                                 ),
                                 isOn: .init(
                                     get: {
-                                        self.usedID == self.servers[i].id.uuidString
+                                        self.usedID == server.id.uuidString
                                     },
                                     set: {
                                         if $0 {
-                                            self.usedID = self.servers[i].id.uuidString
+                                            self.usedID = server.id.uuidString
                                         } else {
                                             self.usedID = nil
                                         }
                                         self.syncSettings()
                                     }
                                 )
-                            )
+                            ),
+                            tag: i,
+                            selection: self.$selection
                         ) {
                             VStack(alignment: .leading) {
-                                Text(self.servers[i].name)
-                                Text(self.servers[i].configuration.description)
+                                Text(server.name)
+                                Text(server.configuration.description)
                                     .foregroundColor(.secondary)
                             }
-                            if self.usedID == self.servers[i].id.uuidString {
+                            if self.usedID == server.id.uuidString {
                                 Spacer()
                                 Image(systemName: "checkmark")
                             }
                         }
                     }
                     .onDelete { indexSet in
+                        if let current = self.selection, indexSet.contains(current) {
+                            self.selection = min(
+                                current,
+                                self.servers.count - 1 - indexSet.count
+                            )
+                        }
                         self.servers.remove(atOffsets: indexSet)
                     }
                     .onMove { src, dst in
+                        // TODO: Change self.selection if needed
                         self.servers.move(fromOffsets: src, toOffset: dst)
                     }
                 }

@@ -43,7 +43,7 @@ extension DetailView: View {
                             }
                         )
                         .textContentType(.URL)
-                        .keyboardType(.asciiCapableNumberPad)
+                        .keyboardType(.numbersAndPunctuation)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                     }
@@ -97,7 +97,7 @@ extension DetailView: View {
                             }
                         )
                         .textContentType(.URL)
-                        .keyboardType(.asciiCapableNumberPad)
+                        .keyboardType(.numbersAndPunctuation)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                     }

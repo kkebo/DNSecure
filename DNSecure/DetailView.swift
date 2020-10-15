@@ -28,7 +28,9 @@ extension DetailView: View {
             switch self.server.configuration {
             case var .dnsOverTLS(configuration):
                 Section(
-                    header: Text("Servers"),
+                    header: EditButton()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .overlay(Text("Servers"), alignment: .leading),
                     footer: Text("The DNS server IP addresses.")
                 ) {
                     ForEach(0..<configuration.servers.count, id: \.self) { i in
@@ -46,6 +48,14 @@ extension DetailView: View {
                         .keyboardType(.numbersAndPunctuation)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                    }
+                    .onDelete {
+                        configuration.servers.remove(atOffsets: $0)
+                        self.server.configuration = .dnsOverTLS(configuration)
+                    }
+                    .onMove {
+                        configuration.servers.move(fromOffsets: $0, toOffset: $1)
+                        self.server.configuration = .dnsOverTLS(configuration)
                     }
                     Button("Add New Server") {
                         configuration.servers.append("")
@@ -82,7 +92,9 @@ extension DetailView: View {
                 }
             case var .dnsOverHTTPS(configuration):
                 Section(
-                    header: Text("Servers"),
+                    header: EditButton()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .overlay(Text("Servers"), alignment: .leading),
                     footer: Text("The DNS server IP addresses.")
                 ) {
                     ForEach(0..<configuration.servers.count, id: \.self) { i in
@@ -100,6 +112,14 @@ extension DetailView: View {
                         .keyboardType(.numbersAndPunctuation)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                    }
+                    .onDelete {
+                        configuration.servers.remove(atOffsets: $0)
+                        self.server.configuration = .dnsOverHTTPS(configuration)
+                    }
+                    .onMove {
+                        configuration.servers.move(fromOffsets: $0, toOffset: $1)
+                        self.server.configuration = .dnsOverHTTPS(configuration)
                     }
                     Button("Add New Server") {
                         configuration.servers.append("")

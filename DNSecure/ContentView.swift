@@ -55,54 +55,58 @@ struct ContentView {
     }
 
     func updateStatus() {
-        let manager = NEDNSSettingsManager.shared()
-        manager.loadFromPreferences {
-            if let err = $0 {
-                logger.error("\(err.localizedDescription)")
-                self.alert("Load Error", err.localizedDescription)
-            } else {
-                self.isEnabled = manager.isEnabled
+        #if !targetEnvironment(simulator)
+            let manager = NEDNSSettingsManager.shared()
+            manager.loadFromPreferences {
+                if let err = $0 {
+                    logger.error("\(err.localizedDescription)")
+                    self.alert("Load Error", err.localizedDescription)
+                } else {
+                    self.isEnabled = manager.isEnabled
+                }
             }
-        }
+        #endif
     }
 
     func syncSettings() {
-        let manager = NEDNSSettingsManager.shared()
-        manager.loadFromPreferences { loadError in
-            if let loadError = loadError {
-                logger.error("\(loadError.localizedDescription)")
-                self.alert("Load Error", loadError.localizedDescription)
-                return
-            }
-            if let usedID = self.usedID,
-               let uuid = UUID(uuidString: usedID),
-               let server = self.servers.find(by: uuid) {
-                manager.dnsSettings = server.configuration.toDNSSettings()
-                manager.saveToPreferences { saveError in
-                    self.updateStatus()
-                    if let saveError = saveError as NSError? {
-                        guard saveError.domain != "NEConfigurationErrorDomain"
-                                || saveError.code != 9 else {
+        #if !targetEnvironment(simulator)
+            let manager = NEDNSSettingsManager.shared()
+            manager.loadFromPreferences { loadError in
+                if let loadError = loadError {
+                    logger.error("\(loadError.localizedDescription)")
+                    self.alert("Load Error", loadError.localizedDescription)
+                    return
+                }
+                if let usedID = self.usedID,
+                   let uuid = UUID(uuidString: usedID),
+                   let server = self.servers.find(by: uuid) {
+                    manager.dnsSettings = server.configuration.toDNSSettings()
+                    manager.saveToPreferences { saveError in
+                        self.updateStatus()
+                        if let saveError = saveError as NSError? {
+                            guard saveError.domain != "NEConfigurationErrorDomain"
+                                    || saveError.code != 9 else {
+                                return
+                            }
+                            logger.error("\(saveError.localizedDescription)")
+                            self.alert("Save Error", saveError.localizedDescription)
                             return
                         }
-                        logger.error("\(saveError.localizedDescription)")
-                        self.alert("Save Error", saveError.localizedDescription)
-                        return
+                        logger.debug("DNS settings was saved")
                     }
-                    logger.debug("DNS settings was saved")
-                }
-            } else {
-                manager.removeFromPreferences { removeError in
-                    self.updateStatus()
-                    if let removeError = removeError {
-                        logger.error("\(removeError.localizedDescription)")
-                        self.alert("Remove Error", removeError.localizedDescription)
-                        return
+                } else {
+                    manager.removeFromPreferences { removeError in
+                        self.updateStatus()
+                        if let removeError = removeError {
+                            logger.error("\(removeError.localizedDescription)")
+                            self.alert("Remove Error", removeError.localizedDescription)
+                            return
+                        }
+                        logger.debug("DNS settings was removed")
                     }
-                    logger.debug("DNS settings was removed")
                 }
             }
-        }
+        #endif
     }
 
     func alert(_ title: String, _ message: String) {

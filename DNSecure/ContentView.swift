@@ -207,6 +207,9 @@ extension ContentView: View {
 
             if !self.isEnabled {
                 HowToActivateView(isSheet: false)
+            } else {
+                Text("Select a server on the sidebar")
+                    .navigationBarHidden(true)
             }
         }
     }

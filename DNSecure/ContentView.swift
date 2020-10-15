@@ -46,6 +46,7 @@ struct ContentView {
             )
         }
         self.servers.remove(atOffsets: indexSet)
+        self.syncSettings()
     }
 
     func moveServers(from src: IndexSet, to dst: Int) {
@@ -121,7 +122,10 @@ extension ContentView: View {
                             destination: DetailView(
                                 server: .init(
                                     get: { server },
-                                    set: { self.servers[i] = $0 }
+                                    set: {
+                                        self.servers[i] = $0
+                                        self.syncSettings()
+                                    }
                                 ),
                                 isOn: .init(
                                     get: {

@@ -79,7 +79,11 @@ struct ContentView {
                 manager.dnsSettings = server.configuration.toDNSSettings()
                 manager.saveToPreferences { saveError in
                     self.updateStatus()
-                    if let saveError = saveError {
+                    if let saveError = saveError as NSError? {
+                        guard saveError.domain != "NEConfigurationErrorDomain"
+                                || saveError.code != 9 else {
+                            return
+                        }
                         logger.error("\(saveError.localizedDescription)")
                         self.alert("Save Error", saveError.localizedDescription)
                         return

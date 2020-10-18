@@ -95,6 +95,9 @@ struct ContentView {
                         logger.debug("DNS settings was saved")
                     }
                 } else {
+                    guard manager.dnsSettings != nil else {
+                        return
+                    }
                     manager.removeFromPreferences { removeError in
                         self.updateStatus()
                         if let removeError = removeError {

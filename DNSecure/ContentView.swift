@@ -219,7 +219,6 @@ extension ContentView: View {
                     .navigationBarHidden(true)
             }
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 

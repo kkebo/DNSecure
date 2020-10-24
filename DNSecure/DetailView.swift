@@ -29,6 +29,7 @@ extension DetailView: View {
             case var .dnsOverTLS(configuration):
                 Section(
                     header: EditButton()
+                        .foregroundColor(.blue)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .overlay(Text("Servers"), alignment: .leading),
                     footer: Text("The DNS server IP addresses.")

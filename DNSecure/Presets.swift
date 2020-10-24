@@ -65,5 +65,33 @@ enum Presets {
                 )
             )
         ),
+        .init(
+            name: "Quad9",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "9.9.9.9",
+                        "149.112.112.112",
+                        "2620:fe::fe",
+                        "2620:fe::fe:9",
+                    ],
+                    serverName: "dns.quad9.net"
+                )
+            )
+        ),
+        .init(
+            name: "Quad9",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "9.9.9.9",
+                        "149.112.112.112",
+                        "2620:fe::fe",
+                        "2620:fe::fe:9",
+                    ],
+                    serverURL: URL(string: "https://dns.quad9.net/dns-query")
+                )
+            )
+        ),
     ]
 }

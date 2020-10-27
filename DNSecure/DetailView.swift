@@ -128,7 +128,7 @@ extension DetailView: View {
                     }
                 }
                 Section(
-                    header: Text("DNS over HTTPS Settings"),
+                    header: Text("DNS-over-HTTPS Settings"),
                     footer: Text("The URL of a DNS-over-HTTPS server.")
                 ) {
                     HStack {

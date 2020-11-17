@@ -93,5 +93,27 @@ enum Presets {
                 )
             )
         ),
+        .init(
+            name: "LibreDNS",
+            configuration: .dnsOverHTTPS(
+                DoTConfiguration(
+                    servers: [
+                        "116.202.176.26",
+                    ],
+                    serverName: "https://doh.libredns.gr/dns-query"
+                )
+            )
+        ),
+        .init(
+            name: "LibreDNS (No Ads)",
+            configuration: .dnsOverHTTPS(
+                DoTConfiguration(
+                    servers: [
+                        "116.202.176.26",
+                    ],
+                    serverName: "https://doh.libredns.gr/ads"
+                )
+            )
+        ),
     ]
 }

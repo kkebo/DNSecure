@@ -96,22 +96,22 @@ enum Presets {
         .init(
             name: "LibreDNS",
             configuration: .dnsOverHTTPS(
-                DoTConfiguration(
+                DoHConfiguration(
                     servers: [
                         "116.202.176.26",
                     ],
-                    serverName: "https://doh.libredns.gr/dns-query"
+                    serverURL: URL(string: "https://doh.libredns.gr/dns-query")
                 )
             )
         ),
         .init(
             name: "LibreDNS (No Ads)",
             configuration: .dnsOverHTTPS(
-                DoTConfiguration(
+                DoHConfiguration(
                     servers: [
                         "116.202.176.26",
                     ],
-                    serverName: "https://doh.libredns.gr/ads"
+                    serverURL: URL(string: "https://doh.libredns.gr/ads")
                 )
             )
         ),

@@ -169,13 +169,15 @@ extension ContentView: View {
             .listStyle(SidebarListStyle())
             .navigationTitle(Bundle.main.displayName!)
             .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Menu {
                         Button("DNS-over-TLS", action: self.addNewDoTServer)
                         Button("DNS-over-HTTPS", action: self.addNewDoHServer)
                     } label: {
                         Image(systemName: "plus")
                     }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem(placement: .status) {

@@ -9,6 +9,7 @@ import NetworkExtension
 import SwiftUI
 
 struct ContentView {
+    @Environment(\.scenePhase) var scenePhase
     @AppStorage("servers") var servers = Presets.servers
     @AppStorage("usedID") var usedID: String?
     @State var isEnabled = false
@@ -46,7 +47,6 @@ struct ContentView {
             )
         }
         self.servers.remove(atOffsets: indexSet)
-        self.syncSettings()
     }
 
     func moveServers(from src: IndexSet, to dst: Int) {
@@ -55,61 +55,55 @@ struct ContentView {
     }
 
     func updateStatus() {
-        #if !targetEnvironment(simulator)
-            let manager = NEDNSSettingsManager.shared()
-            manager.loadFromPreferences {
-                if let err = $0 {
-                    logger.error("\(err.localizedDescription)")
-                    self.alert("Load Error", err.localizedDescription)
-                } else {
-                    self.isEnabled = manager.isEnabled
-                }
+        let manager = NEDNSSettingsManager.shared()
+        manager.loadFromPreferences {
+            if let err = $0 {
+                logger.error("\(err.localizedDescription)")
+                self.alert("Load Error", err.localizedDescription)
+            } else {
+                self.isEnabled = manager.isEnabled
             }
-        #endif
+        }
     }
 
-    func syncSettings() {
-        #if !targetEnvironment(simulator)
-            let manager = NEDNSSettingsManager.shared()
-            manager.loadFromPreferences { loadError in
-                if let loadError = loadError {
-                    logger.error("\(loadError.localizedDescription)")
-                    self.alert("Load Error", loadError.localizedDescription)
-                    return
-                }
-                if let usedID = self.usedID,
-                   let uuid = UUID(uuidString: usedID),
-                   let server = self.servers.find(by: uuid) {
-                    manager.dnsSettings = server.configuration.toDNSSettings()
-                    manager.saveToPreferences { saveError in
-                        self.updateStatus()
-                        if let saveError = saveError as NSError? {
-                            guard saveError.domain != "NEConfigurationErrorDomain"
-                                    || saveError.code != 9 else {
-                                return
-                            }
-                            logger.error("\(saveError.localizedDescription)")
-                            self.alert("Save Error", saveError.localizedDescription)
+    func saveSettings() {
+        let manager = NEDNSSettingsManager.shared()
+        manager.loadFromPreferences { loadError in
+            if let loadError = loadError {
+                logger.error("\(loadError.localizedDescription)")
+                self.alert("Load Error", loadError.localizedDescription)
+                return
+            }
+            if let usedID = self.usedID,
+               let uuid = UUID(uuidString: usedID),
+               let server = self.servers.find(by: uuid) {
+                manager.dnsSettings = server.configuration.toDNSSettings()
+                manager.saveToPreferences { saveError in
+                    if let saveError = saveError as NSError? {
+                        guard saveError.domain != "NEConfigurationErrorDomain"
+                                || saveError.code != 9 else {
                             return
                         }
-                        logger.debug("DNS settings was saved")
-                    }
-                } else {
-                    guard manager.dnsSettings != nil else {
+                        logger.error("\(saveError.localizedDescription)")
+                        self.alert("Save Error", saveError.localizedDescription)
                         return
                     }
-                    manager.removeFromPreferences { removeError in
-                        self.updateStatus()
-                        if let removeError = removeError {
-                            logger.error("\(removeError.localizedDescription)")
-                            self.alert("Remove Error", removeError.localizedDescription)
-                            return
-                        }
-                        logger.debug("DNS settings was removed")
+                    logger.debug("DNS settings was saved")
+                }
+            } else {
+                guard manager.dnsSettings != nil else {
+                    return
+                }
+                manager.removeFromPreferences { removeError in
+                    if let removeError = removeError {
+                        logger.error("\(removeError.localizedDescription)")
+                        self.alert("Remove Error", removeError.localizedDescription)
+                        return
                     }
+                    logger.debug("DNS settings was removed")
                 }
             }
-        #endif
+        }
     }
 
     func alert(_ title: String, _ message: String) {
@@ -131,7 +125,6 @@ extension ContentView: View {
                                     get: { server },
                                     set: {
                                         self.servers[i] = $0
-                                        self.syncSettings()
                                     }
                                 ),
                                 isOn: .init(
@@ -139,12 +132,7 @@ extension ContentView: View {
                                         self.usedID == server.id.uuidString
                                     },
                                     set: {
-                                        if $0 {
-                                            self.usedID = server.id.uuidString
-                                        } else {
-                                            self.usedID = nil
-                                        }
-                                        self.syncSettings()
+                                        self.usedID = $0 ? server.id.uuidString : nil
                                     }
                                 )
                             ),
@@ -197,14 +185,6 @@ extension ContentView: View {
                             }
                         }
                     }
-                    .onAppear(perform: self.updateStatus)
-                    .onReceive(
-                        NotificationCenter.default.publisher(
-                            for: UIScene.willEnterForegroundNotification
-                        )
-                    ) { _ in
-                        self.updateStatus()
-                    }
                 }
             }
             .alert(isPresented: self.$alertIsPresented) {
@@ -220,6 +200,15 @@ extension ContentView: View {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
             }
+        }
+        .onChange(of: self.scenePhase) { phase in
+            #if !targetEnvironment(simulator)
+                if phase == .active {
+                    self.updateStatus()
+                } else {
+                    self.saveSettings()
+                }
+            #endif
         }
     }
 }

@@ -94,6 +94,7 @@ extension DetailView: View {
             case var .dnsOverHTTPS(configuration):
                 Section(
                     header: EditButton()
+                        .foregroundColor(.accentColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .overlay(Text("Servers"), alignment: .leading),
                     footer: Text("The DNS server IP addresses.")

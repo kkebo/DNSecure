@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ContentView {
     @Environment(\.scenePhase) var scenePhase
-    @AppStorage("servers") var servers = Presets.servers
-    @AppStorage("usedID") var usedID: String?
+    @Binding var servers: Resolvers
+    @Binding var usedID: String?
     @State var isEnabled = false
     @State var selection: Int?
     @State var alertIsPresented = false
@@ -215,6 +215,6 @@ extension ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(servers: .constant([]), usedID: .constant(nil))
     }
 }

@@ -11,12 +11,15 @@ import SwiftUI
 let logger = Logger()
 
 @main
-struct DNSecureApp {}
+struct DNSecureApp {
+    @AppStorage("servers") var servers = Presets.servers
+    @AppStorage("usedID") var usedID: String?
+}
 
 extension DNSecureApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(servers: self.$servers, usedID: self.$usedID)
         }
     }
 }

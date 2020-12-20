@@ -60,7 +60,9 @@ extension RuleView: View {
                     .onDelete { self.rule.ssidMatch.remove(atOffsets: $0) }
                     .onMove { self.rule.ssidMatch.move(fromOffsets: $0, toOffset: $1) }
                     Button("Add SSID") {
-                        self.rule.ssidMatch.append("")
+                        NEHotspotNetwork.fetchCurrent { network in
+                            self.rule.ssidMatch.append(network?.ssid ?? "")
+                        }
                     }
                 }
             }

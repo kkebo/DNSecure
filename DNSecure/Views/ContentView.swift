@@ -126,7 +126,7 @@ extension ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("Servers")) {
-                    ForEach(Array(self.servers.enumerated()), id: \.offset.self) { i, server in
+                    ForEach(Array(self.servers.enumerated()), id: \.offset) { i, server in
                         NavigationLink(
                             destination: DetailView(
                                 server: .init(

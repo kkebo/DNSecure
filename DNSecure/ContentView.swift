@@ -46,8 +46,10 @@ struct ContentView {
                 self.servers.count - 1 - indexSet.count
             )
         }
+        if indexSet.map({ self.servers[$0].id.uuidString }).contains(self.usedID) {
+            self.removeSettings()
+        }
         self.servers.remove(atOffsets: indexSet)
-        self.saveSettings()
     }
 
     func moveServers(from src: IndexSet, to dst: Int) {
@@ -69,45 +71,48 @@ struct ContentView {
         #endif
     }
 
-    func saveSettings() {
+    func saveSettings(of server: Resolver) {
+        if self.usedID != server.id.uuidString {
+            self.usedID = server.id.uuidString
+        }
+
         #if !targetEnvironment(simulator)
             let manager = NEDNSSettingsManager.shared()
-            manager.loadFromPreferences { loadError in
-                if let loadError = loadError {
-                    logger.error("\(loadError.localizedDescription)")
-                    self.alert("Load Error", loadError.localizedDescription)
+            manager.dnsSettings = server.configuration.toDNSSettings()
+            manager.saveToPreferences { saveError in
+                if let saveError = saveError as NSError? {
+                    guard saveError.domain != "NEConfigurationErrorDomain"
+                            || saveError.code != 9 else {
+                        // Nothing was changed
+                        return
+                    }
+                    logger.error("\(saveError.localizedDescription)")
+                    self.alert("Save Error", saveError.localizedDescription)
+                    self.removeSettings()
                     return
                 }
-                if let usedID = self.usedID,
-                   let uuid = UUID(uuidString: usedID),
-                   let server = self.servers.find(by: uuid) {
-                    manager.dnsSettings = server.configuration.toDNSSettings()
-                    manager.saveToPreferences { saveError in
-                        self.updateStatus()
-                        if let saveError = saveError as NSError? {
-                            guard saveError.domain != "NEConfigurationErrorDomain"
-                                    || saveError.code != 9 else {
-                                return
-                            }
-                            self.usedID = nil
-                            logger.error("\(saveError.localizedDescription)")
-                            self.alert("Save Error", saveError.localizedDescription)
-                            return
-                        }
-                        logger.debug("DNS settings was saved")
-                    }
-                } else if manager.dnsSettings != nil {
-                    self.usedID = nil
-                    manager.removeFromPreferences { removeError in
-                        self.updateStatus()
-                        if let removeError = removeError {
-                            logger.error("\(removeError.localizedDescription)")
-                            self.alert("Remove Error", removeError.localizedDescription)
-                            return
-                        }
-                        logger.debug("DNS settings was removed")
-                    }
+                logger.debug("DNS settings was saved")
+            }
+        #endif
+    }
+
+    func removeSettings() {
+        self.usedID = nil
+
+        #if !targetEnvironment(simulator)
+            let manager = NEDNSSettingsManager.shared()
+            guard manager.dnsSettings != nil else {
+                // Already removed
+                return
+            }
+            manager.removeFromPreferences { removeError in
+                self.updateStatus()
+                if let removeError = removeError {
+                    logger.error("\(removeError.localizedDescription)")
+                    self.alert("Remove Error", removeError.localizedDescription)
+                    return
                 }
+                logger.debug("DNS settings was removed")
             }
         #endif
     }
@@ -131,7 +136,11 @@ extension ContentView: View {
                                     get: { server },
                                     set: {
                                         self.servers[i] = $0
-                                        self.saveSettings()
+
+                                        let server = self.servers[i]
+                                        if server.id.uuidString == self.usedID {
+                                            self.saveSettings(of: server)
+                                        }
                                     }
                                 ),
                                 isOn: .init(
@@ -139,8 +148,11 @@ extension ContentView: View {
                                         self.usedID == server.id.uuidString
                                     },
                                     set: {
-                                        self.usedID = $0 ? server.id.uuidString : nil
-                                        self.saveSettings()
+                                        if $0 {
+                                            self.saveSettings(of: server)
+                                        } else {
+                                            self.removeSettings()
+                                        }
                                     }
                                 )
                             ),

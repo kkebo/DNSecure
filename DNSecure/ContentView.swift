@@ -40,11 +40,8 @@ struct ContentView {
     }
 
     func removeServers(at indexSet: IndexSet) {
-        if let current = self.selection, indexSet.contains(current) {
-            self.selection = min(
-                current,
-                self.servers.count - 1 - indexSet.count
-            )
+        if let current = self.selection, indexSet.contains(where: { $0 <= current }) {
+            self.selection = nil
         }
         if indexSet.map({ self.servers[$0].id.uuidString }).contains(self.usedID) {
             self.removeSettings()

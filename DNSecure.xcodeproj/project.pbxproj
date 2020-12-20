@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		890B80D5251DC3A20046BAA0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B80D4251DC3A20046BAA0 /* DetailView.swift */; };
 		890B80DF251DC6B50046BAA0 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B80DE251DC6B50046BAA0 /* Presets.swift */; };
+		893AA853258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */; };
+		893AA858258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */; };
+		893AA85D258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */; };
+		893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */; };
+		893AA867258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */; };
+		893AA86C258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */; };
+		893AA871258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */; };
 		8940023C24ACBD2700EBE74B /* DNSecureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940023B24ACBD2700EBE74B /* DNSecureApp.swift */; };
 		8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940023D24ACBD2700EBE74B /* ContentView.swift */; };
 		8940024024ACBD2800EBE74B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940023F24ACBD2800EBE74B /* Assets.xcassets */; };
@@ -16,6 +23,7 @@
 		8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* DNSecureTests.swift */; };
 		8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* DNSecureUITests.swift */; };
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
+		894958AD2548405E009691D5 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
 		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
 		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
@@ -42,6 +50,13 @@
 		890B80D4251DC3A20046BAA0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		890B80DE251DC6B50046BAA0 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		8924EDF324C9CDF1004AF871 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CaseIterable.swift"; sourceTree = "<group>"; };
+		893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+Codable.swift"; sourceTree = "<group>"; };
+		893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+ssidIsUsed.swift"; sourceTree = "<group>"; };
+		893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+CaseIterable.swift"; sourceTree = "<group>"; };
+		893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+Codable.swift"; sourceTree = "<group>"; };
 		8940023824ACBD2700EBE74B /* DNSecure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSecure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8940023B24ACBD2700EBE74B /* DNSecureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureApp.swift; sourceTree = "<group>"; };
 		8940023D24ACBD2700EBE74B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +71,7 @@
 		8940025A24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940026624ACBE4900EBE74B /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		894958AC2548405E009691D5 /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
 		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
@@ -93,6 +109,7 @@
 				8940023D24ACBD2700EBE74B /* ContentView.swift */,
 				89CB922025209DD100B6983C /* HowToActivateView.swift */,
 				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
+				894958AC2548405E009691D5 /* RuleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,6 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */,
+				893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */,
+				893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */,
+				893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */,
+				893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */,
+				893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */,
+				893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */,
+				893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,9 +341,17 @@
 				8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */,
 				89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */,
 				890B80D5251DC3A20046BAA0 /* DetailView.swift in Sources */,
+				893AA853258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */,
+				893AA871258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift in Sources */,
+				893AA85D258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */,
 				8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */,
+				894958AD2548405E009691D5 /* RuleView.swift in Sources */,
 				890B80DF251DC6B50046BAA0 /* Presets.swift in Sources */,
+				893AA858258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */,
 				8940023C24ACBD2700EBE74B /* DNSecureApp.swift in Sources */,
+				893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */,
+				893AA867258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */,
+				893AA86C258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */,
 				8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

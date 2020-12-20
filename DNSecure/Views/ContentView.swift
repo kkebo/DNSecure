@@ -41,12 +41,17 @@ struct ContentView {
 
     func removeServers(at indexSet: IndexSet) {
         if let current = self.selection, indexSet.contains(where: { $0 <= current }) {
-            self.selection = nil
+            // FIXME: This is a workaround not to crash on deletion.
+            self.selection = -1
         }
         if indexSet.map({ self.servers[$0].id.uuidString }).contains(self.usedID) {
             self.removeSettings()
         }
-        self.servers.remove(atOffsets: indexSet)
+        // FIXME: This is a workaround not to crash on deletion.
+        // Wait for closing DetailView.
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            self.servers.remove(atOffsets: indexSet)
+        }
     }
 
     func moveServers(from src: IndexSet, to dst: Int) {
@@ -76,6 +81,7 @@ struct ContentView {
         #if !targetEnvironment(simulator)
             let manager = NEDNSSettingsManager.shared()
             manager.dnsSettings = server.configuration.toDNSSettings()
+            manager.onDemandRules = server.onDemandRules.toNEOnDemandRules()
             manager.saveToPreferences { saveError in
                 if let saveError = saveError as NSError? {
                     guard saveError.domain != "NEConfigurationErrorDomain"
@@ -125,21 +131,17 @@ extension ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink(
+                    "Instructions",
+                    destination: HowToActivateView(isSheet: false),
+                    tag: -1,
+                    selection: self.$selection
+                )
                 Section(header: Text("Servers")) {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(
                             destination: DetailView(
-                                server: .init(
-                                    get: { self.servers[i] },
-                                    set: {
-                                        self.servers[i] = $0
-
-                                        let server = self.servers[i]
-                                        if server.id.uuidString == self.usedID {
-                                            self.saveSettings(of: server)
-                                        }
-                                    }
-                                ),
+                                server: self.$servers[i],
                                 isOn: .init(
                                     get: {
                                         self.usedID == self.servers[i].id.uuidString
@@ -221,6 +223,15 @@ extension ContentView: View {
         .onChange(of: self.scenePhase) { phase in
             if phase == .active {
                 self.updateStatus()
+            } else {
+                // FIXME: This is a workaround for self.$severs[i].
+                // That cannot save settings as soon as it is modified.
+                guard let id = self.usedID,
+                      let uuid = UUID(uuidString: id),
+                      let server = self.servers.find(by: uuid) else {
+                    return
+                }
+                self.saveSettings(of: server)
             }
         }
     }

@@ -19,6 +19,10 @@ struct DoTConfiguration {
     }
 }
 
+extension DoTConfiguration: Equatable {}
+
+extension DoTConfiguration: Hashable {}
+
 extension DoTConfiguration: Codable {}
 
 struct DoHConfiguration {
@@ -31,6 +35,10 @@ struct DoHConfiguration {
         return settings
     }
 }
+
+extension DoHConfiguration: Equatable {}
+
+extension DoHConfiguration: Hashable {}
 
 extension DoHConfiguration: Codable {}
 
@@ -47,6 +55,10 @@ enum Configuration {
         }
     }
 }
+
+extension Configuration: Equatable {}
+
+extension Configuration: Hashable {}
 
 extension Configuration: Codable {
     enum CodingKeys: String, CodingKey {
@@ -94,15 +106,106 @@ extension Configuration: CustomStringConvertible {
     }
 }
 
+struct OnDemandRule {
+    var id = UUID()
+    var name: String
+    var action: NEOnDemandRuleAction = .ignore
+    var interfaceType: NEOnDemandRuleInterfaceType = .any
+    var ssidMatch: [String] = []
+    var dnsSearchDomainMatch: [String] = []
+    var dnsServerAddressMatch: [String] = []
+    var probeURL: URL?
+}
+
+extension OnDemandRule: Identifiable {}
+
+extension OnDemandRule: Equatable {}
+
+extension OnDemandRule: Hashable {}
+
+extension OnDemandRule: Codable {}
+
+extension Array where Self.Element == OnDemandRule {
+    func toNEOnDemandRules() -> [NEOnDemandRule] {
+        self.lazy
+            .map { rule in
+                switch rule.action {
+                case .connect:
+                    let newRule = NEOnDemandRuleConnect()
+                    newRule.interfaceTypeMatch = rule.interfaceType
+                    if rule.interfaceType.ssidIsUsed {
+                        newRule.ssidMatch = rule.ssidMatch
+                    }
+                    newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
+                    newRule.dnsServerAddressMatch = rule.dnsServerAddressMatch
+                    newRule.probeURL = rule.probeURL
+                    return newRule
+                case .disconnect:
+                    let newRule = NEOnDemandRuleDisconnect()
+                    newRule.interfaceTypeMatch = rule.interfaceType
+                    if rule.interfaceType.ssidIsUsed {
+                        newRule.ssidMatch = rule.ssidMatch
+                    }
+                    newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
+                    newRule.dnsServerAddressMatch = rule.dnsServerAddressMatch
+                    newRule.probeURL = rule.probeURL
+                    return newRule
+                case .evaluateConnection:
+                    let newRule = NEOnDemandRuleEvaluateConnection()
+                    newRule.interfaceTypeMatch = rule.interfaceType
+                    if rule.interfaceType.ssidIsUsed {
+                        newRule.ssidMatch = rule.ssidMatch
+                    }
+                    newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
+                    newRule.dnsServerAddressMatch = rule.dnsServerAddressMatch
+                    newRule.probeURL = rule.probeURL
+                    return newRule
+                case .ignore:
+                    let newRule = NEOnDemandRuleIgnore()
+                    newRule.interfaceTypeMatch = rule.interfaceType
+                    if rule.interfaceType.ssidIsUsed {
+                        newRule.ssidMatch = rule.ssidMatch
+                    }
+                    newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
+                    newRule.dnsServerAddressMatch = rule.dnsServerAddressMatch
+                    newRule.probeURL = rule.probeURL
+                    return newRule
+                default:
+                    preconditionFailure("Unexpected NEOnDemandRuleAction")
+                }
+            }
+    }
+}
+
 struct Resolver {
     var id = UUID()
     var name: String
     var configuration: Configuration
+    var onDemandRules: [OnDemandRule] = []
 }
 
 extension Resolver: Identifiable {}
 
-extension Resolver: Codable {}
+extension Resolver: Equatable {}
+
+extension Resolver: Hashable {}
+
+extension Resolver: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id, name, configuration, onDemandRules
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.configuration = try container.decode(Configuration.self, forKey: .configuration)
+        self.onDemandRules = try container.decodeIfPresent(
+            [OnDemandRule].self,
+            forKey: .onDemandRules
+        ) ?? []
+    }
+}
 
 typealias Resolvers = [Resolver]
 

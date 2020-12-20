@@ -16,7 +16,7 @@
 		8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* DNSecureTests.swift */; };
 		8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* DNSecureUITests.swift */; };
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
-		8963FDFB251DF1BC00E3DFE7 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */; };
+		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
 		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +56,7 @@
 		8940025A24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940026624ACBE4900EBE74B /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
+		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +87,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		893AA816258F790D0060B022 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8940023D24ACBD2700EBE74B /* ContentView.swift */,
+				89CB922025209DD100B6983C /* HowToActivateView.swift */,
+				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		893AA817258F79F70060B022 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8986CDCE251D9B3400D947CD /* Resolver.swift */,
+				890B80DE251DC6B50046BAA0 /* Presets.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		893AA818258F7A0C0060B022 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8940022F24ACBD2700EBE74B = {
 			isa = PBXGroup;
 			children = (
@@ -114,15 +141,12 @@
 			children = (
 				8940026624ACBE4900EBE74B /* DNSecure.entitlements */,
 				8940023B24ACBD2700EBE74B /* DNSecureApp.swift */,
-				8940023D24ACBD2700EBE74B /* ContentView.swift */,
-				89CB922025209DD100B6983C /* HowToActivateView.swift */,
-				8963FDFA251DF1BC00E3DFE7 /* BundleExtensions.swift */,
-				890B80DE251DC6B50046BAA0 /* Presets.swift */,
-				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
+				893AA816258F790D0060B022 /* Views */,
+				893AA817258F79F70060B022 /* Models */,
+				893AA818258F7A0C0060B022 /* Extensions */,
 				8940023F24ACBD2800EBE74B /* Assets.xcassets */,
 				8940024424ACBD2800EBE74B /* Info.plist */,
 				8940024124ACBD2800EBE74B /* Preview Content */,
-				8986CDCE251D9B3400D947CD /* Resolver.swift */,
 			);
 			path = DNSecure;
 			sourceTree = "<group>";
@@ -296,7 +320,7 @@
 				8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */,
 				890B80DF251DC6B50046BAA0 /* Presets.swift in Sources */,
 				8940023C24ACBD2700EBE74B /* DNSecureApp.swift in Sources */,
-				8963FDFB251DF1BC00E3DFE7 /* BundleExtensions.swift in Sources */,
+				8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

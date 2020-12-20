@@ -126,11 +126,11 @@ extension ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("Servers")) {
-                    ForEach(Array(self.servers.enumerated()), id: \.offset) { i, server in
+                    ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(
                             destination: DetailView(
                                 server: .init(
-                                    get: { server },
+                                    get: { self.servers[i] },
                                     set: {
                                         self.servers[i] = $0
 
@@ -142,11 +142,11 @@ extension ContentView: View {
                                 ),
                                 isOn: .init(
                                     get: {
-                                        self.usedID == server.id.uuidString
+                                        self.usedID == self.servers[i].id.uuidString
                                     },
                                     set: {
                                         if $0 {
-                                            self.saveSettings(of: server)
+                                            self.saveSettings(of: self.servers[i])
                                         } else {
                                             self.removeSettings()
                                         }
@@ -157,11 +157,11 @@ extension ContentView: View {
                             selection: self.$selection
                         ) {
                             VStack(alignment: .leading) {
-                                Text(server.name)
-                                Text(server.configuration.description)
+                                Text(self.servers[i].name)
+                                Text(self.servers[i].configuration.description)
                                     .foregroundColor(.secondary)
                             }
-                            if self.usedID == server.id.uuidString {
+                            if self.usedID == self.servers[i].id.uuidString {
                                 Spacer()
                                 Image(systemName: "checkmark")
                             }

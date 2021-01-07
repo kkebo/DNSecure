@@ -223,7 +223,7 @@ extension ContentView: View {
         .onChange(of: self.scenePhase) { phase in
             if phase == .active {
                 self.updateStatus()
-            } else {
+            } else if phase == .background {
                 // FIXME: This is a workaround for self.$severs[i].
                 // That cannot save settings as soon as it is modified.
                 guard let id = self.usedID,

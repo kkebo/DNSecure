@@ -1,14 +1,13 @@
 //
-//  DNSecureTests.swift
-//  DNSecureTests
+//  macOSTests.swift
+//  macOSTests
 //
-//  Created by Kenta Kubo on 7/1/20.
+//  Created by Kenta Kubo on 1/11/21.
 //
 
 import XCTest
-@testable import DNSecure
 
-class DNSecureTests: XCTestCase {
+class macOSTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,7 +24,7 @@ class DNSecureTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }

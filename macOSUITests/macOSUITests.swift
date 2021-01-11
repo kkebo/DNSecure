@@ -1,13 +1,13 @@
 //
-//  DNSecureUITests.swift
-//  DNSecureUITests
+//  macOSUITests.swift
+//  macOSUITests
 //
-//  Created by Kenta Kubo on 7/1/20.
+//  Created by Kenta Kubo on 1/11/21.
 //
 
 import XCTest
 
-class DNSecureUITests: XCTestCase {
+class macOSUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

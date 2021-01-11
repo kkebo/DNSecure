@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8940023724ACBD2700EBE74B"
                BuildableName = "DNSecure.app"
-               BlueprintName = "DNSecure"
+               BlueprintName = "DNSecure (iOS)"
                ReferencedContainer = "container:DNSecure.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8940024824ACBD2800EBE74B"
-               BuildableName = "DNSecureTests.xctest"
-               BlueprintName = "DNSecureTests"
+               BuildableName = "DNSecure (iOS) Tests.xctest"
+               BlueprintName = "DNSecure (iOS) Tests"
                ReferencedContainer = "container:DNSecure.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8940025324ACBD2800EBE74B"
-               BuildableName = "DNSecureUITests.xctest"
-               BlueprintName = "DNSecureUITests"
+               BuildableName = "DNSecure (iOS) UITests.xctest"
+               BlueprintName = "DNSecure (iOS) UITests"
                ReferencedContainer = "container:DNSecure.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8940023724ACBD2700EBE74B"
             BuildableName = "DNSecure.app"
-            BlueprintName = "DNSecure"
+            BlueprintName = "DNSecure (iOS)"
             ReferencedContainer = "container:DNSecure.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -83,7 +83,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8940023724ACBD2700EBE74B"
             BuildableName = "DNSecure.app"
-            BlueprintName = "DNSecure"
+            BlueprintName = "DNSecure (iOS)"
             ReferencedContainer = "container:DNSecure.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

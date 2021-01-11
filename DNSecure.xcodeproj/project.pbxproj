@@ -20,12 +20,32 @@
 		8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940023D24ACBD2700EBE74B /* ContentView.swift */; };
 		8940024024ACBD2800EBE74B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940023F24ACBD2800EBE74B /* Assets.xcassets */; };
 		8940024324ACBD2800EBE74B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940024224ACBD2800EBE74B /* Preview Assets.xcassets */; };
-		8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* DNSecureTests.swift */; };
-		8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* DNSecureUITests.swift */; };
+		8940024E24ACBD2800EBE74B /* iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* iOSTests.swift */; };
+		8940025924ACBD2800EBE74B /* iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* iOSUITests.swift */; };
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
 		894958AD2548405E009691D5 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
 		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
+		89BB64DF25AC849500CBB514 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB64DE25AC849500CBB514 /* macOSTests.swift */; };
+		89BB64F225AC849E00CBB514 /* macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB64F125AC849E00CBB514 /* macOSUITests.swift */; };
+		89BB650625AC86AA00CBB514 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BB650525AC86AA00CBB514 /* NetworkExtension.framework */; };
+		89BB650D25AC86BD00CBB514 /* DNSecureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940023B24ACBD2700EBE74B /* DNSecureApp.swift */; };
+		89BB651425AC86D100CBB514 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940023D24ACBD2700EBE74B /* ContentView.swift */; };
+		89BB651525AC86D100CBB514 /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
+		89BB651625AC86D100CBB514 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B80D4251DC3A20046BAA0 /* DetailView.swift */; };
+		89BB651725AC86D100CBB514 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
+		89BB651825AC86D100CBB514 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
+		89BB651925AC86D100CBB514 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B80DE251DC6B50046BAA0 /* Presets.swift */; };
+		89BB651A25AC86D100CBB514 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
+		89BB651B25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */; };
+		89BB651C25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */; };
+		89BB651D25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */; };
+		89BB651E25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */; };
+		89BB651F25AC86D100CBB514 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */; };
+		89BB652025AC86D100CBB514 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */; };
+		89BB652125AC86D100CBB514 /* NEOnDemandRuleAction+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */; };
+		89BB652825AC86E600CBB514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940023F24ACBD2800EBE74B /* Assets.xcassets */; };
+		89BB652925AC86E600CBB514 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8940024224ACBD2800EBE74B /* Preview Assets.xcassets */; };
 		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +63,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8940023724ACBD2700EBE74B;
 			remoteInfo = DNSecure;
+		};
+		89BB64E125AC849500CBB514 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8940023024ACBD2700EBE74B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89BB646F25AC839700CBB514;
+			remoteInfo = "DNSecure (macOS)";
+		};
+		89BB64F425AC849E00CBB514 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8940023024ACBD2700EBE74B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89BB646F25AC839700CBB514;
+			remoteInfo = "DNSecure (macOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -63,17 +97,27 @@
 		8940023F24ACBD2800EBE74B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8940024224ACBD2800EBE74B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8940024424ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8940024924ACBD2800EBE74B /* DNSecureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSecureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8940024D24ACBD2800EBE74B /* DNSecureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureTests.swift; sourceTree = "<group>"; };
+		8940024924ACBD2800EBE74B /* DNSecure (iOS) Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DNSecure (iOS) Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8940024D24ACBD2800EBE74B /* iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTests.swift; sourceTree = "<group>"; };
 		8940024F24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8940025424ACBD2800EBE74B /* DNSecureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSecureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8940025824ACBD2800EBE74B /* DNSecureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureUITests.swift; sourceTree = "<group>"; };
+		8940025424ACBD2800EBE74B /* DNSecure (iOS) UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DNSecure (iOS) UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8940025824ACBD2800EBE74B /* iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSUITests.swift; sourceTree = "<group>"; };
 		8940025A24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940026624ACBE4900EBE74B /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		894958AC2548405E009691D5 /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
 		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		89BB647025AC839700CBB514 /* DNSecure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSecure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BB647B25AC839800CBB514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89BB647C25AC839800CBB514 /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
+		89BB64DC25AC849500CBB514 /* DNSecure (macOS) Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DNSecure (macOS) Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BB64DE25AC849500CBB514 /* macOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSTests.swift; sourceTree = "<group>"; };
+		89BB64E025AC849500CBB514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89BB64EF25AC849E00CBB514 /* DNSecure (macOS) UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DNSecure (macOS) UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BB64F125AC849E00CBB514 /* macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSUITests.swift; sourceTree = "<group>"; };
+		89BB64F325AC849E00CBB514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89BB650525AC86AA00CBB514 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
 		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +138,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8940025124ACBD2800EBE74B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB646D25AC839700CBB514 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BB650625AC86AA00CBB514 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64D925AC849500CBB514 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64EC25AC849E00CBB514 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -142,9 +208,13 @@
 			isa = PBXGroup;
 			children = (
 				8924EDF324C9CDF1004AF871 /* README.md */,
-				8940023A24ACBD2700EBE74B /* DNSecure */,
-				8940024C24ACBD2800EBE74B /* DNSecureTests */,
-				8940025724ACBD2800EBE74B /* DNSecureUITests */,
+				8940023A24ACBD2700EBE74B /* Shared */,
+				89BB64B725AC83DC00CBB514 /* iOS */,
+				8940024C24ACBD2800EBE74B /* iOSTests */,
+				8940025724ACBD2800EBE74B /* iOSUITests */,
+				89BB647125AC839700CBB514 /* macOS */,
+				89BB64DD25AC849500CBB514 /* macOSTests */,
+				89BB64F025AC849E00CBB514 /* macOSUITests */,
 				8940023924ACBD2700EBE74B /* Products */,
 				8940026724ACBE4900EBE74B /* Frameworks */,
 			);
@@ -154,25 +224,26 @@
 			isa = PBXGroup;
 			children = (
 				8940023824ACBD2700EBE74B /* DNSecure.app */,
-				8940024924ACBD2800EBE74B /* DNSecureTests.xctest */,
-				8940025424ACBD2800EBE74B /* DNSecureUITests.xctest */,
+				8940024924ACBD2800EBE74B /* DNSecure (iOS) Tests.xctest */,
+				8940025424ACBD2800EBE74B /* DNSecure (iOS) UITests.xctest */,
+				89BB647025AC839700CBB514 /* DNSecure.app */,
+				89BB64DC25AC849500CBB514 /* DNSecure (macOS) Tests.xctest */,
+				89BB64EF25AC849E00CBB514 /* DNSecure (macOS) UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8940023A24ACBD2700EBE74B /* DNSecure */ = {
+		8940023A24ACBD2700EBE74B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				8940026624ACBE4900EBE74B /* DNSecure.entitlements */,
 				8940023B24ACBD2700EBE74B /* DNSecureApp.swift */,
 				893AA816258F790D0060B022 /* Views */,
 				893AA817258F79F70060B022 /* Models */,
 				893AA818258F7A0C0060B022 /* Extensions */,
 				8940023F24ACBD2800EBE74B /* Assets.xcassets */,
-				8940024424ACBD2800EBE74B /* Info.plist */,
 				8940024124ACBD2800EBE74B /* Preview Content */,
 			);
-			path = DNSecure;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		8940024124ACBD2800EBE74B /* Preview Content */ = {
@@ -183,38 +254,75 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8940024C24ACBD2800EBE74B /* DNSecureTests */ = {
+		8940024C24ACBD2800EBE74B /* iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				8940024D24ACBD2800EBE74B /* DNSecureTests.swift */,
+				8940024D24ACBD2800EBE74B /* iOSTests.swift */,
 				8940024F24ACBD2800EBE74B /* Info.plist */,
 			);
-			path = DNSecureTests;
+			path = iOSTests;
 			sourceTree = "<group>";
 		};
-		8940025724ACBD2800EBE74B /* DNSecureUITests */ = {
+		8940025724ACBD2800EBE74B /* iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8940025824ACBD2800EBE74B /* DNSecureUITests.swift */,
+				8940025824ACBD2800EBE74B /* iOSUITests.swift */,
 				8940025A24ACBD2800EBE74B /* Info.plist */,
 			);
-			path = DNSecureUITests;
+			path = iOSUITests;
 			sourceTree = "<group>";
 		};
 		8940026724ACBE4900EBE74B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89BB650525AC86AA00CBB514 /* NetworkExtension.framework */,
 				8940026824ACBE4900EBE74B /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		89BB647125AC839700CBB514 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				89BB647B25AC839800CBB514 /* Info.plist */,
+				89BB647C25AC839800CBB514 /* DNSecure.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		89BB64B725AC83DC00CBB514 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8940026624ACBE4900EBE74B /* DNSecure.entitlements */,
+				8940024424ACBD2800EBE74B /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		89BB64DD25AC849500CBB514 /* macOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				89BB64DE25AC849500CBB514 /* macOSTests.swift */,
+				89BB64E025AC849500CBB514 /* Info.plist */,
+			);
+			path = macOSTests;
+			sourceTree = "<group>";
+		};
+		89BB64F025AC849E00CBB514 /* macOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				89BB64F125AC849E00CBB514 /* macOSUITests.swift */,
+				89BB64F325AC849E00CBB514 /* Info.plist */,
+			);
+			path = macOSUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8940023724ACBD2700EBE74B /* DNSecure */ = {
+		8940023724ACBD2700EBE74B /* DNSecure (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8940025D24ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure" */;
+			buildConfigurationList = 8940025D24ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS)" */;
 			buildPhases = (
 				8940023424ACBD2700EBE74B /* Sources */,
 				8940023524ACBD2700EBE74B /* Frameworks */,
@@ -224,14 +332,14 @@
 			);
 			dependencies = (
 			);
-			name = DNSecure;
+			name = "DNSecure (iOS)";
 			productName = DNSecure;
 			productReference = 8940023824ACBD2700EBE74B /* DNSecure.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8940024824ACBD2800EBE74B /* DNSecureTests */ = {
+		8940024824ACBD2800EBE74B /* DNSecure (iOS) Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8940026024ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecureTests" */;
+			buildConfigurationList = 8940026024ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS) Tests" */;
 			buildPhases = (
 				8940024524ACBD2800EBE74B /* Sources */,
 				8940024624ACBD2800EBE74B /* Frameworks */,
@@ -242,14 +350,14 @@
 			dependencies = (
 				8940024B24ACBD2800EBE74B /* PBXTargetDependency */,
 			);
-			name = DNSecureTests;
+			name = "DNSecure (iOS) Tests";
 			productName = DNSecureTests;
-			productReference = 8940024924ACBD2800EBE74B /* DNSecureTests.xctest */;
+			productReference = 8940024924ACBD2800EBE74B /* DNSecure (iOS) Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8940025324ACBD2800EBE74B /* DNSecureUITests */ = {
+		8940025324ACBD2800EBE74B /* DNSecure (iOS) UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8940026324ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecureUITests" */;
+			buildConfigurationList = 8940026324ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS) UITests" */;
 			buildPhases = (
 				8940025024ACBD2800EBE74B /* Sources */,
 				8940025124ACBD2800EBE74B /* Frameworks */,
@@ -260,9 +368,62 @@
 			dependencies = (
 				8940025624ACBD2800EBE74B /* PBXTargetDependency */,
 			);
-			name = DNSecureUITests;
+			name = "DNSecure (iOS) UITests";
 			productName = DNSecureUITests;
-			productReference = 8940025424ACBD2800EBE74B /* DNSecureUITests.xctest */;
+			productReference = 8940025424ACBD2800EBE74B /* DNSecure (iOS) UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		89BB646F25AC839700CBB514 /* DNSecure (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BB649925AC839800CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS)" */;
+			buildPhases = (
+				89BB646C25AC839700CBB514 /* Sources */,
+				89BB646D25AC839700CBB514 /* Frameworks */,
+				89BB646E25AC839700CBB514 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DNSecure (macOS)";
+			productName = "DNSecure (macOS)";
+			productReference = 89BB647025AC839700CBB514 /* DNSecure.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89BB64DB25AC849500CBB514 /* DNSecure (macOS) Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BB64E325AC849500CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS) Tests" */;
+			buildPhases = (
+				89BB64D825AC849500CBB514 /* Sources */,
+				89BB64D925AC849500CBB514 /* Frameworks */,
+				89BB64DA25AC849500CBB514 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89BB64E225AC849500CBB514 /* PBXTargetDependency */,
+			);
+			name = "DNSecure (macOS) Tests";
+			productName = "DNSecure (macOS)Tests";
+			productReference = 89BB64DC25AC849500CBB514 /* DNSecure (macOS) Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		89BB64EE25AC849E00CBB514 /* DNSecure (macOS) UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BB64F625AC849E00CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS) UITests" */;
+			buildPhases = (
+				89BB64EB25AC849E00CBB514 /* Sources */,
+				89BB64EC25AC849E00CBB514 /* Frameworks */,
+				89BB64ED25AC849E00CBB514 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89BB64F525AC849E00CBB514 /* PBXTargetDependency */,
+			);
+			name = "DNSecure (macOS) UITests";
+			productName = "DNSecure (macOS)UITests";
+			productReference = 89BB64EF25AC849E00CBB514 /* DNSecure (macOS) UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +432,7 @@
 		8940023024ACBD2700EBE74B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					8940023724ACBD2700EBE74B = {
@@ -284,6 +445,17 @@
 					8940025324ACBD2800EBE74B = {
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = 8940023724ACBD2700EBE74B;
+					};
+					89BB646F25AC839700CBB514 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					89BB64DB25AC849500CBB514 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 89BB646F25AC839700CBB514;
+					};
+					89BB64EE25AC849E00CBB514 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 89BB646F25AC839700CBB514;
 					};
 				};
 			};
@@ -300,9 +472,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8940023724ACBD2700EBE74B /* DNSecure */,
-				8940024824ACBD2800EBE74B /* DNSecureTests */,
-				8940025324ACBD2800EBE74B /* DNSecureUITests */,
+				8940023724ACBD2700EBE74B /* DNSecure (iOS) */,
+				8940024824ACBD2800EBE74B /* DNSecure (iOS) Tests */,
+				8940025324ACBD2800EBE74B /* DNSecure (iOS) UITests */,
+				89BB646F25AC839700CBB514 /* DNSecure (macOS) */,
+				89BB64DB25AC849500CBB514 /* DNSecure (macOS) Tests */,
+				89BB64EE25AC849E00CBB514 /* DNSecure (macOS) UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +500,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8940025224ACBD2800EBE74B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB646E25AC839700CBB514 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BB652925AC86E600CBB514 /* Preview Assets.xcassets in Resources */,
+				89BB652825AC86E600CBB514 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64DA25AC849500CBB514 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64ED25AC849E00CBB514 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,7 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */,
+				8940024E24ACBD2800EBE74B /* iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +566,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */,
+				8940025924ACBD2800EBE74B /* iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB646C25AC839700CBB514 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BB651425AC86D100CBB514 /* ContentView.swift in Sources */,
+				89BB651525AC86D100CBB514 /* HowToActivateView.swift in Sources */,
+				89BB651625AC86D100CBB514 /* DetailView.swift in Sources */,
+				89BB651725AC86D100CBB514 /* RuleView.swift in Sources */,
+				89BB651825AC86D100CBB514 /* Resolver.swift in Sources */,
+				89BB651925AC86D100CBB514 /* Presets.swift in Sources */,
+				89BB651A25AC86D100CBB514 /* Bundle+displayName.swift in Sources */,
+				89BB651B25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */,
+				89BB651C25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */,
+				89BB651D25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */,
+				89BB651E25AC86D100CBB514 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */,
+				89BB651F25AC86D100CBB514 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */,
+				89BB652025AC86D100CBB514 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */,
+				89BB652125AC86D100CBB514 /* NEOnDemandRuleAction+Codable.swift in Sources */,
+				89BB650D25AC86BD00CBB514 /* DNSecureApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64D825AC849500CBB514 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BB64DF25AC849500CBB514 /* macOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BB64EB25AC849E00CBB514 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BB64F225AC849E00CBB514 /* macOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,13 +613,23 @@
 /* Begin PBXTargetDependency section */
 		8940024B24ACBD2800EBE74B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8940023724ACBD2700EBE74B /* DNSecure */;
+			target = 8940023724ACBD2700EBE74B /* DNSecure (iOS) */;
 			targetProxy = 8940024A24ACBD2800EBE74B /* PBXContainerItemProxy */;
 		};
 		8940025624ACBD2800EBE74B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8940023724ACBD2700EBE74B /* DNSecure */;
+			target = 8940023724ACBD2700EBE74B /* DNSecure (iOS) */;
 			targetProxy = 8940025524ACBD2800EBE74B /* PBXContainerItemProxy */;
+		};
+		89BB64E225AC849500CBB514 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89BB646F25AC839700CBB514 /* DNSecure (macOS) */;
+			targetProxy = 89BB64E125AC849500CBB514 /* PBXContainerItemProxy */;
+		};
+		89BB64F525AC849E00CBB514 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89BB646F25AC839700CBB514 /* DNSecure (macOS) */;
+			targetProxy = 89BB64F425AC849E00CBB514 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,6 +686,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -495,6 +742,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -509,13 +757,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DNSecure/DNSecure.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/DNSecure.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
-				DEVELOPMENT_ASSET_PATHS = "\"DNSecure/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = X4678G5DL2;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = DNSecure/Info.plist;
+				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,7 +771,7 @@
 				);
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecure;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -535,13 +783,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DNSecure/DNSecure.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/DNSecure.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
-				DEVELOPMENT_ASSET_PATHS = "\"DNSecure/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = X4678G5DL2;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = DNSecure/Info.plist;
+				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -549,7 +797,7 @@
 				);
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecure;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,7 +811,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
-				INFOPLIST_FILE = DNSecureTests/Info.plist;
+				INFOPLIST_FILE = iOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,7 +833,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
-				INFOPLIST_FILE = DNSecureTests/Info.plist;
+				INFOPLIST_FILE = iOSTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -606,7 +854,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
-				INFOPLIST_FILE = DNSecureUITests/Info.plist;
+				INFOPLIST_FILE = iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -626,7 +874,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
-				INFOPLIST_FILE = DNSecureUITests/Info.plist;
+				INFOPLIST_FILE = iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -637,6 +885,148 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DNSecure;
+			};
+			name = Release;
+		};
+		89BB649325AC839800CBB514 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/DNSecure.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecure;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		89BB649425AC839800CBB514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/DNSecure.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecure;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		89BB64E425AC849500CBB514 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				INFOPLIST_FILE = macOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DNSecure (macOS).app/Contents/MacOS/DNSecure (macOS)";
+			};
+			name = Debug;
+		};
+		89BB64E525AC849500CBB514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				INFOPLIST_FILE = macOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DNSecure (macOS).app/Contents/MacOS/DNSecure (macOS)";
+			};
+			name = Release;
+		};
+		89BB64F725AC849E00CBB514 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				INFOPLIST_FILE = macOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "DNSecure (macOS)";
+			};
+			name = Debug;
+		};
+		89BB64F825AC849E00CBB514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X4678G5DL2;
+				INFOPLIST_FILE = macOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.kebo.DNSecureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "DNSecure (macOS)";
 			};
 			name = Release;
 		};
@@ -652,7 +1042,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8940025D24ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure" */ = {
+		8940025D24ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8940025E24ACBD2800EBE74B /* Debug */,
@@ -661,7 +1051,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8940026024ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecureTests" */ = {
+		8940026024ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS) Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8940026124ACBD2800EBE74B /* Debug */,
@@ -670,11 +1060,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8940026324ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecureUITests" */ = {
+		8940026324ACBD2800EBE74B /* Build configuration list for PBXNativeTarget "DNSecure (iOS) UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8940026424ACBD2800EBE74B /* Debug */,
 				8940026524ACBD2800EBE74B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BB649925AC839800CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BB649325AC839800CBB514 /* Debug */,
+				89BB649425AC839800CBB514 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BB64E325AC849500CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS) Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BB64E425AC849500CBB514 /* Debug */,
+				89BB64E525AC849500CBB514 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BB64F625AC849E00CBB514 /* Build configuration list for PBXNativeTarget "DNSecure (macOS) UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BB64F725AC849E00CBB514 /* Debug */,
+				89BB64F825AC849E00CBB514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

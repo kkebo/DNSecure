@@ -23,6 +23,7 @@ This app uses the new [DNS Settings API](https://developer.apple.com/documentati
 1. Go to Network settings
 1. Select "DNSecure" and click "..." button on the bottom
 1. Click "Make Service Active"
+1. Click "Apply" button
 
 ## References
 

@@ -194,6 +194,10 @@ extension ContentView: View {
                                 .frame(width: 10, height: 10)
                                 .foregroundColor(self.isEnabled ? .green : .secondary)
                             Text(self.isEnabled ? "Active" : "Inactive")
+                            #if targetEnvironment(macCatalyst)
+                                Text("-")
+                                Button("Refresh", action: self.updateStatus)
+                            #endif
                         }
                         if !self.isEnabled {
                             Button("How to Activate") {

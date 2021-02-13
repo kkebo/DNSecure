@@ -69,6 +69,13 @@ extension HowToActivateView: View {
                                 .scaledToFit()
                                 .frame(maxHeight: 200)
                         }
+                        VStack(alignment: .leading) {
+                            Text("7. Click \"Apply\" button")
+                            Image("NetworkSettingsApply")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 400)
+                        }
                     #else
                         VStack(alignment: .leading) {
                             Text("3. Open the Settings")

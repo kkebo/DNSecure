@@ -36,35 +36,77 @@ extension HowToActivateView: View {
                             .scaledToFit()
                             .frame(maxHeight: 200)
                     }
-                    VStack(alignment: .leading) {
-                        Text("3. Open the Settings")
-                        Image("Settings")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 200)
-                    }
-                    VStack(alignment: .leading) {
-                        Text("4. Go to \"General\" > \"VPN & Network\" > \"DNS\"")
-                        ScrollView(.horizontal) {
+                    #if targetEnvironment(macCatalyst)
+                        VStack(alignment: .leading) {
+                            Text("3. Open the System Preferences")
+                            Image("SystemPreferencesIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 200)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("4. Go to Network settings")
+                            Image("SystemPreferences")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 400)
+                        }
+                        VStack(alignment: .leading) {
                             HStack {
-                                Image("GeneralVPNNetwork")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxHeight: 200)
-                                Image("DNS")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxHeight: 200)
+                                Text("5. Select \"\(Bundle.main.displayName!)\" and click")
+                                Image(systemName: "ellipsis.circle")
+                                Text("button")
+                            }
+                            Image("NetworkSettings")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 400)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("6. Click \"Make Service Active\"")
+                            Image("MakeServiceActive")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 200)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("7. Click \"Apply\" button")
+                            Image("NetworkSettingsApply")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 400)
+                        }
+                    #else
+                        VStack(alignment: .leading) {
+                            Text("3. Open the Settings")
+                            Image("Settings")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 200)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("4. Go to \"General\" > \"VPN & Network\" > \"DNS\"")
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    Image("GeneralVPNNetwork")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(maxHeight: 200)
+                                    Image("DNS")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(maxHeight: 200)
+                                }
                             }
                         }
-                    }
-                    VStack(alignment: .leading) {
-                        Text("5. \"Automatic\" is selected by default, so select \"\(Bundle.main.displayName!)\"")
-                        Image("DNSProvider")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 200)
-                    }
+                        VStack(alignment: .leading) {
+                            Text("5. \"Automatic\" is selected by default, so select \"\(Bundle.main.displayName!)\"")
+                            Image("DNSProvider")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 200)
+                        }
+                    #endif
                 }
             }
             if self.isSheet {

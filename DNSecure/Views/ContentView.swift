@@ -220,6 +220,7 @@ extension ContentView: View {
                     .navigationBarHidden(true)
             }
         }
+        .onAppear(perform: self.updateStatus)
         .onChange(of: self.scenePhase) { phase in
             if phase == .active {
                 self.updateStatus()

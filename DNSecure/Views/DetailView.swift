@@ -46,7 +46,7 @@ extension DetailView: View {
                             "IP address",
                             text: .init(
                                 get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0 }
+                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                             ),
                             onEditingChanged: {
                                 if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
@@ -84,7 +84,7 @@ extension DetailView: View {
                                     configuration.serverName ?? ""
                                 },
                                 set: {
-                                    configuration.serverName = $0
+                                    configuration.serverName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
                                 }
                             ),
                             onEditingChanged: {
@@ -111,7 +111,7 @@ extension DetailView: View {
                             "IP address",
                             text: .init(
                                 get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0 }
+                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                             ),
                             onEditingChanged: {
                                 if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
@@ -149,7 +149,7 @@ extension DetailView: View {
                                     configuration.serverURL?.absoluteString ?? ""
                                 },
                                 set: {
-                                    configuration.serverURL = URL(string: $0)
+                                    configuration.serverURL = URL(string: $0.trimmingCharacters(in: .whitespacesAndNewlines))
                                 }
                             ),
                             onEditingChanged: {

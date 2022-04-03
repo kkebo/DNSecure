@@ -48,8 +48,8 @@ extension DetailView: View {
                                 get: { configuration.servers[i] },
                                 set: { configuration.servers[i] = $0 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverTLS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
                             }
                         )
                         .textContentType(.URL)
@@ -87,8 +87,8 @@ extension DetailView: View {
                                     configuration.serverName = $0
                                 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverTLS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
                             }
                         )
                         .multilineTextAlignment(.trailing)
@@ -113,8 +113,8 @@ extension DetailView: View {
                                 get: { configuration.servers[i] },
                                 set: { configuration.servers[i] = $0 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverHTTPS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
                             }
                         )
                         .textContentType(.URL)
@@ -152,8 +152,8 @@ extension DetailView: View {
                                     configuration.serverURL = URL(string: $0)
                                 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverHTTPS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
                             }
                         )
                         .multilineTextAlignment(.trailing)

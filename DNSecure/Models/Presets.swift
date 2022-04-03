@@ -44,8 +44,8 @@ enum Presets {
                     servers: [
                         "1.1.1.1",
                         "1.0.0.1",
-                        "2606:4700:4700::64",
-                        "2606:4700:4700::6400",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
                     ],
                     serverName: "cloudflare-dns.com"
                 )
@@ -58,10 +58,38 @@ enum Presets {
                     servers: [
                         "1.1.1.1",
                         "1.0.0.1",
-                        "2606:4700:4700::64",
-                        "2606:4700:4700::6400",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
                     ],
                     serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
+                )
+            )
+        ),
+        .init(
+            name: "1.1.1.1 (Block Malware)",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "1.1.1.2",
+                        "1.0.0.2",
+                        "2606:4700:4700::1112",
+                        "2606:4700:4700::1002",
+                    ],
+                    serverName: "cloudflare-dns.com"
+                )
+            )
+        ),
+        .init(
+            name: "1.1.1.1 (Block Malware)",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "1.1.1.2",
+                        "1.0.0.2",
+                        "2606:4700:4700::1112",
+                        "2606:4700:4700::1002",
+                    ],
+                    serverURL: URL(string: "https://security.cloudflare-dns.com/dns-query")
                 )
             )
         ),

@@ -123,6 +123,17 @@ enum Presets {
         ),
         .init(
             name: "LibreDNS",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "116.202.176.26",
+                    ],
+                    serverName: "dot.libredns.gr"
+                )
+            )
+        ),
+        .init(
+            name: "LibreDNS",
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
@@ -133,7 +144,7 @@ enum Presets {
             )
         ),
         .init(
-            name: "LibreDNS (No Ads)",
+            name: "LibreDNS (Block Ads / Trackers)",
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [

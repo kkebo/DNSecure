@@ -94,28 +94,28 @@ enum Presets {
             )
         ),
         .init(
-            name: "Quad9",
+            name: "Quad9 (Block Malware)",
             configuration: .dnsOverTLS(
                 DoTConfiguration(
                     servers: [
                         "9.9.9.9",
                         "149.112.112.112",
                         "2620:fe::fe",
-                        "2620:fe::fe:9",
+                        "2620:fe::9",
                     ],
                     serverName: "dns.quad9.net"
                 )
             )
         ),
         .init(
-            name: "Quad9",
+            name: "Quad9 (Block Malware)",
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
                         "9.9.9.9",
                         "149.112.112.112",
                         "2620:fe::fe",
-                        "2620:fe::fe:9",
+                        "2620:fe::9",
                     ],
                     serverURL: URL(string: "https://dns.quad9.net/dns-query")
                 )

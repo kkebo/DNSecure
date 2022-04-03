@@ -154,5 +154,61 @@ enum Presets {
                 )
             )
         ),
+        .init(
+            name: "AdGuard DNS",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "94.140.14.140",
+                        "94.140.14.141",
+                        "2a10:50c0::1:ff",
+                        "2a10:50c0::2:ff",
+                    ],
+                    serverName: "dns-unfiltered.adguard.com"
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "94.140.14.140",
+                        "94.140.14.141",
+                        "2a10:50c0::1:ff",
+                        "2a10:50c0::2:ff",
+                    ],
+                    serverURL: URL(string: "https://dns-unfiltered.adguard.com/dns-query")
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS (Block Ads / Trackers)",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "94.140.14.14",
+                        "94.140.15.15",
+                        "2a10:50c0::ad1:ff",
+                        "2a10:50c0::ad2:ff",
+                    ],
+                    serverName: "dns.adguard.com"
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS (Block Ads / Trackers)",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "94.140.14.14",
+                        "94.140.15.15",
+                        "2a10:50c0::ad1:ff",
+                        "2a10:50c0::ad2:ff",
+                    ],
+                    serverURL: URL(string: "https://dns.adguard.com/dns-query")
+                )
+            )
+        ),
     ]
 }

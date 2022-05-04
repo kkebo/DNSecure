@@ -76,10 +76,15 @@ extension DetailView: View {
                     "IP address",
                     text: .init(
                         get: { configuration.servers[i] },
-                        set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        set: {
+                            configuration.servers[i] = $0
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
                     ),
-                    onEditingChanged: {
-                        if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
+                    onEditingChanged: { isEditing in
+                        if !isEditing {
+                            self.server.configuration = .dnsOverTLS(configuration)
+                        }
                     }
                 )
                 .textContentType(.URL)
@@ -118,11 +123,14 @@ extension DetailView: View {
                             configuration.serverName ?? ""
                         },
                         set: {
-                            configuration.serverName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                            configuration.serverName = $0
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
                         }
                     ),
-                    onEditingChanged: {
-                        if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
+                    onEditingChanged: { isEditing in
+                        if !isEditing {
+                            self.server.configuration = .dnsOverTLS(configuration)
+                        }
                     }
                 )
                 .multilineTextAlignment(.trailing)
@@ -149,10 +157,15 @@ extension DetailView: View {
                     "IP address",
                     text: .init(
                         get: { configuration.servers[i] },
-                        set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        set: {
+                            configuration.servers[i] = $0
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
                     ),
-                    onEditingChanged: {
-                        if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
+                    onEditingChanged: { isEditing in
+                        if !isEditing {
+                            self.server.configuration = .dnsOverHTTPS(configuration)
+                        }
                     }
                 )
                 .textContentType(.URL)
@@ -191,11 +204,15 @@ extension DetailView: View {
                             configuration.serverURL?.absoluteString ?? ""
                         },
                         set: {
-                            configuration.serverURL = URL(string: $0.trimmingCharacters(in: .whitespacesAndNewlines))
+                            configuration.serverURL = URL(
+                                string: $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                            )
                         }
                     ),
-                    onEditingChanged: {
-                        if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
+                    onEditingChanged: { isEditing in
+                        if !isEditing {
+                            self.server.configuration = .dnsOverHTTPS(configuration)
+                        }
                     }
                 )
                 .multilineTextAlignment(.trailing)

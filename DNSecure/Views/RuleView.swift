@@ -28,25 +28,20 @@ extension RuleView: View {
                 }
             }
 
-            Section(
-                header: Text("Interface Type Match"),
-                footer: Text("If the current primary network interface is of this type and all of the other conditions in the rule match, then the rule matches.")
-            ) {
+            Section {
                 Picker("Interface Type", selection: self.$rule.interfaceType) {
                     ForEach(NEOnDemandRuleInterfaceType.allCases, id: \.self) {
                         Text($0.description)
                     }
                 }
+            } header: {
+                Text("Interface Type Match")
+            } footer: {
+                Text("If the current primary network interface is of this type and all of the other conditions in the rule match, then the rule matches.")
             }
 
             if self.rule.interfaceType.ssidIsUsed {
-                Section(
-                    header: EditButton()
-                        .foregroundColor(.accentColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .overlay(Text("SSID Match"), alignment: .leading),
-                    footer: Text("If the Service Set Identifier (SSID) of the current primary connected network matches one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
-                ) {
+                Section {
                     ForEach(0..<self.rule.ssidMatch.count, id: \.self) { i in
                         TextField(
                             "SSID",
@@ -64,16 +59,17 @@ extension RuleView: View {
                             self.rule.ssidMatch.append(network?.ssid ?? "")
                         }
                     }
+                } header: {
+                    EditButton()
+                        .foregroundColor(.accentColor)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .overlay(Text("SSID Match"), alignment: .leading)
+                } footer: {
+                    Text("If the Service Set Identifier (SSID) of the current primary connected network matches one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
                 }
             }
 
-            Section(
-                header: EditButton()
-                    .foregroundColor(.accentColor)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("DNS Search Domain Match"), alignment: .leading),
-                footer: Text("If the current default search domain is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
-            ) {
+            Section {
                 ForEach(0..<self.rule.dnsSearchDomainMatch.count, id: \.self) { i in
                     TextField(
                         "Search Domain",
@@ -89,15 +85,16 @@ extension RuleView: View {
                 Button("Add DNS Search Domain") {
                     self.rule.dnsSearchDomainMatch.append("")
                 }
-            }
-
-            Section(
-                header: EditButton()
+            } header: {
+                EditButton()
                     .foregroundColor(.accentColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("DNS Server Address Match"), alignment: .leading),
-                footer: Text("If each of the current default DNS servers is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
-            ) {
+                    .overlay(Text("DNS Search Domain Match"), alignment: .leading)
+            } footer: {
+                Text("If the current default search domain is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
+            }
+
+            Section {
                 ForEach(0..<self.rule.dnsServerAddressMatch.count, id: \.self) { i in
                     TextField(
                         "IP Address",
@@ -113,12 +110,16 @@ extension RuleView: View {
                 Button("Add DNS Server Address") {
                     self.rule.dnsServerAddressMatch.append("")
                 }
+            } header: {
+                EditButton()
+                    .foregroundColor(.accentColor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .overlay(Text("DNS Server Address Match"), alignment: .leading)
+            } footer: {
+                Text("If each of the current default DNS servers is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
             }
 
-            Section(
-                header: Text("Probe URL Match"),
-                footer: Text("If a request sent to this URL results in a HTTP 200 OK response and all of the other conditions in the rule match, then the rule matches. If you don't want to use this rule, leave it empty.")
-            ) {
+            Section {
                 HStack {
                     Text("Probe URL")
                     TextField(
@@ -130,6 +131,10 @@ extension RuleView: View {
                     )
                     .multilineTextAlignment(.trailing)
                 }
+            } header: {
+                Text("Probe URL Match")
+            } footer: {
+                Text("If a request sent to this URL results in a HTTP 200 OK response and all of the other conditions in the rule match, then the rule matches. If you don't want to use this rule, leave it empty.")
             }
         }
         .navigationTitle(self.rule.name)

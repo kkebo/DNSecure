@@ -33,12 +33,7 @@ extension DetailView: View {
                 }
             }
             self.serverConfigurationSections
-            Section(
-                header: EditButton()
-                    .foregroundColor(.accentColor)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("On Demand Rules"), alignment: .leading)
-            ) {
+            Section {
                 ForEach(self.server.onDemandRules) { rule in
                     NavigationLink(
                         rule.name,
@@ -51,6 +46,11 @@ extension DetailView: View {
                     self.server.onDemandRules
                         .append(OnDemandRule(name: "New Rule"))
                 }
+            } header: {
+                EditButton()
+                    .foregroundColor(.accentColor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .overlay(Text("On Demand Rules"), alignment: .leading)
             }
         }
         .navigationTitle(self.server.name)
@@ -70,13 +70,7 @@ extension DetailView: View {
         _ configuration: DoTConfiguration
     ) -> some View {
         var configuration = configuration
-        Section(
-            header: EditButton()
-                .foregroundColor(.accentColor)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .overlay(Text("Servers"), alignment: .leading),
-            footer: Text("The DNS server IP addresses.")
-        ) {
+        Section {
             ForEach(0..<configuration.servers.count, id: \.self) { i in
                 TextField(
                     "IP address",
@@ -105,11 +99,15 @@ extension DetailView: View {
                 configuration.servers.append("")
                 self.server.configuration = .dnsOverTLS(configuration)
             }
+        } header: {
+            EditButton()
+                .foregroundColor(.accentColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .overlay(Text("Servers"), alignment: .leading)
+        } footer: {
+            Text("The DNS server IP addresses.")
         }
-        Section(
-            header: Text("DNS-over-TLS Settings"),
-            footer: Text("The TLS name of a DNS-over-TLS server.")
-        ) {
+        Section {
             HStack {
                 Text("Server Name")
                 Spacer()
@@ -133,6 +131,10 @@ extension DetailView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             }
+        } header: {
+            Text("DNS-over-TLS Settings")
+        } footer: {
+            Text("The TLS name of a DNS-over-TLS server.")
         }
     }
 
@@ -141,13 +143,7 @@ extension DetailView: View {
         _ configuration: DoHConfiguration
     ) -> some View {
         var configuration = configuration
-        Section(
-            header: EditButton()
-                .foregroundColor(.accentColor)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .overlay(Text("Servers"), alignment: .leading),
-            footer: Text("The DNS server IP addresses.")
-        ) {
+        Section {
             ForEach(0..<configuration.servers.count, id: \.self) { i in
                 TextField(
                     "IP address",
@@ -176,11 +172,15 @@ extension DetailView: View {
                 configuration.servers.append("")
                 self.server.configuration = .dnsOverHTTPS(configuration)
             }
+        } header: {
+            EditButton()
+                .foregroundColor(.accentColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .overlay(Text("Servers"), alignment: .leading)
+        } footer: {
+            Text("The DNS server IP addresses.")
         }
-        Section(
-            header: Text("DNS-over-HTTPS Settings"),
-            footer: Text("The URL of a DNS-over-HTTPS server.")
-        ) {
+        Section {
             HStack {
                 Text("Server URL")
                 Spacer()
@@ -204,6 +204,10 @@ extension DetailView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             }
+        } header: {
+            Text("DNS-over-HTTPS Settings")
+        } footer: {
+            Text("The URL of a DNS-over-HTTPS server.")
         }
     }
 }

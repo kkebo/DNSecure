@@ -133,14 +133,18 @@ extension ContentView: View {
             List {
                 NavigationLink(
                     "Instructions",
-                    destination: HowToActivateView(isSheet: false),
                     tag: -1,
                     selection: self.$selection
-                )
-                Section(header: Text("Servers")) {
+                ) {
+                    HowToActivateView(isSheet: false)
+                }
+                Section {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(
-                            destination: DetailView(
+                            tag: i,
+                            selection: self.$selection
+                        ) {
+                            DetailView(
                                 server: self.$servers[i],
                                 isOn: .init(
                                     get: {
@@ -154,10 +158,8 @@ extension ContentView: View {
                                         }
                                     }
                                 )
-                            ),
-                            tag: i,
-                            selection: self.$selection
-                        ) {
+                            )
+                        } label: {
                             VStack(alignment: .leading) {
                                 Text(self.servers[i].name)
                                 Text(self.servers[i].configuration.description)
@@ -171,9 +173,11 @@ extension ContentView: View {
                     }
                     .onDelete(perform: self.removeServers)
                     .onMove(perform: self.moveServers)
+                } header: {
+                    Text("Servers")
                 }
             }
-            .listStyle(SidebarListStyle())
+            .listStyle(.sidebar)
             .navigationTitle(Bundle.main.displayName!)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

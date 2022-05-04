@@ -46,10 +46,10 @@ extension DetailView: View {
                             "IP address",
                             text: .init(
                                 get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0 }
+                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverTLS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
                             }
                         )
                         .textContentType(.URL)
@@ -84,11 +84,11 @@ extension DetailView: View {
                                     configuration.serverName ?? ""
                                 },
                                 set: {
-                                    configuration.serverName = $0
+                                    configuration.serverName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
                                 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverTLS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
                             }
                         )
                         .multilineTextAlignment(.trailing)
@@ -111,10 +111,10 @@ extension DetailView: View {
                             "IP address",
                             text: .init(
                                 get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0 }
+                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverHTTPS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
                             }
                         )
                         .textContentType(.URL)
@@ -149,11 +149,11 @@ extension DetailView: View {
                                     configuration.serverURL?.absoluteString ?? ""
                                 },
                                 set: {
-                                    configuration.serverURL = URL(string: $0)
+                                    configuration.serverURL = URL(string: $0.trimmingCharacters(in: .whitespacesAndNewlines))
                                 }
                             ),
-                            onCommit: {
-                                self.server.configuration = .dnsOverHTTPS(configuration)
+                            onEditingChanged: {
+                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
                             }
                         )
                         .multilineTextAlignment(.trailing)

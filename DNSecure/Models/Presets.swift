@@ -44,8 +44,8 @@ enum Presets {
                     servers: [
                         "1.1.1.1",
                         "1.0.0.1",
-                        "2606:4700:4700::64",
-                        "2606:4700:4700::6400",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
                     ],
                     serverName: "cloudflare-dns.com"
                 )
@@ -58,38 +58,77 @@ enum Presets {
                     servers: [
                         "1.1.1.1",
                         "1.0.0.1",
-                        "2606:4700:4700::64",
-                        "2606:4700:4700::6400",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
                     ],
                     serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
                 )
             )
         ),
         .init(
-            name: "Quad9",
+            name: "1.1.1.1 (Block Malware)",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "1.1.1.2",
+                        "1.0.0.2",
+                        "2606:4700:4700::1112",
+                        "2606:4700:4700::1002",
+                    ],
+                    serverName: "cloudflare-dns.com"
+                )
+            )
+        ),
+        .init(
+            name: "1.1.1.1 (Block Malware)",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "1.1.1.2",
+                        "1.0.0.2",
+                        "2606:4700:4700::1112",
+                        "2606:4700:4700::1002",
+                    ],
+                    serverURL: URL(string: "https://security.cloudflare-dns.com/dns-query")
+                )
+            )
+        ),
+        .init(
+            name: "Quad9 (Block Malware)",
             configuration: .dnsOverTLS(
                 DoTConfiguration(
                     servers: [
                         "9.9.9.9",
                         "149.112.112.112",
                         "2620:fe::fe",
-                        "2620:fe::fe:9",
+                        "2620:fe::9",
                     ],
                     serverName: "dns.quad9.net"
                 )
             )
         ),
         .init(
-            name: "Quad9",
+            name: "Quad9 (Block Malware)",
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
                         "9.9.9.9",
                         "149.112.112.112",
                         "2620:fe::fe",
-                        "2620:fe::fe:9",
+                        "2620:fe::9",
                     ],
                     serverURL: URL(string: "https://dns.quad9.net/dns-query")
+                )
+            )
+        ),
+        .init(
+            name: "LibreDNS",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "116.202.176.26",
+                    ],
+                    serverName: "dot.libredns.gr"
                 )
             )
         ),
@@ -105,13 +144,69 @@ enum Presets {
             )
         ),
         .init(
-            name: "LibreDNS (No Ads)",
+            name: "LibreDNS (Block Ads / Trackers)",
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
                         "116.202.176.26",
                     ],
                     serverURL: URL(string: "https://doh.libredns.gr/ads")
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "94.140.14.140",
+                        "94.140.14.141",
+                        "2a10:50c0::1:ff",
+                        "2a10:50c0::2:ff",
+                    ],
+                    serverName: "dns-unfiltered.adguard.com"
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "94.140.14.140",
+                        "94.140.14.141",
+                        "2a10:50c0::1:ff",
+                        "2a10:50c0::2:ff",
+                    ],
+                    serverURL: URL(string: "https://dns-unfiltered.adguard.com/dns-query")
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS (Block Ads / Trackers)",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "94.140.14.14",
+                        "94.140.15.15",
+                        "2a10:50c0::ad1:ff",
+                        "2a10:50c0::ad2:ff",
+                    ],
+                    serverName: "dns.adguard.com"
+                )
+            )
+        ),
+        .init(
+            name: "AdGuard DNS (Block Ads / Trackers)",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "94.140.14.14",
+                        "94.140.15.15",
+                        "2a10:50c0::ad1:ff",
+                        "2a10:50c0::ad2:ff",
+                    ],
+                    serverURL: URL(string: "https://dns.adguard.com/dns-query")
                 )
             )
         ),

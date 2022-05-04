@@ -32,138 +32,7 @@ extension DetailView: View {
                         .multilineTextAlignment(.trailing)
                 }
             }
-            switch self.server.configuration {
-            case var .dnsOverTLS(configuration):
-                Section(
-                    header: EditButton()
-                        .foregroundColor(.accentColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .overlay(Text("Servers"), alignment: .leading),
-                    footer: Text("The DNS server IP addresses.")
-                ) {
-                    ForEach(0..<configuration.servers.count, id: \.self) { i in
-                        TextField(
-                            "IP address",
-                            text: .init(
-                                get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                            ),
-                            onEditingChanged: {
-                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
-                            }
-                        )
-                        .textContentType(.URL)
-                        .keyboardType(.numbersAndPunctuation)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    }
-                    .onDelete {
-                        configuration.servers.remove(atOffsets: $0)
-                        self.server.configuration = .dnsOverTLS(configuration)
-                    }
-                    .onMove {
-                        configuration.servers.move(fromOffsets: $0, toOffset: $1)
-                        self.server.configuration = .dnsOverTLS(configuration)
-                    }
-                    Button("Add New Server") {
-                        configuration.servers.append("")
-                        self.server.configuration = .dnsOverTLS(configuration)
-                    }
-                }
-                Section(
-                    header: Text("DNS-over-TLS Settings"),
-                    footer: Text("The TLS name of a DNS-over-TLS server.")
-                ) {
-                    HStack {
-                        Text("Server Name")
-                        Spacer()
-                        TextField(
-                            "Server Name",
-                            text: .init(
-                                get: {
-                                    configuration.serverName ?? ""
-                                },
-                                set: {
-                                    configuration.serverName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                                }
-                            ),
-                            onEditingChanged: {
-                                if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
-                            }
-                        )
-                        .multilineTextAlignment(.trailing)
-                        .textContentType(.URL)
-                        .keyboardType(.URL)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    }
-                }
-            case var .dnsOverHTTPS(configuration):
-                Section(
-                    header: EditButton()
-                        .foregroundColor(.accentColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .overlay(Text("Servers"), alignment: .leading),
-                    footer: Text("The DNS server IP addresses.")
-                ) {
-                    ForEach(0..<configuration.servers.count, id: \.self) { i in
-                        TextField(
-                            "IP address",
-                            text: .init(
-                                get: { configuration.servers[i] },
-                                set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                            ),
-                            onEditingChanged: {
-                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
-                            }
-                        )
-                        .textContentType(.URL)
-                        .keyboardType(.numbersAndPunctuation)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    }
-                    .onDelete {
-                        configuration.servers.remove(atOffsets: $0)
-                        self.server.configuration = .dnsOverHTTPS(configuration)
-                    }
-                    .onMove {
-                        configuration.servers.move(fromOffsets: $0, toOffset: $1)
-                        self.server.configuration = .dnsOverHTTPS(configuration)
-                    }
-                    Button("Add New Server") {
-                        configuration.servers.append("")
-                        self.server.configuration = .dnsOverHTTPS(configuration)
-                    }
-                }
-                Section(
-                    header: Text("DNS-over-HTTPS Settings"),
-                    footer: Text("The URL of a DNS-over-HTTPS server.")
-                ) {
-                    HStack {
-                        Text("Server URL")
-                        Spacer()
-                        TextField(
-                            "Server URL",
-                            text: .init(
-                                get: {
-                                    configuration.serverURL?.absoluteString ?? ""
-                                },
-                                set: {
-                                    configuration.serverURL = URL(string: $0.trimmingCharacters(in: .whitespacesAndNewlines))
-                                }
-                            ),
-                            onEditingChanged: {
-                                if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
-                            }
-                        )
-                        .multilineTextAlignment(.trailing)
-                        .textContentType(.URL)
-                        .keyboardType(.URL)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                    }
-                }
-            }
+            self.serverConfigurationSections
             Section(
                 header: EditButton()
                     .foregroundColor(.accentColor)
@@ -185,6 +54,157 @@ extension DetailView: View {
             }
         }
         .navigationTitle(self.server.name)
+    }
+
+    @ViewBuilder private var serverConfigurationSections: some View {
+        switch self.server.configuration {
+        case .dnsOverTLS(let configuration):
+            self.dnsOverTLSSections(configuration)
+        case .dnsOverHTTPS(let configuration):
+            self.dnsOverHTTPSSections(configuration)
+        }
+    }
+
+    @ViewBuilder
+    private func dnsOverTLSSections(
+        _ configuration: DoTConfiguration
+    ) -> some View {
+        var configuration = configuration
+        Section(
+            header: EditButton()
+                .foregroundColor(.accentColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .overlay(Text("Servers"), alignment: .leading),
+            footer: Text("The DNS server IP addresses.")
+        ) {
+            ForEach(0..<configuration.servers.count, id: \.self) { i in
+                TextField(
+                    "IP address",
+                    text: .init(
+                        get: { configuration.servers[i] },
+                        set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                    ),
+                    onEditingChanged: {
+                        if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
+                    }
+                )
+                .textContentType(.URL)
+                .keyboardType(.numbersAndPunctuation)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            }
+            .onDelete {
+                configuration.servers.remove(atOffsets: $0)
+                self.server.configuration = .dnsOverTLS(configuration)
+            }
+            .onMove {
+                configuration.servers.move(fromOffsets: $0, toOffset: $1)
+                self.server.configuration = .dnsOverTLS(configuration)
+            }
+            Button("Add New Server") {
+                configuration.servers.append("")
+                self.server.configuration = .dnsOverTLS(configuration)
+            }
+        }
+        Section(
+            header: Text("DNS-over-TLS Settings"),
+            footer: Text("The TLS name of a DNS-over-TLS server.")
+        ) {
+            HStack {
+                Text("Server Name")
+                Spacer()
+                TextField(
+                    "Server Name",
+                    text: .init(
+                        get: {
+                            configuration.serverName ?? ""
+                        },
+                        set: {
+                            configuration.serverName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
+                    ),
+                    onEditingChanged: {
+                        if (!$0) { self.server.configuration = .dnsOverTLS(configuration) }
+                    }
+                )
+                .multilineTextAlignment(.trailing)
+                .textContentType(.URL)
+                .keyboardType(.URL)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func dnsOverHTTPSSections(
+        _ configuration: DoHConfiguration
+    ) -> some View {
+        var configuration = configuration
+        Section(
+            header: EditButton()
+                .foregroundColor(.accentColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .overlay(Text("Servers"), alignment: .leading),
+            footer: Text("The DNS server IP addresses.")
+        ) {
+            ForEach(0..<configuration.servers.count, id: \.self) { i in
+                TextField(
+                    "IP address",
+                    text: .init(
+                        get: { configuration.servers[i] },
+                        set: { configuration.servers[i] = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                    ),
+                    onEditingChanged: {
+                        if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
+                    }
+                )
+                .textContentType(.URL)
+                .keyboardType(.numbersAndPunctuation)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            }
+            .onDelete {
+                configuration.servers.remove(atOffsets: $0)
+                self.server.configuration = .dnsOverHTTPS(configuration)
+            }
+            .onMove {
+                configuration.servers.move(fromOffsets: $0, toOffset: $1)
+                self.server.configuration = .dnsOverHTTPS(configuration)
+            }
+            Button("Add New Server") {
+                configuration.servers.append("")
+                self.server.configuration = .dnsOverHTTPS(configuration)
+            }
+        }
+        Section(
+            header: Text("DNS-over-HTTPS Settings"),
+            footer: Text("The URL of a DNS-over-HTTPS server.")
+        ) {
+            HStack {
+                Text("Server URL")
+                Spacer()
+                TextField(
+                    "Server URL",
+                    text: .init(
+                        get: {
+                            configuration.serverURL?.absoluteString ?? ""
+                        },
+                        set: {
+                            configuration.serverURL = URL(string: $0.trimmingCharacters(in: .whitespacesAndNewlines))
+                        }
+                    ),
+                    onEditingChanged: {
+                        if (!$0) { self.server.configuration = .dnsOverHTTPS(configuration) }
+                    }
+                )
+                .multilineTextAlignment(.trailing)
+                .textContentType(.URL)
+                .keyboardType(.URL)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            }
+        }
     }
 }
 

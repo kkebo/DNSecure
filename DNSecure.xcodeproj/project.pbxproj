@@ -26,6 +26,8 @@
 		894958AD2548405E009691D5 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
 		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
+		8998041628DCDED800C8B421 /* DoTSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998041528DCDED800C8B421 /* DoTSections.swift */; };
+		8998041828DCDEEF00C8B421 /* DoHSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998041728DCDEEF00C8B421 /* DoHSections.swift */; };
 		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		894958AC2548405E009691D5 /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
 		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		8998041528DCDED800C8B421 /* DoTSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTSections.swift; sourceTree = "<group>"; };
+		8998041728DCDEEF00C8B421 /* DoHSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoHSections.swift; sourceTree = "<group>"; };
 		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +114,8 @@
 				89CB922025209DD100B6983C /* HowToActivateView.swift */,
 				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
 				894958AC2548405E009691D5 /* RuleView.swift */,
+				8998041528DCDED800C8B421 /* DoTSections.swift */,
+				8998041728DCDEEF00C8B421 /* DoHSections.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,9 +352,11 @@
 				893AA85D258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */,
 				8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */,
 				894958AD2548405E009691D5 /* RuleView.swift in Sources */,
+				8998041828DCDEEF00C8B421 /* DoHSections.swift in Sources */,
 				890B80DF251DC6B50046BAA0 /* Presets.swift in Sources */,
 				893AA858258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */,
 				8940023C24ACBD2700EBE74B /* DNSecureApp.swift in Sources */,
+				8998041628DCDED800C8B421 /* DoTSections.swift in Sources */,
 				893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */,
 				893AA867258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */,
 				893AA86C258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */,

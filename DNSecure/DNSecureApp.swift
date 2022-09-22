@@ -5,15 +5,15 @@
 //  Created by Kenta Kubo on 7/1/20.
 //
 
-import os
+import os.log
 import SwiftUI
 
 let logger = Logger()
 
 @main
 struct DNSecureApp {
-    @AppStorage("servers") var servers = Presets.servers
-    @AppStorage("usedID") var usedID: String?
+    @AppStorage("servers") private var servers = Presets.servers
+    @AppStorage("usedID") private var usedID: String?
 }
 
 extension DNSecureApp: App {

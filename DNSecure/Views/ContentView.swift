@@ -9,17 +9,17 @@ import NetworkExtension
 import SwiftUI
 
 struct ContentView {
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
     @Binding var servers: Resolvers
     @Binding var usedID: String?
-    @State var isEnabled = false
-    @State var selection: Int?
-    @State var alertIsPresented = false
-    @State var alertTitle = ""
-    @State var alertMessage = ""
-    @State var guideIsPresented = false
+    @State private var isEnabled = false
+    @State private var selection: Int?
+    @State private var alertIsPresented = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var guideIsPresented = false
 
-    func addNewDoTServer() {
+    private func addNewDoTServer() {
         self.servers.append(
             .init(
                 name: "New",
@@ -29,7 +29,7 @@ struct ContentView {
         self.selection = self.servers.count - 1
     }
 
-    func addNewDoHServer() {
+    private func addNewDoHServer() {
         self.servers.append(
             .init(
                 name: "New",
@@ -39,7 +39,7 @@ struct ContentView {
         self.selection = self.servers.count - 1
     }
 
-    func removeServers(at indexSet: IndexSet) {
+    private func removeServers(at indexSet: IndexSet) {
         if let current = self.selection, indexSet.contains(where: { $0 <= current }) {
             // FIXME: This is a workaround not to crash on deletion.
             self.selection = -1
@@ -54,12 +54,12 @@ struct ContentView {
         }
     }
 
-    func moveServers(from src: IndexSet, to dst: Int) {
+    private func moveServers(from src: IndexSet, to dst: Int) {
         // TODO: Change self.selection if needed
         self.servers.move(fromOffsets: src, toOffset: dst)
     }
 
-    func updateStatus() {
+    private func updateStatus() {
         #if !targetEnvironment(simulator)
             let manager = NEDNSSettingsManager.shared()
             manager.loadFromPreferences {
@@ -73,7 +73,7 @@ struct ContentView {
         #endif
     }
 
-    func saveSettings(of server: Resolver) {
+    private func saveSettings(of server: Resolver) {
         if self.usedID != server.id.uuidString {
             self.usedID = server.id.uuidString
         }
@@ -99,7 +99,7 @@ struct ContentView {
         #endif
     }
 
-    func removeSettings() {
+    private func removeSettings() {
         self.usedID = nil
 
         #if !targetEnvironment(simulator)
@@ -120,7 +120,7 @@ struct ContentView {
         #endif
     }
 
-    func alert(_ title: String, _ message: String) {
+    private func alert(_ title: String, _ message: String) {
         self.alertTitle = title
         self.alertMessage = message
         self.alertIsPresented = true

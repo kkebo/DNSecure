@@ -11,7 +11,7 @@ struct DetailView {
     @Binding var server: Resolver
     @Binding var isOn: Bool
 
-    func binding(for rule: OnDemandRule) -> Binding<OnDemandRule> {
+    private func binding(for rule: OnDemandRule) -> Binding<OnDemandRule> {
         guard let index = self.server.onDemandRules.firstIndex(of: rule) else {
             preconditionFailure("Can't find rule in array")
         }

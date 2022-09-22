@@ -61,11 +61,11 @@ extension Configuration: Equatable {}
 extension Configuration: Hashable {}
 
 extension Configuration: Codable {
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case base, dotConfiguration, dohConfiguration
     }
 
-    enum Base: String, Codable {
+    private enum Base: String, Codable {
         case dnsOverTLS, dnsOverHTTPS
     }
 
@@ -191,12 +191,12 @@ extension Resolver: Equatable {}
 extension Resolver: Hashable {}
 
 extension Resolver: Codable {
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id, name, configuration, onDemandRules
     }
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: Self.CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.configuration = try container.decode(Configuration.self, forKey: .configuration)

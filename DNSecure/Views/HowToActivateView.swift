@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HowToActivateView {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     @State var isSheet: Bool
 }
 

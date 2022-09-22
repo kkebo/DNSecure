@@ -61,9 +61,10 @@ extension RuleView: View {
                     }
                 } header: {
                     EditButton()
-                        .foregroundColor(.accentColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .overlay(Text("SSID Match"), alignment: .leading)
+                        .overlay(alignment: .leading) {
+                            Text("SSID Match")
+                        }
                 } footer: {
                     Text("If the Service Set Identifier (SSID) of the current primary connected network matches one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
                 }
@@ -87,9 +88,10 @@ extension RuleView: View {
                 }
             } header: {
                 EditButton()
-                    .foregroundColor(.accentColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("DNS Search Domain Match"), alignment: .leading)
+                    .overlay(alignment: .leading) {
+                        Text("DNS Search Domain Match")
+                    }
             } footer: {
                 Text("If the current default search domain is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
             }
@@ -112,9 +114,10 @@ extension RuleView: View {
                 }
             } header: {
                 EditButton()
-                    .foregroundColor(.accentColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("DNS Server Address Match"), alignment: .leading)
+                    .overlay(alignment: .leading) {
+                        Text("DNS Server Address Match")
+                    }
             } footer: {
                 Text("If each of the current default DNS servers is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
             }

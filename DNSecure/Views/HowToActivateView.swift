@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HowToActivateView {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     let isSheet: Bool
 }
 
@@ -112,14 +112,11 @@ extension HowToActivateView: View {
             if self.isSheet {
                 Spacer()
                 Button {
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.dismiss()
                 } label: {
-                    Text("Dismiss")
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
+                    Text("Dismiss").padding()
                 }
+                .buttonStyle(.borderedProminent)
             }
         }
         .padding()

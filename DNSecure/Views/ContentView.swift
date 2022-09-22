@@ -214,11 +214,9 @@ extension ContentView: View {
                     }
                 }
             }
-            .alert(isPresented: self.$alertIsPresented) {
-                Alert(
-                    title: Text(self.alertTitle),
-                    message: Text(self.alertMessage)
-                )
+            .alert(self.alertTitle, isPresented: self.$alertIsPresented) {
+            } message: {
+                Text(self.alertMessage)
             }
 
             if !self.isEnabled {

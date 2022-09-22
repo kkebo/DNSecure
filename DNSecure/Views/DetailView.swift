@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+private enum FocusedField {
+    case dotAddress
+    case dotServerName
+    case dohAddress
+    case dohServerURL
+}
+
 struct DetailView {
     @Binding var server: Resolver
     @Binding var isOn: Bool
+    @FocusState private var focusedField: FocusedField?
 
     private func binding(for rule: OnDemandRule) -> Binding<OnDemandRule> {
         guard let index = self.server.onDemandRules.firstIndex(of: rule) else {
@@ -48,9 +56,10 @@ extension DetailView: View {
                 }
             } header: {
                 EditButton()
-                    .foregroundColor(.accentColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .overlay(Text("On Demand Rules"), alignment: .leading)
+                    .overlay(alignment: .leading) {
+                        Text("On Demand Rules")
+                    }
             }
         }
         .navigationTitle(self.server.name)
@@ -60,8 +69,18 @@ extension DetailView: View {
         switch self.server.configuration {
         case .dnsOverTLS(let configuration):
             self.dnsOverTLSSections(configuration)
+                .onChange(of: self.focusedField) { newValue in
+                    if newValue == nil {
+                        self.server.configuration = .dnsOverTLS(configuration)
+                    }
+                }
         case .dnsOverHTTPS(let configuration):
             self.dnsOverHTTPSSections(configuration)
+                .onChange(of: self.focusedField) { newValue in
+                    if newValue == nil {
+                        self.server.configuration = .dnsOverHTTPS(configuration)
+                    }
+                }
         }
     }
 
@@ -80,13 +99,9 @@ extension DetailView: View {
                             configuration.servers[i] = $0
                                 .trimmingCharacters(in: .whitespacesAndNewlines)
                         }
-                    ),
-                    onEditingChanged: { isEditing in
-                        if !isEditing {
-                            self.server.configuration = .dnsOverTLS(configuration)
-                        }
-                    }
+                    )
                 )
+                .focused(self.$focusedField, equals: .dotAddress)
                 .textContentType(.URL)
                 .keyboardType(.numbersAndPunctuation)
                 .autocapitalization(.none)
@@ -106,9 +121,10 @@ extension DetailView: View {
             }
         } header: {
             EditButton()
-                .foregroundColor(.accentColor)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .overlay(Text("Servers"), alignment: .leading)
+                .overlay(alignment: .leading) {
+                    Text("Servers")
+                }
         } footer: {
             Text("The DNS server IP addresses.")
         }
@@ -126,13 +142,9 @@ extension DetailView: View {
                             configuration.serverName = $0
                                 .trimmingCharacters(in: .whitespacesAndNewlines)
                         }
-                    ),
-                    onEditingChanged: { isEditing in
-                        if !isEditing {
-                            self.server.configuration = .dnsOverTLS(configuration)
-                        }
-                    }
+                    )
                 )
+                .focused(self.$focusedField, equals: .dotServerName)
                 .multilineTextAlignment(.trailing)
                 .textContentType(.URL)
                 .keyboardType(.URL)
@@ -161,13 +173,9 @@ extension DetailView: View {
                             configuration.servers[i] = $0
                                 .trimmingCharacters(in: .whitespacesAndNewlines)
                         }
-                    ),
-                    onEditingChanged: { isEditing in
-                        if !isEditing {
-                            self.server.configuration = .dnsOverHTTPS(configuration)
-                        }
-                    }
+                    )
                 )
+                .focused(self.$focusedField, equals: .dohAddress)
                 .textContentType(.URL)
                 .keyboardType(.numbersAndPunctuation)
                 .autocapitalization(.none)
@@ -187,9 +195,10 @@ extension DetailView: View {
             }
         } header: {
             EditButton()
-                .foregroundColor(.accentColor)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .overlay(Text("Servers"), alignment: .leading)
+                .overlay(alignment: .leading) {
+                    Text("Servers")
+                }
         } footer: {
             Text("The DNS server IP addresses.")
         }
@@ -208,13 +217,9 @@ extension DetailView: View {
                                 string: $0.trimmingCharacters(in: .whitespacesAndNewlines)
                             )
                         }
-                    ),
-                    onEditingChanged: { isEditing in
-                        if !isEditing {
-                            self.server.configuration = .dnsOverHTTPS(configuration)
-                        }
-                    }
+                    )
                 )
+                .focused(self.$focusedField, equals: .dohServerURL)
                 .multilineTextAlignment(.trailing)
                 .textContentType(.URL)
                 .keyboardType(.URL)

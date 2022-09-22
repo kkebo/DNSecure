@@ -69,18 +69,8 @@ extension DetailView: View {
         switch self.server.configuration {
         case .dnsOverTLS(let configuration):
             self.dnsOverTLSSections(configuration)
-                .onChange(of: self.focusedField) { newValue in
-                    if newValue == nil {
-                        self.server.configuration = .dnsOverTLS(configuration)
-                    }
-                }
         case .dnsOverHTTPS(let configuration):
             self.dnsOverHTTPSSections(configuration)
-                .onChange(of: self.focusedField) { newValue in
-                    if newValue == nil {
-                        self.server.configuration = .dnsOverHTTPS(configuration)
-                    }
-                }
         }
     }
 
@@ -156,6 +146,11 @@ extension DetailView: View {
         } footer: {
             Text("The TLS name of a DNS-over-TLS server.")
         }
+        .onChange(of: self.focusedField) { newValue in
+            if newValue == nil {
+                self.server.configuration = .dnsOverTLS(configuration)
+            }
+        }
     }
 
     @ViewBuilder
@@ -230,6 +225,11 @@ extension DetailView: View {
             Text("DNS-over-HTTPS Settings")
         } footer: {
             Text("The URL of a DNS-over-HTTPS server.")
+        }
+        .onChange(of: self.focusedField) { newValue in
+            if newValue == nil {
+                self.server.configuration = .dnsOverHTTPS(configuration)
+            }
         }
     }
 }

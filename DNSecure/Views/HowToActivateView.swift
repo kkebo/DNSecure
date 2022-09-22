@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HowToActivateView {
     @Environment(\.presentationMode) private var presentationMode
-    @State var isSheet: Bool
+    let isSheet: Bool
 }
 
 extension HowToActivateView: View {

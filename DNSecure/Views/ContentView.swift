@@ -138,7 +138,7 @@ extension ContentView: View {
                 ) {
                     HowToActivateView(isSheet: false)
                 }
-                Section {
+                Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(
                             tag: i,
@@ -173,11 +173,8 @@ extension ContentView: View {
                     }
                     .onDelete(perform: self.removeServers)
                     .onMove(perform: self.moveServers)
-                } header: {
-                    Text("Servers")
                 }
             }
-            .listStyle(.sidebar)
             .navigationTitle(Bundle.main.displayName!)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

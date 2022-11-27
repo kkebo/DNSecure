@@ -35,10 +35,9 @@ extension DetailView: View {
             self.serverConfigurationSections
             Section {
                 ForEach(self.server.onDemandRules) { rule in
-                    NavigationLink(
-                        rule.name,
-                        destination: RuleView(rule: self.binding(for: rule))
-                    )
+                    NavigationLink(rule.name) {
+                        RuleView(rule: self.binding(for: rule))
+                    }
                 }
                 .onDelete { self.server.onDemandRules.remove(atOffsets: $0) }
                 .onMove { self.server.onDemandRules.move(fromOffsets: $0, toOffset: $1) }

@@ -129,6 +129,64 @@ struct ContentView {
 
 extension ContentView: View {
     var body: some View {
+        if #available(iOS 16, *) {
+            self.modernBody
+        } else {
+            self.legacyBody
+        }
+    }
+
+    @available(iOS 16, *)
+    private var modernBody: some View {
+        NavigationSplitView {
+            List(selection: self.$selection) {
+                NavigationLink("Instruction", value: -1)
+                Section("Servers") {
+                    ForEach(0..<self.servers.count, id: \.self) { i in
+                        NavigationLink(value: i) {
+                            self.sidebarRow(at: i)
+                        }
+                    }
+                    .onDelete(perform: self.removeServers)
+                    .onMove(perform: self.moveServers)
+                }
+            }
+            .navigationTitle(Bundle.main.displayName!)
+            .toolbar { self.toolbarContent }
+            .alert(self.alertTitle, isPresented: self.$alertIsPresented) {
+            } message: {
+                Text(self.alertMessage)
+            }
+        } detail: {
+            if self.selection == -1 {
+                HowToActivateView(isSheet: false)
+            } else if let i = self.selection {
+                self.detailView(at: i)
+            } else if !self.isEnabled {
+                HowToActivateView(isSheet: false)
+            } else {
+                Text("Select a server on the sidebar")
+                    .navigationBarHidden(true)
+            }
+        }
+        .onAppear(perform: self.updateStatus)
+        .onChange(of: self.scenePhase) { phase in
+            if phase == .active {
+                self.updateStatus()
+            } else if phase == .background {
+                // FIXME: This is a workaround for self.$severs[i].
+                // That cannot save settings as soon as it is modified.
+                guard let id = self.usedID,
+                      let uuid = UUID(uuidString: id),
+                      let server = self.servers.find(by: uuid) else {
+                    return
+                }
+                self.saveSettings(of: server)
+            }
+        }
+    }
+
+    private var legacyBody: some View {
         NavigationView {
             List {
                 NavigationLink(
@@ -144,31 +202,9 @@ extension ContentView: View {
                             tag: i,
                             selection: self.$selection
                         ) {
-                            DetailView(
-                                server: self.$servers[i],
-                                isOn: .init(
-                                    get: {
-                                        self.usedID == self.servers[i].id.uuidString
-                                    },
-                                    set: {
-                                        if $0 {
-                                            self.saveSettings(of: self.servers[i])
-                                        } else {
-                                            self.removeSettings()
-                                        }
-                                    }
-                                )
-                            )
+                            self.detailView(at: i)
                         } label: {
-                            VStack(alignment: .leading) {
-                                Text(self.servers[i].name)
-                                Text(self.servers[i].configuration.description)
-                                    .foregroundColor(.secondary)
-                            }
-                            if self.usedID == self.servers[i].id.uuidString {
-                                Spacer()
-                                Image(systemName: "checkmark")
-                            }
+                            self.sidebarRow(at: i)
                         }
                     }
                     .onDelete(perform: self.removeServers)
@@ -176,41 +212,7 @@ extension ContentView: View {
                 }
             }
             .navigationTitle(Bundle.main.displayName!)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Menu {
-                        Button("DNS-over-TLS", action: self.addNewDoTServer)
-                        Button("DNS-over-HTTPS", action: self.addNewDoHServer)
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem(placement: .status) {
-                    VStack {
-                        HStack {
-                            Circle()
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(self.isEnabled ? .green : .secondary)
-                            Text(self.isEnabled ? "Active" : "Inactive")
-                            #if targetEnvironment(macCatalyst)
-                                Text("-")
-                                Button("Refresh", action: self.updateStatus)
-                            #endif
-                        }
-                        if !self.isEnabled {
-                            Button("How to Activate") {
-                                self.guideIsPresented = true
-                            }
-                            .sheet(isPresented: self.$guideIsPresented) {
-                                HowToActivateView(isSheet: true)
-                            }
-                        }
-                    }
-                }
-            }
+            .toolbar { self.toolbarContent }
             .alert(self.alertTitle, isPresented: self.$alertIsPresented) {
             } message: {
                 Text(self.alertMessage)
@@ -238,6 +240,72 @@ extension ContentView: View {
                 self.saveSettings(of: server)
             }
         }
+    }
+
+    @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Menu {
+                Button("DNS-over-TLS", action: self.addNewDoTServer)
+                Button("DNS-over-HTTPS", action: self.addNewDoHServer)
+            } label: {
+                Image(systemName: "plus")
+            }
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            EditButton()
+        }
+        ToolbarItem(placement: .status) {
+            VStack {
+                HStack {
+                    Circle()
+                        .frame(width: 10, height: 10)
+                        .foregroundColor(self.isEnabled ? .green : .secondary)
+                    Text(self.isEnabled ? "Active" : "Inactive")
+                    #if targetEnvironment(macCatalyst)
+                        Text("-")
+                        Button("Refresh", action: self.updateStatus)
+                    #endif
+                }
+                if !self.isEnabled {
+                    Button("How to Activate") {
+                        self.guideIsPresented = true
+                    }
+                    .sheet(isPresented: self.$guideIsPresented) {
+                        HowToActivateView(isSheet: true)
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private func sidebarRow(at i: Int) -> some View {
+        VStack(alignment: .leading) {
+            Text(self.servers[i].name)
+            Text(self.servers[i].configuration.description)
+                .foregroundColor(.secondary)
+        }
+        if self.usedID == self.servers[i].id.uuidString {
+            Spacer()
+            Image(systemName: "checkmark")
+        }
+    }
+
+    private func detailView(at i: Int) -> some View {
+        DetailView(
+            server: self.$servers[i],
+            isOn: .init(
+                get: {
+                    self.usedID == self.servers[i].id.uuidString
+                },
+                set: {
+                    if $0 {
+                        self.saveSettings(of: self.servers[i])
+                    } else {
+                        self.removeSettings()
+                    }
+                }
+            )
+        )
     }
 }
 

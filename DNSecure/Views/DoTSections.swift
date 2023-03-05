@@ -94,6 +94,14 @@ extension DoTSections: View {
                 self.commit()
             }
         }
+        .onChange(of: self.server) { server in
+            switch server.configuration {
+            case .dnsOverTLS(let configuration):
+                self.configuration = configuration
+            case .dnsOverHTTPS:
+                preconditionFailure("unreachable")
+            }
+        }
         .onDisappear {
             self.commit()
         }

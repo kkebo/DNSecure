@@ -97,6 +97,14 @@ extension DoHSections: View {
                 self.commit()
             }
         }
+        .onChange(of: self.server) { server in
+            switch server.configuration {
+            case .dnsOverTLS:
+                preconditionFailure("unreachable")
+            case .dnsOverHTTPS(let configuration):
+                self.configuration = configuration
+            }
+        }
         .onDisappear {
             self.commit()
         }

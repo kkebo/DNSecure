@@ -11,8 +11,8 @@ struct DetailView {
     @Binding var server: Resolver
     @Binding var isOn: Bool
 
-    private func binding(for rule: OnDemandRule) -> Binding<OnDemandRule> {
-        guard let index = self.server.onDemandRules.firstIndex(of: rule) else {
+    private func binding(for id: UUID) -> Binding<OnDemandRule> {
+        guard let index = self.server.onDemandRules.map(\.id).firstIndex(of: id) else {
             preconditionFailure("Can't find rule in array")
         }
         return self.$server.onDemandRules[index]
@@ -45,7 +45,7 @@ extension DetailView: View {
                 self.serverConfigurationSections
                 Section {
                     ForEach(self.server.onDemandRules) { rule in
-                        NavigationLink(rule.name, value: rule)
+                        NavigationLink(rule.name, value: rule.id)
                     }
                     .onDelete { self.server.onDemandRules.remove(atOffsets: $0) }
                     .onMove { self.server.onDemandRules.move(fromOffsets: $0, toOffset: $1) }
@@ -61,10 +61,10 @@ extension DetailView: View {
                         }
                 }
             }
-            .navigationDestination(for: OnDemandRule.self) { rule in
+            .navigationDestination(for: UUID.self) { id in
                 // When RuleView is opened and tap another server on the sidebar, the previous server's rule comes here.
-                if self.server.onDemandRules.contains(rule) {
-                    RuleView(rule: self.binding(for: rule))
+                if self.server.onDemandRules.map(\.id).contains(id) {
+                    RuleView(rule: self.binding(for: id))
                 }
             }
         }
@@ -87,7 +87,7 @@ extension DetailView: View {
             Section {
                 ForEach(self.server.onDemandRules) { rule in
                     NavigationLink(rule.name) {
-                        RuleView(rule: self.binding(for: rule))
+                        RuleView(rule: self.binding(for: rule.id))
                     }
                 }
                 .onDelete { self.server.onDemandRules.remove(atOffsets: $0) }

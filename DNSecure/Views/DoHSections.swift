@@ -15,26 +15,20 @@ extension DoHSections: View {
     var body: some View {
         Section {
             ForEach(0..<self.configuration.servers.count, id: \.self) { i in
-                NavigationLink {
-                    TextField(
-                        "IP address",
-                        text: .init(
-                            get: { self.configuration.servers[i] },
-                            set: {
-                                self.configuration.servers[i] = $0
-                                    .trimmingCharacters(in: .whitespacesAndNewlines)
-                            }
-                        )
+                TextField(
+                    "IP address",
+                    text: .init(
+                        get: { self.configuration.servers[i] },
+                        set: {
+                            self.configuration.servers[i] = $0
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
                     )
-                    .textContentType(.URL)
-                    .keyboardType(.numbersAndPunctuation)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                } label: {
-                    Text("IP address")
-                    Spacer()
-                    Text(self.configuration.servers[i])
-                }
+                )
+                .textContentType(.URL)
+                .keyboardType(.numbersAndPunctuation)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
             }
             .onDelete { self.configuration.servers.remove(atOffsets: $0) }
             .onMove { self.configuration.servers.move(fromOffsets: $0, toOffset: $1) }

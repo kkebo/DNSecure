@@ -27,8 +27,8 @@ extension DoTSections: View {
                 )
                 .textContentType(.URL)
                 .keyboardType(.numbersAndPunctuation)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
             }
             .onDelete { self.configuration.servers.remove(atOffsets: $0) }
             .onMove { self.configuration.servers.move(fromOffsets: $0, toOffset: $1) }
@@ -60,8 +60,8 @@ extension DoTSections: View {
                 .multilineTextAlignment(.trailing)
                 .textContentType(.URL)
                 .keyboardType(.URL)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
             }
         } header: {
             Text("DNS-over-TLS Settings")

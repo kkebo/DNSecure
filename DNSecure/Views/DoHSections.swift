@@ -28,8 +28,8 @@ extension DoHSections: View {
                     )
                     .textContentType(.URL)
                     .keyboardType(.numbersAndPunctuation)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 } label: {
                     Text("IP address")
                     Spacer()
@@ -69,8 +69,8 @@ extension DoHSections: View {
                 .multilineTextAlignment(.trailing)
                 .textContentType(.URL)
                 .keyboardType(.URL)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
             }
         } header: {
             Text("DNS-over-HTTPS Settings")

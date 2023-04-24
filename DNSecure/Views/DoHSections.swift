@@ -15,20 +15,11 @@ extension DoHSections: View {
     var body: some View {
         Section {
             ForEach(0..<self.configuration.servers.count, id: \.self) { i in
-                TextField(
-                    "IP address",
-                    text: .init(
-                        get: { self.configuration.servers[i] },
-                        set: {
-                            self.configuration.servers[i] = $0
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
-                        }
-                    )
-                )
-                .textContentType(.URL)
-                .keyboardType(.numbersAndPunctuation)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
+                TextField("IP address", text: self.$configuration.servers[i])
+                    .textContentType(.URL)
+                    .keyboardType(.numbersAndPunctuation)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
             }
             .onDelete { self.configuration.servers.remove(atOffsets: $0) }
             .onMove { self.configuration.servers.move(fromOffsets: $0, toOffset: $1) }
@@ -45,29 +36,19 @@ extension DoHSections: View {
             Text("The DNS server IP addresses.")
         }
         Section {
-            HStack {
-                Text("Server URL")
-                TextField(
-                    "Server URL",
-                    text: .init(
-                        get: {
-                            self.configuration.serverURL?.absoluteString ?? ""
-                        },
-                        set: {
-                            self.configuration.serverURL = URL(
-                                string: $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                            )
-                        }
-                    )
+            TextField(
+                "Server URL",
+                text: .init(
+                    get: { self.configuration.serverURL?.absoluteString ?? "" },
+                    set: { self.configuration.serverURL = URL(string: $0) }
                 )
-                .multilineTextAlignment(.trailing)
-                .textContentType(.URL)
-                .keyboardType(.URL)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-            }
+            )
+            .textContentType(.URL)
+            .keyboardType(.URL)
+            .textInputAutocapitalization(.never)
+            .autocorrectionDisabled()
         } header: {
-            Text("DNS-over-HTTPS Settings")
+            Text("Server URL")
         } footer: {
             Text("The URL of a DNS-over-HTTPS server.")
         }

@@ -35,12 +35,8 @@ extension DetailView: View {
                 Section {
                     Toggle("Use This Server", isOn: self.$isOn)
                 }
-                Section {
-                    HStack {
-                        Text("Name")
-                        TextField("Name", text: self.$server.name)
-                            .multilineTextAlignment(.trailing)
-                    }
+                Section("Name") {
+                    TextField("Name", text: self.$server.name)
                 }
                 self.serverConfigurationSections
                 Section {
@@ -76,12 +72,8 @@ extension DetailView: View {
             Section {
                 Toggle("Use This Server", isOn: self.$isOn)
             }
-            Section {
-                HStack {
-                    Text("Name")
-                    TextField("Name", text: self.$server.name)
-                        .multilineTextAlignment(.trailing)
-                }
+            Section("Name") {
+                TextField("Name", text: self.$server.name)
             }
             self.serverConfigurationSections
             Section {

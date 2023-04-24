@@ -15,20 +15,11 @@ extension DoTSections: View {
     var body: some View {
         Section {
             ForEach(0..<self.configuration.servers.count, id: \.self) { i in
-                TextField(
-                    "IP address",
-                    text: .init(
-                        get: { self.configuration.servers[i] },
-                        set: {
-                            self.configuration.servers[i] = $0
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
-                        }
-                    )
-                )
-                .textContentType(.URL)
-                .keyboardType(.numbersAndPunctuation)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
+                TextField("IP address", text: self.$configuration.servers[i])
+                    .textContentType(.URL)
+                    .keyboardType(.numbersAndPunctuation)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
             }
             .onDelete { self.configuration.servers.remove(atOffsets: $0) }
             .onMove { self.configuration.servers.move(fromOffsets: $0, toOffset: $1) }
@@ -45,26 +36,19 @@ extension DoTSections: View {
             Text("The DNS server IP addresses.")
         }
         Section {
-            HStack {
-                Text("Server Name")
-                TextField(
-                    "Server Name",
-                    text: .init(
-                        get: { self.configuration.serverName ?? "" },
-                        set: {
-                            self.configuration.serverName = $0
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
-                        }
-                    )
+            TextField(
+                "Server Name",
+                text: .init(
+                    get: { self.configuration.serverName ?? "" },
+                    set: { self.configuration.serverName = $0 }
                 )
-                .multilineTextAlignment(.trailing)
-                .textContentType(.URL)
-                .keyboardType(.URL)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-            }
+            )
+            .textContentType(.URL)
+            .keyboardType(.URL)
+            .textInputAutocapitalization(.never)
+            .autocorrectionDisabled()
         } header: {
-            Text("DNS-over-TLS Settings")
+            Text("Server Name")
         } footer: {
             Text("The TLS name of a DNS-over-TLS server.")
         }

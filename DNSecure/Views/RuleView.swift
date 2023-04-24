@@ -15,12 +15,11 @@ struct RuleView {
 extension RuleView: View {
     var body: some View {
         Form {
+            Section("Name") {
+                TextField("Name", text: self.$rule.name)
+            }
+
             Section {
-                HStack {
-                    Text("Name")
-                    TextField("Name", text: self.$rule.name)
-                        .multilineTextAlignment(.trailing)
-                }
                 Picker("Action", selection: self.$rule.action) {
                     ForEach(NEOnDemandRuleAction.allCases, id: \.self) {
                         Text($0.description)
@@ -123,17 +122,13 @@ extension RuleView: View {
             }
 
             Section {
-                HStack {
-                    Text("Probe URL")
-                    TextField(
-                        "URL",
-                        text: .init(
-                            get: { self.rule.probeURL?.absoluteString ?? "" },
-                            set: { self.rule.probeURL = URL(string: $0) }
-                        )
+                TextField(
+                    "Probe URL",
+                    text: .init(
+                        get: { self.rule.probeURL?.absoluteString ?? "" },
+                        set: { self.rule.probeURL = URL(string: $0) }
                     )
-                    .multilineTextAlignment(.trailing)
-                }
+                )
             } header: {
                 Text("Probe URL Match")
             } footer: {

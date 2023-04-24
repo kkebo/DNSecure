@@ -110,9 +110,19 @@ extension DetailView: View {
     @ViewBuilder private var serverConfigurationSections: some View {
         switch self.server.configuration {
         case .dnsOverTLS(let configuration):
-            DoTSections(server: self.$server, configuration: configuration)
+            DoTSections(
+                configuration: .init(
+                    get: { configuration },
+                    set: { self.server.configuration = .dnsOverTLS($0) }
+                )
+            )
         case .dnsOverHTTPS(let configuration):
-            DoHSections(server: self.$server, configuration: configuration)
+            DoHSections(
+                configuration: .init(
+                    get: { configuration },
+                    set: { self.server.configuration = .dnsOverHTTPS($0) }
+                )
+            )
         }
     }
 }

@@ -7,19 +7,8 @@
 
 import SwiftUI
 
-private enum FocusedField {
-    case address
-    case serverName
-}
-
 struct DoTSections {
-    @Binding var server: Resolver
-    @State var configuration: DoTConfiguration
-    @FocusState private var focusedField: FocusedField?
-
-    private func commit() {
-        self.server.configuration = .dnsOverTLS(self.configuration)
-    }
+    @Binding var configuration: DoTConfiguration
 }
 
 extension DoTSections: View {
@@ -36,23 +25,15 @@ extension DoTSections: View {
                         }
                     )
                 )
-                .focused(self.$focusedField, equals: .address)
                 .textContentType(.URL)
                 .keyboardType(.numbersAndPunctuation)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             }
-            .onDelete {
-                self.configuration.servers.remove(atOffsets: $0)
-                self.commit()
-            }
-            .onMove {
-                self.configuration.servers.move(fromOffsets: $0, toOffset: $1)
-                self.commit()
-            }
+            .onDelete { self.configuration.servers.remove(atOffsets: $0) }
+            .onMove { self.configuration.servers.move(fromOffsets: $0, toOffset: $1) }
             Button("Add New Server") {
                 self.configuration.servers.append("")
-                self.commit()
             }
         } header: {
             EditButton()
@@ -66,7 +47,6 @@ extension DoTSections: View {
         Section {
             HStack {
                 Text("Server Name")
-                Spacer()
                 TextField(
                     "Server Name",
                     text: .init(
@@ -77,7 +57,6 @@ extension DoTSections: View {
                         }
                     )
                 )
-                .focused(self.$focusedField, equals: .serverName)
                 .multilineTextAlignment(.trailing)
                 .textContentType(.URL)
                 .keyboardType(.URL)
@@ -89,39 +68,25 @@ extension DoTSections: View {
         } footer: {
             Text("The TLS name of a DNS-over-TLS server.")
         }
-        .onChange(of: self.focusedField) { newValue in
-            if newValue == nil {
-                self.commit()
-            }
-        }
-        .onChange(of: self.server) { server in
-            switch server.configuration {
-            case .dnsOverTLS(let configuration):
-                self.configuration = configuration
-            case .dnsOverHTTPS:
-                preconditionFailure("unreachable")
-            }
-        }
-        .onDisappear {
-            self.commit()
-        }
     }
 }
 
 struct DoTSections_Previews: PreviewProvider {
     static var previews: some View {
-        let configuration = DoTConfiguration(
-            servers: [
-                "1.1.1.1",
-                "1.0.0.1",
-                "2606:4700:4700::1111",
-                "2606:4700:4700::1001",
-            ],
-            serverName: "cloudflare-dns.com"
-        )
-        let resolver = Resolver(name: "1.1.1.1", configuration: .dnsOverTLS(configuration))
         Form {
-            DoTSections(server: .constant(resolver), configuration: configuration)
+            DoTSections(
+                configuration: .constant(
+                    .init(
+                        servers: [
+                            "1.1.1.1",
+                            "1.0.0.1",
+                            "2606:4700:4700::1111",
+                            "2606:4700:4700::1001",
+                        ],
+                        serverName: "cloudflare-dns.com"
+                    )
+                )
+            )
         }
     }
 }

@@ -36,7 +36,7 @@ extension DetailView: View {
                     Toggle("Use This Server", isOn: self.$isOn)
                 }
                 Section("Name") {
-                    TextField("Name", text: self.$server.name)
+                    LazyTextField("Name", text: self.$server.name)
                 }
                 self.serverConfigurationSections
                 Section {
@@ -73,7 +73,7 @@ extension DetailView: View {
                 Toggle("Use This Server", isOn: self.$isOn)
             }
             Section("Name") {
-                TextField("Name", text: self.$server.name)
+                LazyTextField("Name", text: self.$server.name)
             }
             self.serverConfigurationSections
             Section {

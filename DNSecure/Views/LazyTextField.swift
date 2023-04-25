@@ -22,16 +22,29 @@ struct LazyTextField {
 
 extension LazyTextField: View {
     var body: some View {
-        TextField(self.title, text: self.$localText)
-            .focused(self.$isFocused)
-            .onChange(of: self.isFocused) { isFocused in
-                if !isFocused {
-                    self.text = self.localText
+        HStack {
+            TextField(self.title, text: self.$localText)
+                .focused(self.$isFocused)
+            if self.isFocused && !self.localText.isEmpty {
+                Button {
+                    self.text.removeAll()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.primary)
+                        .opacity(0.2)
                 }
+                .buttonStyle(.borderless)
+                .hoverEffect()
             }
-            .onChange(of: self.text) { text in
-                self.localText = text
+        }
+        .onChange(of: self.isFocused) { isFocused in
+            if !isFocused {
+                self.text = self.localText
             }
+        }
+        .onChange(of: self.text) { text in
+            self.localText = text
+        }
     }
 }
 

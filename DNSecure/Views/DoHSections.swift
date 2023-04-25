@@ -15,7 +15,7 @@ extension DoHSections: View {
     var body: some View {
         Section {
             ForEach(0..<self.configuration.servers.count, id: \.self) { i in
-                TextField("IP address", text: self.$configuration.servers[i])
+                LazyTextField("IP address", text: self.$configuration.servers[i])
                     .textContentType(.URL)
                     .keyboardType(.numbersAndPunctuation)
                     .textInputAutocapitalization(.never)
@@ -36,7 +36,7 @@ extension DoHSections: View {
             Text("The DNS server IP addresses.")
         }
         Section {
-            TextField(
+            LazyTextField(
                 "Server URL",
                 text: .init(
                     get: { self.configuration.serverURL?.absoluteString ?? "" },

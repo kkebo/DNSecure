@@ -16,7 +16,7 @@ extension RuleView: View {
     var body: some View {
         Form {
             Section("Name") {
-                TextField("Name", text: self.$rule.name)
+                LazyTextField("Name", text: self.$rule.name)
             }
 
             Section {
@@ -42,7 +42,7 @@ extension RuleView: View {
             if self.rule.interfaceType.ssidIsUsed {
                 Section {
                     ForEach(0..<self.rule.ssidMatch.count, id: \.self) { i in
-                        TextField(
+                        LazyTextField(
                             "SSID",
                             // self.$rule.ssidMatch[i] causes crash on deletion
                             text: .init(
@@ -71,7 +71,7 @@ extension RuleView: View {
 
             Section {
                 ForEach(0..<self.rule.dnsSearchDomainMatch.count, id: \.self) { i in
-                    TextField(
+                    LazyTextField(
                         "Search Domain",
                         // self.$rule.dnsSearchDomainMatch[i] causes crash on deletion
                         text: .init(
@@ -97,7 +97,7 @@ extension RuleView: View {
 
             Section {
                 ForEach(0..<self.rule.dnsServerAddressMatch.count, id: \.self) { i in
-                    TextField(
+                    LazyTextField(
                         "IP Address",
                         // self.$rule.dnsServerAddressMatch[i] causes crash on deletion
                         text: .init(
@@ -122,7 +122,7 @@ extension RuleView: View {
             }
 
             Section {
-                TextField(
+                LazyTextField(
                     "Probe URL",
                     text: .init(
                         get: { self.rule.probeURL?.absoluteString ?? "" },

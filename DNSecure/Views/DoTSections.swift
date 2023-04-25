@@ -15,7 +15,7 @@ extension DoTSections: View {
     var body: some View {
         Section {
             ForEach(0..<self.configuration.servers.count, id: \.self) { i in
-                TextField("IP address", text: self.$configuration.servers[i])
+                LazyTextField("IP address", text: self.$configuration.servers[i])
                     .textContentType(.URL)
                     .keyboardType(.numbersAndPunctuation)
                     .textInputAutocapitalization(.never)
@@ -36,7 +36,7 @@ extension DoTSections: View {
             Text("The DNS server IP addresses.")
         }
         Section {
-            TextField(
+            LazyTextField(
                 "Server Name",
                 text: .init(
                     get: { self.configuration.serverName ?? "" },

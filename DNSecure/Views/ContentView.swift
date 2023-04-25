@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView {
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.horizontalSizeClass) private var hSizeClass
     @Binding var servers: Resolvers
     @Binding var usedID: String?
     @State private var isEnabled = false
@@ -131,6 +132,9 @@ extension ContentView: View {
     var body: some View {
         if #available(iOS 16, *) {
             self.modernBody
+        } else if self.hSizeClass == .compact {
+            // Workaround for iOS 15
+            self.legacyBody.navigationViewStyle(.stack)
         } else {
             self.legacyBody
         }
@@ -189,22 +193,38 @@ extension ContentView: View {
     private var legacyBody: some View {
         NavigationView {
             List {
-                NavigationLink(
-                    "Instructions",
-                    tag: -1,
-                    selection: self.$selection
-                ) {
-                    HowToActivateView(isSheet: false)
+                if self.hSizeClass == .compact {
+                    NavigationLink(
+                        "Instructions",
+                        tag: -1,
+                        selection: self.$selection
+                    ) {
+                        HowToActivateView(isSheet: false)
+                    }
+                } else {
+                    // Workaround for iOS 15
+                    Button("Instructions") {
+                        self.selection = -1
+                    }
                 }
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
-                        NavigationLink(
-                            tag: i,
-                            selection: self.$selection
-                        ) {
-                            self.detailView(at: i)
-                        } label: {
-                            self.sidebarRow(at: i)
+                        if self.hSizeClass == .compact {
+                            NavigationLink(
+                                tag: i,
+                                selection: self.$selection
+                            ) {
+                                self.detailView(at: i)
+                            } label: {
+                                self.sidebarRow(at: i)
+                            }
+                        } else {
+                            // Workaround for iOS 15
+                            Button {
+                                self.selection = i
+                            } label: {
+                                self.sidebarRow(at: i)
+                            }
                         }
                     }
                     .onDelete(perform: self.removeServers)
@@ -218,7 +238,11 @@ extension ContentView: View {
                 Text(self.alertMessage)
             }
 
-            if !self.isEnabled {
+            if self.selection == -1 {
+                HowToActivateView(isSheet: false)
+            } else if let i = self.selection {
+                self.detailView(at: i)
+            } else if !self.isEnabled {
                 HowToActivateView(isSheet: false)
             } else {
                 Text("Select a server on the sidebar")
@@ -278,15 +302,17 @@ extension ContentView: View {
         }
     }
 
-    @ViewBuilder private func sidebarRow(at i: Int) -> some View {
-        VStack(alignment: .leading) {
-            Text(self.servers[i].name)
-            Text(self.servers[i].configuration.description)
-                .foregroundColor(.secondary)
-        }
-        if self.usedID == self.servers[i].id.uuidString {
-            Spacer()
-            Image(systemName: "checkmark")
+    private func sidebarRow(at i: Int) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(self.servers[i].name)
+                Text(self.servers[i].configuration.description)
+                    .foregroundColor(.secondary)
+            }
+            if self.usedID == self.servers[i].id.uuidString {
+                Spacer()
+                Image(systemName: "checkmark")
+            }
         }
     }
 

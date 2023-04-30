@@ -144,7 +144,7 @@ extension ContentView: View {
     private var modernBody: some View {
         NavigationSplitView {
             List(selection: self.$selection) {
-                NavigationLink("Instruction", value: -1)
+                NavigationLink("Instructions", value: -1)
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(value: i) {

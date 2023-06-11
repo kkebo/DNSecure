@@ -111,12 +111,12 @@ extension HowToActivateView: View {
             }
             if self.isSheet {
                 Spacer()
-                Button {
+                Button("Dismiss") {
                     self.dismiss()
-                } label: {
-                    Text("Dismiss").padding()
                 }
                 .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .hoverEffect()
             }
         }
         .padding()

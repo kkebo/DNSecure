@@ -18,8 +18,8 @@ let package = Package(
             targets: ["DNSecure"],
             bundleIdentifier: "xyz.kebo.DNSecure",
             teamIdentifier: "X4678G5DL2",
-            displayVersion: "1.4.3",
-            bundleVersion: "19",
+            displayVersion: "1.4.4",
+            bundleVersion: "20",
             appIcon: .asset("AppIcon"),
             accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [

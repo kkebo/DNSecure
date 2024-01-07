@@ -104,11 +104,9 @@ extension HowToActivateView: View {
                                     .frame(maxHeight: 400)
                             }
                             VStack(alignment: .leading) {
-                                HStack {
-                                    Text("5. Select \"\(Bundle.main.displayName!)\" and click")
-                                    Image(systemName: "ellipsis.circle")
-                                    Text("button")
-                                }
+                                Text(
+                                    "5. Select \"\(Bundle.main.displayName!)\" and click \(Image(systemName: "ellipsis.circle")) button"
+                                )
                                 Image(.montereyNetworkSettings)
                                     .resizable()
                                     .scaledToFit()

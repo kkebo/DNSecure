@@ -21,7 +21,15 @@ or [TestFlight Beta](https://testflight.apple.com/join/A8GwCnq8)
 1. Go to "General" > "VPN & Network" > "DNS"
 1. "Automatic" is selected by default, so select "DNSecure"
 
-## How to use (macOS)
+## How to use (macOS 13+)
+
+1. Select a DNS server you like, or add another one
+1. Enable "Use This Server"
+1. Open the System Settings
+1. Go to Network settings and click "Filters"
+1. Enable "DNSecure"
+
+## How to use (macOS 12)
 
 1. Select a DNS server you like, or add another one
 1. Enable "Use This Server"

@@ -143,7 +143,7 @@ extension HowToActivateView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(maxHeight: 200)
-                                    Image(.dns)
+                                    Image(.DNS)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(maxHeight: 200)

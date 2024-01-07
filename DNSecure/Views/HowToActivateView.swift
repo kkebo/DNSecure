@@ -39,14 +39,14 @@ extension HowToActivateView: View {
                     #if targetEnvironment(macCatalyst)
                         VStack(alignment: .leading) {
                             Text("3. Open the System Preferences")
-                            Image(.systemPreferencesIcon)
+                            Image(.montereySystemPreferencesIcon)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 200)
                         }
                         VStack(alignment: .leading) {
                             Text("4. Go to Network settings")
-                            Image(.systemPreferences)
+                            Image(.montereySystemPreferences)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 400)
@@ -57,21 +57,21 @@ extension HowToActivateView: View {
                                 Image(systemName: "ellipsis.circle")
                                 Text("button")
                             }
-                            Image(.networkSettings)
+                            Image(.montereyNetworkSettings)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 400)
                         }
                         VStack(alignment: .leading) {
                             Text("6. Click \"Make Service Active\"")
-                            Image(.makeServiceActive)
+                            Image(.montereyMakeServiceActive)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 200)
                         }
                         VStack(alignment: .leading) {
                             Text("7. Click \"Apply\" button")
-                            Image(.networkSettingsApply)
+                            Image(.montereyNetworkSettingsApply)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 400)

@@ -38,14 +38,14 @@ extension HowToActivateView: View {
                 VStack(alignment: .leading) {
                     VStack(alignment: .leading) {
                         Text("1. Select a DNS server you like, or add another one")
-                        Image(.selectServer)
+                        Image("SelectServer")
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 200)
                     }
                     VStack(alignment: .leading) {
                         Text("2. Enable \"Use This Server\"")
-                        Image(.useThisServer)
+                        Image("UseThisServer")
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 200)
@@ -130,7 +130,7 @@ extension HowToActivateView: View {
                     #else
                         VStack(alignment: .leading) {
                             Text("3. Open the Settings")
-                            Image(.settings)
+                            Image("Settings")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 200)
@@ -139,11 +139,11 @@ extension HowToActivateView: View {
                             Text("4. Go to \"General\" > \"VPN & Network\" > \"DNS\"")
                             ScrollView(.horizontal) {
                                 HStack {
-                                    Image(.generalVPNNetwork)
+                                    Image("GeneralVPNNetwork")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(maxHeight: 200)
-                                    Image(.DNS)
+                                    Image("DNS")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(maxHeight: 200)
@@ -152,7 +152,7 @@ extension HowToActivateView: View {
                         }
                         VStack(alignment: .leading) {
                             Text("5. \"Automatic\" is selected by default, so select \"\(Bundle.main.displayName!)\"")
-                            Image(.dnsProvider)
+                            Image("DNSProvider")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 200)

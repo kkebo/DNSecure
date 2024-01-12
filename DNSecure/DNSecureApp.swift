@@ -12,8 +12,15 @@ let logger = Logger()
 
 @main
 struct DNSecureApp {
-    @AppStorage("servers") private var servers = Presets.servers
+    @AppStorage("servers") private var servers: Resolvers = []
     @AppStorage("usedID") private var usedID: String?
+
+    init() {
+        if UserDefaults.standard.object(forKey: "servers") == nil {
+            // Set the default value in order to fix UUIDs
+            self.servers = Presets.servers
+        }
+    }
 }
 
 extension DNSecureApp: App {

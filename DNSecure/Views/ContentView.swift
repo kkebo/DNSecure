@@ -61,7 +61,7 @@ struct ContentView {
     }
 
     private func updateStatus() {
-        #if !targetEnvironment(simulator)
+        #if !targetEnvironment(simulator) && !canImport(PlaygroundSupport)
             let manager = NEDNSSettingsManager.shared()
             manager.loadFromPreferences {
                 if let err = $0 {
@@ -79,7 +79,7 @@ struct ContentView {
             self.usedID = server.id.uuidString
         }
 
-        #if !targetEnvironment(simulator)
+        #if !targetEnvironment(simulator) && !canImport(PlaygroundSupport)
             let manager = NEDNSSettingsManager.shared()
             manager.dnsSettings = server.configuration.toDNSSettings()
             manager.onDemandRules = server.onDemandRules.toNEOnDemandRules()
@@ -103,7 +103,7 @@ struct ContentView {
     private func removeSettings() {
         self.usedID = nil
 
-        #if !targetEnvironment(simulator)
+        #if !targetEnvironment(simulator) && !canImport(PlaygroundSupport)
             let manager = NEDNSSettingsManager.shared()
             guard manager.dnsSettings != nil else {
                 // Already removed

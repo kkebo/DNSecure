@@ -267,7 +267,7 @@ extension ContentView: View {
     }
 
     @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
+        ToolbarItem(placement: .topBarLeading) {
             Menu {
                 Button("DNS-over-TLS", action: self.addNewDoTServer)
                 Button("DNS-over-HTTPS", action: self.addNewDoHServer)
@@ -275,7 +275,7 @@ extension ContentView: View {
                 Image(systemName: "plus")
             }
         }
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItem(placement: .topBarTrailing) {
             EditButton()
         }
         ToolbarItem(placement: .status) {
@@ -283,7 +283,7 @@ extension ContentView: View {
                 HStack {
                     Circle()
                         .frame(width: 10, height: 10)
-                        .foregroundColor(self.isEnabled ? .green : .secondary)
+                        .foregroundStyle(self.isEnabled ? .green : .secondary)
                     Text(self.isEnabled ? "Active" : "Inactive")
                     #if targetEnvironment(macCatalyst)
                         Text("-")
@@ -307,7 +307,7 @@ extension ContentView: View {
             VStack(alignment: .leading) {
                 Text(self.servers[i].name)
                 Text(self.servers[i].configuration.description)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
             if self.usedID == self.servers[i].id.uuidString {
                 Spacer()

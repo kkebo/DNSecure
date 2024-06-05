@@ -175,8 +175,6 @@ extension HowToActivateView: View {
     }
 }
 
-struct HowToActivateView_Previews: PreviewProvider {
-    static var previews: some View {
-        HowToActivateView(isSheet: true)
-    }
+#Preview {
+    HowToActivateView(isSheet: true)
 }

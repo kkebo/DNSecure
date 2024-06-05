@@ -48,8 +48,6 @@ extension LazyTextField: View {
     }
 }
 
-struct LazyTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        LazyTextField("Name", text: .constant(""))
-    }
+#Preview {
+    LazyTextField("Name", text: .constant(""))
 }

@@ -30,7 +30,7 @@ extension LazyTextField: View {
                     self.text.removeAll()
                 } label: {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.primary)
+                        .foregroundStyle(Color.primary)
                         .opacity(0.2)
                 }
                 .buttonStyle(.borderless)

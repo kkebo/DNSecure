@@ -119,16 +119,14 @@ extension DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(
-            server: .constant(
-                .init(
-                    name: "My Server",
-                    configuration: .dnsOverTLS(DoTConfiguration())
-                )
-            ),
-            isOn: .constant(true)
-        )
-    }
+#Preview {
+    DetailView(
+        server: .constant(
+            .init(
+                name: "My Server",
+                configuration: .dnsOverTLS(DoTConfiguration())
+            )
+        ),
+        isOn: .constant(true)
+    )
 }

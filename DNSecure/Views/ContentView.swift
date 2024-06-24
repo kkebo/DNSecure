@@ -335,8 +335,6 @@ extension ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(servers: .constant(Presets.servers), usedID: .constant(nil))
-    }
+#Preview {
+    ContentView(servers: .constant(Presets.servers), usedID: .constant(nil))
 }

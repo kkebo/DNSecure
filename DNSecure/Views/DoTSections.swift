@@ -55,22 +55,20 @@ extension DoTSections: View {
     }
 }
 
-struct DoTSections_Previews: PreviewProvider {
-    static var previews: some View {
-        Form {
-            DoTSections(
-                configuration: .constant(
-                    .init(
-                        servers: [
-                            "1.1.1.1",
-                            "1.0.0.1",
-                            "2606:4700:4700::1111",
-                            "2606:4700:4700::1001",
-                        ],
-                        serverName: "cloudflare-dns.com"
-                    )
+#Preview {
+    Form {
+        DoTSections(
+            configuration: .constant(
+                .init(
+                    servers: [
+                        "1.1.1.1",
+                        "1.0.0.1",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
+                    ],
+                    serverName: "cloudflare-dns.com"
                 )
             )
-        }
+        )
     }
 }

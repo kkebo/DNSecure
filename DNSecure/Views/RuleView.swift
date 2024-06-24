@@ -139,8 +139,6 @@ extension RuleView: View {
     }
 }
 
-struct RuleView_Previews: PreviewProvider {
-    static var previews: some View {
-        RuleView(rule: .constant(OnDemandRule(name: "Preview Rule")))
-    }
+#Preview {
+    RuleView(rule: .constant(OnDemandRule(name: "Preview Rule")))
 }

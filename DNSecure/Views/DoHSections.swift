@@ -55,22 +55,20 @@ extension DoHSections: View {
     }
 }
 
-struct DoHSections_Previews: PreviewProvider {
-    static var previews: some View {
-        Form {
-            DoHSections(
-                configuration: .constant(
-                    .init(
-                        servers: [
-                            "1.1.1.1",
-                            "1.0.0.1",
-                            "2606:4700:4700::1111",
-                            "2606:4700:4700::1001",
-                        ],
-                        serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
-                    )
+#Preview {
+    Form {
+        DoHSections(
+            configuration: .constant(
+                .init(
+                    servers: [
+                        "1.1.1.1",
+                        "1.0.0.1",
+                        "2606:4700:4700::1111",
+                        "2606:4700:4700::1001",
+                    ],
+                    serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
                 )
             )
-        }
+        )
     }
 }

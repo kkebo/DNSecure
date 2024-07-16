@@ -210,5 +210,33 @@ enum Presets {
                 )
             )
         ),
+        .init(
+            name: "Freifunk Muenchen DNS",
+            configuration: .dnsOverTLS(
+                DoTConfiguration(
+                    servers: [
+                        "5.1.66.255",
+                        "185.150.99.255",
+                        "2001:678:e68:f000::",
+                        "2001:678:ed0:f000::",
+                    ],
+                    serverName: "dot.ffmuc.net"
+                )
+            )
+        ),
+        .init(
+            name: "Freifunk Muenchen DNS",
+            configuration: .dnsOverHTTPS(
+                DoHConfiguration(
+                    servers: [
+                        "5.1.66.255",
+                        "185.150.99.255",
+                        "2001:678:e68:f000::",
+                        "2001:678:ed0:f000::",
+                    ],
+                    serverURL: URL(string: "https://doh.ffmuc.net/dns-query")
+                )
+            )
+        ),
     ]
 }

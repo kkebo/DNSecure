@@ -19,6 +19,7 @@ struct ContentView {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @State private var guideIsPresented = false
+    @State private var isRestoring = false
 
     private func addNewDoTServer() {
         self.servers.append(
@@ -38,6 +39,10 @@ struct ContentView {
             )
         )
         self.selection = self.servers.count - 1
+    }
+
+    private func restoreFromPresets(resolvers: Set<Resolver>) {
+        self.servers.append(contentsOf: resolvers)
     }
 
     private func removeServers(at indexSet: IndexSet) {
@@ -271,8 +276,14 @@ extension ContentView: View {
             Menu {
                 Button("DNS-over-TLS", action: self.addNewDoTServer)
                 Button("DNS-over-HTTPS", action: self.addNewDoHServer)
+                Button("Restore from Presets") {
+                    self.isRestoring = true
+                }
             } label: {
                 Image(systemName: "plus")
+            }
+            .sheet(isPresented: self.$isRestoring) {
+                RestorationView(onAdd: self.restoreFromPresets)
             }
         }
         ToolbarItem(placement: .topBarTrailing) {

@@ -24,6 +24,7 @@
 		8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* DNSecureUITests.swift */; };
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
 		894958AD2548405E009691D5 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
+		894F33652C46D2F00060F385 /* RestorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894F33642C46D2A20060F385 /* RestorationView.swift */; };
 		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
 		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
 		8998041628DCDED800C8B421 /* DoTSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998041528DCDED800C8B421 /* DoTSections.swift */; };
@@ -75,6 +76,7 @@
 		8940026624ACBE4900EBE74B /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		894958AC2548405E009691D5 /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
+		894F33642C46D2A20060F385 /* RestorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationView.swift; sourceTree = "<group>"; };
 		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
 		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		8998041528DCDED800C8B421 /* DoTSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTSections.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		893AA816258F790D0060B022 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				894F33642C46D2A20060F385 /* RestorationView.swift */,
 				8940023D24ACBD2700EBE74B /* ContentView.swift */,
 				89CB922025209DD100B6983C /* HowToActivateView.swift */,
 				890B80D4251DC3A20046BAA0 /* DetailView.swift */,
@@ -354,6 +357,7 @@
 				893AA853258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */,
 				893AA871258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift in Sources */,
 				893AA85D258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */,
+				894F33652C46D2F00060F385 /* RestorationView.swift in Sources */,
 				8940023E24ACBD2700EBE74B /* ContentView.swift in Sources */,
 				894958AD2548405E009691D5 /* RuleView.swift in Sources */,
 				8998041828DCDEEF00C8B421 /* DoHSections.swift in Sources */,

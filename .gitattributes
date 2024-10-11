@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.pbxproj merge=union
+Package.resolved text linguist-language=json linguist-generated=false
+.swift-format text linguist-language=json

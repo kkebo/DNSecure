@@ -7,7 +7,7 @@
 
 import NetworkExtension
 
-extension NEOnDemandRuleInterfaceType: CaseIterable {
+extension NEOnDemandRuleInterfaceType: @retroactive CaseIterable {
     public static var allCases: [Self] {
         #if os(macOS)
             return [.any, .ethernet, .wiFi]

@@ -7,7 +7,7 @@
 
 import NetworkExtension
 
-extension NEOnDemandRuleAction: CaseIterable {
+extension NEOnDemandRuleAction: @retroactive CaseIterable {
     public static var allCases: [Self] {
         [.connect, .disconnect, .evaluateConnection, .ignore]
     }

@@ -7,7 +7,7 @@
 
 import NetworkExtension
 
-extension NEOnDemandRuleInterfaceType: CustomStringConvertible {
+extension NEOnDemandRuleInterfaceType: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
         case .any:

@@ -285,7 +285,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					8940023724ACBD2700EBE74B = {
 						CreatedOnToolsVersion = 12.0;
@@ -582,7 +582,6 @@
 		8940026124ACBD2800EBE74B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
@@ -603,7 +602,6 @@
 		8940026224ACBD2800EBE74B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
@@ -624,7 +622,6 @@
 		8940026424ACBD2800EBE74B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
 				INFOPLIST_FILE = DNSecureUITests/Info.plist;
@@ -644,7 +641,6 @@
 		8940026524ACBD2800EBE74B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4678G5DL2;
 				INFOPLIST_FILE = DNSecureUITests/Info.plist;

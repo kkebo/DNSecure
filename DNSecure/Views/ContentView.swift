@@ -133,6 +133,7 @@ struct ContentView {
     }
 }
 
+@MainActor
 extension ContentView: View {
     var body: some View {
         if #available(iOS 16, *) {

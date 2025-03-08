@@ -19,6 +19,7 @@ struct DetailView {
     }
 }
 
+@MainActor
 extension DetailView: View {
     var body: some View {
         if #available(iOS 16, *) {

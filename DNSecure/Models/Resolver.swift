@@ -215,7 +215,7 @@ extension Resolvers {
     }
 }
 
-extension Resolvers: RawRepresentable {
+extension Resolvers: @retroactive RawRepresentable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
               let result = try? JSONDecoder().decode(Self.self, from: data)

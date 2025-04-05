@@ -36,7 +36,9 @@ extension RuleView: View {
             } header: {
                 Text("Interface Type Match")
             } footer: {
-                Text("If the current primary network interface is of this type and all of the other conditions in the rule match, then the rule matches.")
+                Text(
+                    "If the current primary network interface is of this type and all of the other conditions in the rule match, then the rule matches."
+                )
             }
 
             if self.rule.interfaceType.ssidIsUsed {
@@ -65,7 +67,9 @@ extension RuleView: View {
                             Text("SSID Match")
                         }
                 } footer: {
-                    Text("If the Service Set Identifier (SSID) of the current primary connected network matches one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
+                    Text(
+                        "If the Service Set Identifier (SSID) of the current primary connected network matches one of the strings in this array and all of the other conditions in the rule match, then the rule matches."
+                    )
                 }
             }
 
@@ -92,7 +96,9 @@ extension RuleView: View {
                         Text("DNS Search Domain Match")
                     }
             } footer: {
-                Text("If the current default search domain is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
+                Text(
+                    "If the current default search domain is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches."
+                )
             }
 
             Section {
@@ -118,7 +124,9 @@ extension RuleView: View {
                         Text("DNS Server Address Match")
                     }
             } footer: {
-                Text("If each of the current default DNS servers is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches.")
+                Text(
+                    "If each of the current default DNS servers is equal to one of the strings in this array and all of the other conditions in the rule match, then the rule matches."
+                )
             }
 
             Section {
@@ -132,7 +140,9 @@ extension RuleView: View {
             } header: {
                 Text("Probe URL Match")
             } footer: {
-                Text("If a request sent to this URL results in a HTTP 200 OK response and all of the other conditions in the rule match, then the rule matches. If you don't want to use this rule, leave it empty.")
+                Text(
+                    "If a request sent to this URL results in a HTTP 200 OK response and all of the other conditions in the rule match, then the rule matches. If you don't want to use this rule, leave it empty."
+                )
             }
         }
         .navigationTitle(self.rule.name)

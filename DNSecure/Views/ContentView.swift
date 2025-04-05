@@ -90,8 +90,10 @@ struct ContentView {
             manager.onDemandRules = server.onDemandRules.toNEOnDemandRules()
             manager.saveToPreferences { saveError in
                 if let saveError = saveError as NSError? {
-                    guard saveError.domain != "NEConfigurationErrorDomain"
-                            || saveError.code != 9 else {
+                    guard
+                        saveError.domain != "NEConfigurationErrorDomain"
+                            || saveError.code != 9
+                    else {
                         // Nothing was changed
                         return
                     }
@@ -187,8 +189,9 @@ extension ContentView: View {
                 // FIXME: This is a workaround for self.$severs[i].
                 // That cannot save settings as soon as it is modified.
                 guard let id = self.usedID,
-                      let uuid = UUID(uuidString: id),
-                      let server = self.servers.find(by: uuid) else {
+                    let uuid = UUID(uuidString: id),
+                    let server = self.servers.find(by: uuid)
+                else {
                     return
                 }
                 self.saveSettings(of: server)
@@ -263,8 +266,9 @@ extension ContentView: View {
                 // FIXME: This is a workaround for self.$severs[i].
                 // That cannot save settings as soon as it is modified.
                 guard let id = self.usedID,
-                      let uuid = UUID(uuidString: id),
-                      let server = self.servers.find(by: uuid) else {
+                    let uuid = UUID(uuidString: id),
+                    let server = self.servers.find(by: uuid)
+                else {
                     return
                 }
                 self.saveSettings(of: server)

@@ -48,9 +48,9 @@ enum Configuration {
 
     func toDNSSettings() -> NEDNSSettings {
         switch self {
-        case let .dnsOverTLS(configuration):
+        case .dnsOverTLS(let configuration):
             return configuration.toDNSSettings()
-        case let .dnsOverHTTPS(configuration):
+        case .dnsOverHTTPS(let configuration):
             return configuration.toDNSSettings()
         }
     }
@@ -87,10 +87,10 @@ extension Configuration: Codable {
         var container = encoder.container(keyedBy: Self.CodingKeys.self)
 
         switch self {
-        case let .dnsOverTLS(configuration):
+        case .dnsOverTLS(let configuration):
             try container.encode(Self.Base.dnsOverTLS, forKey: .base)
             try container.encode(configuration, forKey: .dotConfiguration)
-        case let .dnsOverHTTPS(configuration):
+        case .dnsOverHTTPS(let configuration):
             try container.encode(Self.Base.dnsOverHTTPS, forKey: .base)
             try container.encode(configuration, forKey: .dohConfiguration)
         }
@@ -200,10 +200,11 @@ extension Resolver: Codable {
         self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.configuration = try container.decode(Configuration.self, forKey: .configuration)
-        self.onDemandRules = try container.decodeIfPresent(
-            [OnDemandRule].self,
-            forKey: .onDemandRules
-        ) ?? []
+        self.onDemandRules =
+            try container.decodeIfPresent(
+                [OnDemandRule].self,
+                forKey: .onDemandRules
+            ) ?? []
     }
 }
 
@@ -218,7 +219,7 @@ extension Resolvers {
 extension Resolvers: @retroactive RawRepresentable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder().decode(Self.self, from: data)
+            let result = try? JSONDecoder().decode(Self.self, from: data)
         else {
             return nil
         }
@@ -227,7 +228,7 @@ extension Resolvers: @retroactive RawRepresentable {
 
     public var rawValue: String {
         guard let data = try? JSONEncoder().encode(self),
-              let result = String(data: data, encoding: .utf8)
+            let result = String(data: data, encoding: .utf8)
         else {
             return "[]"
         }

@@ -126,7 +126,7 @@ enum Presets {
             configuration: .dnsOverTLS(
                 DoTConfiguration(
                     servers: [
-                        "116.202.176.26",
+                        "116.202.176.26"
                     ],
                     serverName: "dot.libredns.gr"
                 )
@@ -137,7 +137,7 @@ enum Presets {
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
-                        "116.202.176.26",
+                        "116.202.176.26"
                     ],
                     serverURL: URL(string: "https://doh.libredns.gr/dns-query")
                 )
@@ -148,7 +148,7 @@ enum Presets {
             configuration: .dnsOverHTTPS(
                 DoHConfiguration(
                     servers: [
-                        "116.202.176.26",
+                        "116.202.176.26"
                     ],
                     serverURL: URL(string: "https://doh.libredns.gr/ads")
                 )

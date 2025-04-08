@@ -11,7 +11,7 @@ struct RestorationView {
     @Environment(\.dismiss) private var dismiss
     @State private var selection = Set<Resolver>()
     @State private var keyword = ""
-    let onAdd: (Set<Resolver>) -> ()
+    let onAdd: (Set<Resolver>) -> Void
 
     private var servers: Resolvers {
         guard !self.keyword.isEmpty else { return Presets.servers }

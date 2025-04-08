@@ -13,14 +13,14 @@ extension NEOnDemandRuleInterfaceType: @retroactive CustomStringConvertible {
         case .any:
             return "Any"
         #if os(macOS)
-        case .ethernet:
-            return "Ethernet"
+            case .ethernet:
+                return "Ethernet"
         #endif
         case .wiFi:
             return "Wi-Fi"
         #if os(iOS)
-        case .cellular:
-            return "Cellular"
+            case .cellular:
+                return "Cellular"
         #endif
         default:
             return "Unknown"

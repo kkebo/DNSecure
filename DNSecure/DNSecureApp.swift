@@ -5,8 +5,8 @@
 //  Created by Kenta Kubo on 7/1/20.
 //
 
-import os.log
 import SwiftUI
+import os.log
 
 let logger = Logger()
 

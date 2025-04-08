@@ -1,0 +1,21 @@
+name: ci
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container: swift:6.1
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift format lint -rsp .
+  yamllint:
+    runs-on: ubuntu-latest
+    container: alpine:3.21
+    steps:
+      - uses: actions/checkout@v4
+      - run: apk update && apk add yamllint
+      - run: yamllint --version
+      - run: yamllint --strict --config-file .yamllint.yml .

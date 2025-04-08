@@ -1,0 +1,7 @@
+extends: default
+
+rules:
+  line-length: false
+  document-start: false
+  truthy:
+    check-keys: false

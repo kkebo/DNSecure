@@ -67,6 +67,11 @@ struct ContentView {
 
     private func updateStatus() {
         #if !targetEnvironment(simulator)
+            // Early return if running on Swift Playground or Xcode Previews
+            guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
+                return
+            }
+
             let manager = NEDNSSettingsManager.shared()
             manager.loadFromPreferences {
                 if let err = $0 {
@@ -85,6 +90,11 @@ struct ContentView {
         }
 
         #if !targetEnvironment(simulator)
+            // Early return if running on Swift Playground or Xcode Previews
+            guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
+                return
+            }
+
             let manager = NEDNSSettingsManager.shared()
             manager.dnsSettings = server.configuration.toDNSSettings()
             manager.onDemandRules = server.onDemandRules.toNEOnDemandRules()
@@ -111,6 +121,11 @@ struct ContentView {
         self.usedID = nil
 
         #if !targetEnvironment(simulator)
+            // Early return if running on Swift Playground or Xcode Previews
+            guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
+                return
+            }
+
             let manager = NEDNSSettingsManager.shared()
             guard manager.dnsSettings != nil else {
                 // Already removed

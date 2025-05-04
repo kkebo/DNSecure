@@ -197,10 +197,16 @@ extension ContentView: View {
             }
         }
         .onAppear(perform: self.updateStatus)
-        .onChange(of: self.scenePhase) { phase in
-            if phase == .active {
+        .task {
+            for await _ in NotificationCenter.default
+                .notifications(named: .NEDNSSettingsConfigurationDidChange)
+                .map(\.name)
+            {
                 self.updateStatus()
-            } else if phase == .background {
+            }
+        }
+        .onChange(of: self.scenePhase) { phase in
+            if phase == .background {
                 // FIXME: This is a workaround for self.$severs[i].
                 // That cannot save settings as soon as it is modified.
                 guard let id = self.usedID,
@@ -274,10 +280,16 @@ extension ContentView: View {
             }
         }
         .onAppear(perform: self.updateStatus)
-        .onChange(of: self.scenePhase) { phase in
-            if phase == .active {
+        .task {
+            for await _ in NotificationCenter.default
+                .notifications(named: .NEDNSSettingsConfigurationDidChange)
+                .map(\.name)
+            {
                 self.updateStatus()
-            } else if phase == .background {
+            }
+        }
+        .onChange(of: self.scenePhase) { phase in
+            if phase == .background {
                 // FIXME: This is a workaround for self.$severs[i].
                 // That cannot save settings as soon as it is modified.
                 guard let id = self.usedID,
@@ -345,14 +357,6 @@ extension ContentView: View {
                 }
             }
         }
-        #if targetEnvironment(macCatalyst)
-            ToolbarItemGroup(placement: .bottomBar) {
-                Spacer()
-                Button(action: self.updateStatus) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
-                }
-            }
-        #endif
     }
 
     private func sidebarRow(at i: Int) -> some View {

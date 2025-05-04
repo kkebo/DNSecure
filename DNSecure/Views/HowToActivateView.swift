@@ -13,20 +13,13 @@ private enum MacOSVersion {
 }
 
 struct HowToActivateView {
-    @Environment(\.dismiss) private var dismiss
     @State private var macOSVersion: MacOSVersion = .venturaOrLater
-    let isSheet: Bool
 }
 
 extension HowToActivateView: View {
     var body: some View {
-        VStack {
-            if self.isSheet {
-                Text("How to Activate")
-                    .font(.title)
-                Spacer()
-            }
-            ScrollView {
+        ScrollView {
+            VStack {
                 #if targetEnvironment(macCatalyst)
                     Picker("", selection: self.$macOSVersion) {
                         Text("macOS 13 or later").tag(MacOSVersion.venturaOrLater)
@@ -160,21 +153,12 @@ extension HowToActivateView: View {
                     #endif
                 }
             }
-            if self.isSheet {
-                Spacer()
-                Button("Dismiss") {
-                    self.dismiss()
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .hoverEffect()
-            }
+            .padding()
         }
-        .padding()
         .navigationTitle("How to Activate")
     }
 }
 
 #Preview {
-    HowToActivateView(isSheet: true)
+    HowToActivateView()
 }

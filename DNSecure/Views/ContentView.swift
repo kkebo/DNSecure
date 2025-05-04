@@ -186,11 +186,11 @@ extension ContentView: View {
             }
         } detail: {
             if self.selection == -1 {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else if let i = self.selection {
                 self.detailView(at: i)
             } else if !self.isEnabled {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
@@ -223,7 +223,7 @@ extension ContentView: View {
                         tag: -1,
                         selection: self.$selection
                     ) {
-                        HowToActivateView(isSheet: false)
+                        HowToActivateView()
                     }
                 } else {
                     // Workaround for iOS 15
@@ -263,11 +263,11 @@ extension ContentView: View {
             }
 
             if self.selection == -1 {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else if let i = self.selection {
                 self.detailView(at: i)
             } else if !self.isEnabled {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
@@ -310,27 +310,49 @@ extension ContentView: View {
             EditButton()
         }
         ToolbarItem(placement: .status) {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Circle()
                         .frame(width: 10, height: 10)
                         .foregroundStyle(self.isEnabled ? .green : .secondary)
                     Text(self.isEnabled ? "Active" : "Inactive")
-                    #if targetEnvironment(macCatalyst)
-                        Text("-")
-                        Button("Refresh", action: self.updateStatus)
-                    #endif
                 }
                 if !self.isEnabled {
-                    Button("How to Activate") {
+                    Button {
                         self.guideIsPresented = true
+                    } label: {
+                        Label("How to Activate", systemImage: "questionmark.circle")
                     }
+                    .labelStyle(.titleAndIcon)
+                    .font(.caption)
                     .sheet(isPresented: self.$guideIsPresented) {
-                        HowToActivateView(isSheet: true)
+                        NavigationView {
+                            HowToActivateView()
+                                .safeAreaInset(edge: .bottom) {
+                                    Button("Dismiss") {
+                                        self.guideIsPresented = false
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .controlSize(.large)
+                                    .hoverEffect()
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color(.systemBackground))
+                                }
+                        }
+                        .navigationViewStyle(.stack)
                     }
                 }
             }
         }
+        #if targetEnvironment(macCatalyst)
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+                Button(action: self.updateStatus) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+        #endif
     }
 
     private func sidebarRow(at i: Int) -> some View {

@@ -310,21 +310,21 @@ extension ContentView: View {
             EditButton()
         }
         ToolbarItem(placement: .status) {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Circle()
                         .frame(width: 10, height: 10)
                         .foregroundStyle(self.isEnabled ? .green : .secondary)
                     Text(self.isEnabled ? "Active" : "Inactive")
-                    #if targetEnvironment(macCatalyst)
-                        Text("-")
-                        Button("Refresh", action: self.updateStatus)
-                    #endif
                 }
                 if !self.isEnabled {
-                    Button("How to Activate") {
+                    Button {
                         self.guideIsPresented = true
+                    } label: {
+                        Label("How to Activate", systemImage: "questionmark.circle")
                     }
+                    .labelStyle(.titleAndIcon)
+                    .font(.caption)
                     .sheet(isPresented: self.$guideIsPresented) {
                         NavigationView {
                             HowToActivateView()
@@ -345,6 +345,14 @@ extension ContentView: View {
                 }
             }
         }
+        #if targetEnvironment(macCatalyst)
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+                Button(action: self.updateStatus) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+        #endif
     }
 
     private func sidebarRow(at i: Int) -> some View {

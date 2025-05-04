@@ -186,11 +186,11 @@ extension ContentView: View {
             }
         } detail: {
             if self.selection == -1 {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else if let i = self.selection {
                 self.detailView(at: i)
             } else if !self.isEnabled {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
@@ -223,7 +223,7 @@ extension ContentView: View {
                         tag: -1,
                         selection: self.$selection
                     ) {
-                        HowToActivateView(isSheet: false)
+                        HowToActivateView()
                     }
                 } else {
                     // Workaround for iOS 15
@@ -263,11 +263,11 @@ extension ContentView: View {
             }
 
             if self.selection == -1 {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else if let i = self.selection {
                 self.detailView(at: i)
             } else if !self.isEnabled {
-                HowToActivateView(isSheet: false)
+                HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
@@ -326,7 +326,21 @@ extension ContentView: View {
                         self.guideIsPresented = true
                     }
                     .sheet(isPresented: self.$guideIsPresented) {
-                        HowToActivateView(isSheet: true)
+                        NavigationView {
+                            HowToActivateView()
+                                .safeAreaInset(edge: .bottom) {
+                                    Button("Dismiss") {
+                                        self.guideIsPresented = false
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .controlSize(.large)
+                                    .hoverEffect()
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color(.systemBackground))
+                                }
+                        }
+                        .navigationViewStyle(.stack)
                     }
                 }
             }

@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-24.04-arm
     container: swift:6.1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: swift format lint -rsp .
   yamllint:
     runs-on: ubuntu-24.04-arm
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: yamllint --version
       - run: yamllint --strict --config-file .yamllint.yml .

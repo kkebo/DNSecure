@@ -305,14 +305,12 @@ extension ContentView: View {
 
     @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            Menu {
+            Menu("Add", systemImage: "plus") {
                 Button("DNS-over-TLS", action: self.addNewDoTServer)
                 Button("DNS-over-HTTPS", action: self.addNewDoHServer)
                 Button("Restore from Presets") {
                     self.isRestoring = true
                 }
-            } label: {
-                Image(systemName: "plus")
             }
             .sheet(isPresented: self.$isRestoring) {
                 RestorationView(onAdd: self.restoreFromPresets)
@@ -330,10 +328,8 @@ extension ContentView: View {
                     Text(self.isEnabled ? "Active" : "Inactive")
                 }
                 if !self.isEnabled {
-                    Button {
+                    Button("How to Activate", systemImage: "questionmark.circle") {
                         self.isGuidePresented = true
-                    } label: {
-                        Label("How to Activate", systemImage: "questionmark.circle")
                     }
                     .labelStyle(.titleAndIcon)
                     .font(.caption)

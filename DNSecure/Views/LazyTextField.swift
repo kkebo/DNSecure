@@ -26,13 +26,12 @@ extension LazyTextField: View {
             TextField(self.title, text: self.$localText)
                 .focused(self.$isFocused)
             if self.isFocused && !self.localText.isEmpty {
-                Button {
+                Button("Clear", systemImage: "xmark.circle.fill") {
                     self.text.removeAll()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(Color.primary)
-                        .opacity(0.2)
                 }
+                .foregroundStyle(Color.primary)
+                .opacity(0.2)
+                .labelStyle(.iconOnly)
                 .buttonStyle(.borderless)
                 .hoverEffect()
             }

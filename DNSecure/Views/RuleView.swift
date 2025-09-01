@@ -114,8 +114,10 @@ extension RuleView: View {
     }
 }
 
+@available(iOS 17, *)
 #Preview {
+    @Previewable @State var rule = OnDemandRule(name: "Preview Rule")
     NavigationStack {
-        RuleView(rule: .constant(OnDemandRule(name: "Preview Rule")))
+        RuleView(rule: $rule)
     }
 }

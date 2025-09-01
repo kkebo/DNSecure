@@ -77,11 +77,10 @@ extension RuleView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        if #available(iOS 16, *) {
-            return modern
-        } else {
+        guard #available(iOS 16, *) else {
             return legacy
         }
+        return modern
     }
 
     private var ssidMatchLabel: some View {
@@ -109,11 +108,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        if #available(iOS 16, *) {
-            return modern
-        } else {
+        guard #available(iOS 16, *) else {
             return legacy
         }
+        return modern
     }
 
     private var dnsSearchDomainMatchLabel: some View {
@@ -141,11 +139,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        if #available(iOS 16, *) {
-            return modern
-        } else {
+        guard #available(iOS 16, *) else {
             return legacy
         }
+        return modern
     }
 
     private var dnsServerAddressMatchLabel: some View {
@@ -173,11 +170,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        if #available(iOS 16, *) {
-            return modern
-        } else {
+        guard #available(iOS 16, *) else {
             return legacy
         }
+        return modern
     }
 
     private var probeURLLabel: some View {
@@ -205,11 +201,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        if #available(iOS 16, *) {
-            return modern
-        } else {
+        guard #available(iOS 16, *) else {
             return legacy
         }
+        return modern
     }
 }
 

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RestorationView {
     @Environment(\.dismiss) private var dismiss
-    @State private var selection = Set<Resolver>()
+    @State private var added = Set<Resolver>()
     @State private var keyword = ""
-    let onAdd: (Set<Resolver>) -> Void
+    let onAdd: (Resolver) -> Void
 
     private var servers: Resolvers {
         guard !self.keyword.isEmpty else { return Presets.servers }
@@ -23,43 +23,42 @@ extension RestorationView: View {
     var body: some View {
         NavigationView {
             List(self.servers, id: \.self) { resolver in
-                Button {
-                    if self.selection.contains(resolver) {
-                        self.selection.remove(resolver)
-                    } else {
-                        self.selection.insert(resolver)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(resolver.name)
+                        Text(resolver.configuration.description)
+                            .foregroundStyle(.secondary)
                     }
-                } label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(resolver.name)
-                            Text(resolver.configuration.description)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer()
-                        if self.selection.contains(resolver) {
+                    Spacer()
+                    if self.added.contains(resolver) {
+                        HStack(spacing: 5) {
                             Image(systemName: "checkmark")
+                            Text("Added")
                         }
+                        .foregroundStyle(.secondary)
+                    } else {
+                        Button {
+                            self.added.insert(resolver)
+                            self.onAdd(resolver)
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(systemName: "plus")
+                                Text("Add")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
                     }
-                    .tint(.primary)
                 }
             }
             .navigationTitle("Presets")
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Add") {
-                        self.onAdd(self.selection)
-                        self.dismiss()
-                    }
-                    .disabled(self.selection.isEmpty)
-                }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) {
+                    Button(role: .cancel) {
                         self.dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
                     }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Text("\(self.selection.count) Selected")
                 }
             }
         }

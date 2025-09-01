@@ -225,5 +225,7 @@ extension RuleView: View {
 }
 
 #Preview {
-    RuleView(rule: .constant(OnDemandRule(name: "Preview Rule")))
+    NavigationStack {
+        RuleView(rule: .constant(OnDemandRule(name: "Preview Rule")))
+    }
 }

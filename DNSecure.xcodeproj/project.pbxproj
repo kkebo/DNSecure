@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,14 +23,6 @@
 		8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940024D24ACBD2800EBE74B /* DNSecureTests.swift */; };
 		8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8940025824ACBD2800EBE74B /* DNSecureUITests.swift */; };
 		8940026924ACBE4900EBE74B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8940026824ACBE4900EBE74B /* NetworkExtension.framework */; };
-		894958AD2548405E009691D5 /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894958AC2548405E009691D5 /* RuleView.swift */; };
-		894F33652C46D2F00060F385 /* RestorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894F33642C46D2A20060F385 /* RestorationView.swift */; };
-		8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */; };
-		8986CDCF251D9B3400D947CD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986CDCE251D9B3400D947CD /* Resolver.swift */; };
-		8998041628DCDED800C8B421 /* DoTSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998041528DCDED800C8B421 /* DoTSections.swift */; };
-		8998041828DCDEEF00C8B421 /* DoHSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998041728DCDEEF00C8B421 /* DoHSections.swift */; };
-		89CB922125209DD100B6983C /* HowToActivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB922025209DD100B6983C /* HowToActivateView.swift */; };
-		89E8B71A29F80164002C2AEF /* LazyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E8B71929F80164002C2AEF /* LazyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		890B80D4251DC3A20046BAA0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		890B80DE251DC6B50046BAA0 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		8924EDF324C9CDF1004AF871 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CaseIterable.swift"; sourceTree = "<group>"; };
 		893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CustomStringConvertible.swift"; sourceTree = "<group>"; };
@@ -62,28 +52,40 @@
 		893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+Codable.swift"; sourceTree = "<group>"; };
 		8940023824ACBD2700EBE74B /* DNSecure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSecure.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8940023B24ACBD2700EBE74B /* DNSecureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureApp.swift; sourceTree = "<group>"; };
-		8940023D24ACBD2700EBE74B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		8940023F24ACBD2800EBE74B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8940024224ACBD2800EBE74B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8940024424ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940024924ACBD2800EBE74B /* DNSecureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSecureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8940024D24ACBD2800EBE74B /* DNSecureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureTests.swift; sourceTree = "<group>"; };
-		8940024F24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8940025424ACBD2800EBE74B /* DNSecureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSecureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8940025824ACBD2800EBE74B /* DNSecureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSecureUITests.swift; sourceTree = "<group>"; };
-		8940025A24ACBD2800EBE74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8940026624ACBE4900EBE74B /* DNSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSecure.entitlements; sourceTree = "<group>"; };
 		8940026824ACBE4900EBE74B /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		894958AC2548405E009691D5 /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
-		894F33642C46D2A20060F385 /* RestorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationView.swift; sourceTree = "<group>"; };
-		8963FDFA251DF1BC00E3DFE7 /* Bundle+displayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+displayName.swift"; sourceTree = "<group>"; };
-		8986CDCE251D9B3400D947CD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
-		8998041528DCDED800C8B421 /* DoTSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTSections.swift; sourceTree = "<group>"; };
-		8998041728DCDEEF00C8B421 /* DoHSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoHSections.swift; sourceTree = "<group>"; };
-		89CB922025209DD100B6983C /* HowToActivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToActivateView.swift; sourceTree = "<group>"; };
-		89E8B71929F80164002C2AEF /* LazyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		899AD03F2E66100500449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8940023724ACBD2700EBE74B /* DNSecure */;
+		};
+		899AD0442E66100E00449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DNSecureTests.swift,
+			);
+			target = 8940024824ACBD2800EBE74B /* DNSecureTests */;
+		};
+		899AD0492E66101100449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DNSecureUITests.swift,
+			);
+			target = 8940025324ACBD2800EBE74B /* DNSecureUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		899AD0232E66100500449710 /* DNSecure */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (899AD03F2E66100500449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DNSecure; sourceTree = "<group>"; };
+		899AD0422E66100E00449710 /* DNSecureTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (899AD0442E66100E00449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DNSecureTests; sourceTree = "<group>"; };
+		899AD0472E66101100449710 /* DNSecureUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (899AD0492E66101100449710 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DNSecureUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8940023524ACBD2700EBE74B /* Frameworks */ = {
@@ -154,9 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				8924EDF324C9CDF1004AF871 /* README.md */,
-				8940023A24ACBD2700EBE74B /* DNSecure */,
-				8940024C24ACBD2800EBE74B /* DNSecureTests */,
-				8940025724ACBD2800EBE74B /* DNSecureUITests */,
+				899AD0232E66100500449710 /* DNSecure */,
+				899AD0422E66100E00449710 /* DNSecureTests */,
+				899AD0472E66101100449710 /* DNSecureUITests */,
 				8940023924ACBD2700EBE74B /* Products */,
 				8940026724ACBE4900EBE74B /* Frameworks */,
 			);
@@ -170,47 +172,6 @@
 				8940025424ACBD2800EBE74B /* DNSecureUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8940023A24ACBD2700EBE74B /* DNSecure */ = {
-			isa = PBXGroup;
-			children = (
-				8940026624ACBE4900EBE74B /* DNSecure.entitlements */,
-				8940023B24ACBD2700EBE74B /* DNSecureApp.swift */,
-				893AA816258F790D0060B022 /* Views */,
-				893AA817258F79F70060B022 /* Models */,
-				893AA818258F7A0C0060B022 /* Extensions */,
-				8940023F24ACBD2800EBE74B /* Assets.xcassets */,
-				8940024424ACBD2800EBE74B /* Info.plist */,
-				8940024124ACBD2800EBE74B /* Preview Content */,
-			);
-			path = DNSecure;
-			sourceTree = "<group>";
-		};
-		8940024124ACBD2800EBE74B /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				8940024224ACBD2800EBE74B /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		8940024C24ACBD2800EBE74B /* DNSecureTests */ = {
-			isa = PBXGroup;
-			children = (
-				8940024D24ACBD2800EBE74B /* DNSecureTests.swift */,
-				8940024F24ACBD2800EBE74B /* Info.plist */,
-			);
-			path = DNSecureTests;
-			sourceTree = "<group>";
-		};
-		8940025724ACBD2800EBE74B /* DNSecureUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8940025824ACBD2800EBE74B /* DNSecureUITests.swift */,
-				8940025A24ACBD2800EBE74B /* Info.plist */,
-			);
-			path = DNSecureUITests;
 			sourceTree = "<group>";
 		};
 		8940026724ACBE4900EBE74B /* Frameworks */ = {
@@ -235,6 +196,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				899AD0232E66100500449710 /* DNSecure */,
 			);
 			name = DNSecure;
 			productName = DNSecure;
@@ -325,8 +289,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940024324ACBD2800EBE74B /* Preview Assets.xcassets in Resources */,
-				8940024024ACBD2800EBE74B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +339,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940024E24ACBD2800EBE74B /* DNSecureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +346,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8940025924ACBD2800EBE74B /* DNSecureUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

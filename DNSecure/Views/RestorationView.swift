@@ -54,10 +54,8 @@ extension RestorationView: View {
             .navigationTitle("Presets")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(role: .cancel) {
+                    Button("Cancel", systemImage: "xmark", role: .cancel) {
                         self.dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
                     }
                 }
             }

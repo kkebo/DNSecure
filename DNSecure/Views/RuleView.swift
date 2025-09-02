@@ -56,7 +56,14 @@ extension RuleView: View {
 
             Section {
                 Picker("Action", selection: self.$rule.action) {
-                    ForEach(NEOnDemandRuleAction.allCases, id: \.self) {
+                    ForEach(
+                        [
+                            NEOnDemandRuleAction.connect,
+                            .evaluateConnection,
+                            .disconnect,
+                        ],
+                        id: \.self
+                    ) {
                         Text($0.description)
                     }
                 }

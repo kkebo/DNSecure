@@ -109,7 +109,7 @@ extension Configuration: CustomStringConvertible {
 struct OnDemandRule {
     var id = UUID()
     var name: String
-    var action: NEOnDemandRuleAction = .ignore
+    var action: NEOnDemandRuleAction = .connect
     var interfaceType: NEOnDemandRuleInterfaceType = .any
     var ssidMatch: [String] = []
     var dnsSearchDomainMatch: [String] = []

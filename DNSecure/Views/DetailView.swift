@@ -22,53 +22,6 @@ struct DetailView {
 @MainActor
 extension DetailView: View {
     var body: some View {
-        if #available(iOS 16, *) {
-            self.modernBody
-        } else {
-            self.legacyBody
-        }
-    }
-
-    @available(iOS 16, *)
-    private var modernBody: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Toggle("Use This Server", isOn: self.$isOn)
-                }
-                Section("Name") {
-                    LazyTextField("Name", text: self.$server.name)
-                }
-                self.serverConfigurationSections
-                Section {
-                    ForEach(self.server.onDemandRules) { rule in
-                        NavigationLink(rule.name, value: rule.id)
-                    }
-                    .onDelete { self.server.onDemandRules.remove(atOffsets: $0) }
-                    .onMove { self.server.onDemandRules.move(fromOffsets: $0, toOffset: $1) }
-                    Button("Add New Rule") {
-                        self.server.onDemandRules
-                            .append(OnDemandRule(name: "New Rule"))
-                    }
-                } header: {
-                    EditButton()
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .overlay(alignment: .leading) {
-                            Text("On Demand Rules")
-                        }
-                }
-            }
-            .navigationDestination(for: UUID.self) { id in
-                // When RuleView is opened and tap another server on the sidebar, the previous server's rule comes here.
-                if self.server.onDemandRules.map(\.id).contains(id) {
-                    RuleView(rule: self.binding(for: id))
-                }
-            }
-        }
-        .navigationTitle(self.server.name)
-    }
-
-    private var legacyBody: some View {
         Form {
             Section {
                 Toggle("Use This Server", isOn: self.$isOn)

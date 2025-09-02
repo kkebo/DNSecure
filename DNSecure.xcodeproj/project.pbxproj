@@ -12,7 +12,7 @@
 		893AA853258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */; };
 		893AA858258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */; };
 		893AA85D258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */; };
-		893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */; };
+		893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+isSSIDUsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+isSSIDUsed.swift */; };
 		893AA867258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */; };
 		893AA86C258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */; };
 		893AA871258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */; };
@@ -57,7 +57,7 @@
 		893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CaseIterable.swift"; sourceTree = "<group>"; };
 		893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+Codable.swift"; sourceTree = "<group>"; };
-		893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+ssidIsUsed.swift"; sourceTree = "<group>"; };
+		893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+isSSIDUsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleInterfaceType+isSSIDUsed.swift"; sourceTree = "<group>"; };
 		893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+CaseIterable.swift"; sourceTree = "<group>"; };
 		893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NEOnDemandRuleAction+Codable.swift"; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				893AA852258F99630060B022 /* NEOnDemandRuleInterfaceType+CaseIterable.swift */,
 				893AA857258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift */,
 				893AA85C258F997A0060B022 /* NEOnDemandRuleInterfaceType+Codable.swift */,
-				893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift */,
+				893AA861258F998C0060B022 /* NEOnDemandRuleInterfaceType+isSSIDUsed.swift */,
 				893AA866258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift */,
 				893AA86B258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift */,
 				893AA870258F99AD0060B022 /* NEOnDemandRuleAction+Codable.swift */,
@@ -366,7 +366,7 @@
 				893AA858258F996F0060B022 /* NEOnDemandRuleInterfaceType+CustomStringConvertible.swift in Sources */,
 				8940023C24ACBD2700EBE74B /* DNSecureApp.swift in Sources */,
 				8998041628DCDED800C8B421 /* DoTSections.swift in Sources */,
-				893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+ssidIsUsed.swift in Sources */,
+				893AA862258F998C0060B022 /* NEOnDemandRuleInterfaceType+isSSIDUsed.swift in Sources */,
 				893AA867258F99990060B022 /* NEOnDemandRuleAction+CaseIterable.swift in Sources */,
 				893AA86C258F99A10060B022 /* NEOnDemandRuleAction+CustomStringConvertible.swift in Sources */,
 				8963FDFB251DF1BC00E3DFE7 /* Bundle+displayName.swift in Sources */,

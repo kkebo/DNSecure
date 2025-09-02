@@ -133,7 +133,7 @@ extension Array where Self.Element == OnDemandRule {
                 case .connect:
                     let newRule = NEOnDemandRuleConnect()
                     newRule.interfaceTypeMatch = rule.interfaceType
-                    if rule.interfaceType.ssidIsUsed {
+                    if rule.interfaceType.isSSIDUsed {
                         newRule.ssidMatch = rule.ssidMatch
                     }
                     newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
@@ -143,7 +143,7 @@ extension Array where Self.Element == OnDemandRule {
                 case .disconnect:
                     let newRule = NEOnDemandRuleDisconnect()
                     newRule.interfaceTypeMatch = rule.interfaceType
-                    if rule.interfaceType.ssidIsUsed {
+                    if rule.interfaceType.isSSIDUsed {
                         newRule.ssidMatch = rule.ssidMatch
                     }
                     newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
@@ -153,7 +153,7 @@ extension Array where Self.Element == OnDemandRule {
                 case .evaluateConnection:
                     let newRule = NEOnDemandRuleEvaluateConnection()
                     newRule.interfaceTypeMatch = rule.interfaceType
-                    if rule.interfaceType.ssidIsUsed {
+                    if rule.interfaceType.isSSIDUsed {
                         newRule.ssidMatch = rule.ssidMatch
                     }
                     newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch
@@ -163,7 +163,7 @@ extension Array where Self.Element == OnDemandRule {
                 case .ignore:
                     let newRule = NEOnDemandRuleIgnore()
                     newRule.interfaceTypeMatch = rule.interfaceType
-                    if rule.interfaceType.ssidIsUsed {
+                    if rule.interfaceType.isSSIDUsed {
                         newRule.ssidMatch = rule.ssidMatch
                     }
                     newRule.dnsSearchDomainMatch = rule.dnsSearchDomainMatch

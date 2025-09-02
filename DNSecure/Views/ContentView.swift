@@ -15,10 +15,10 @@ struct ContentView {
     @Binding var usedID: String?
     @State private var isEnabled = false
     @State private var selection: Int?
-    @State private var alertIsPresented = false
+    @State private var isAlertPresented = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    @State private var guideIsPresented = false
+    @State private var isGuidePresented = false
     @State private var isRestoring = false
 
     private func addNewDoTServer() {
@@ -112,7 +112,7 @@ struct ContentView {
                     self.removeSettings()
                     return
                 }
-                logger.debug("DNS settings was saved")
+                //logger.debug("DNS settings was saved")
             }
         #endif
     }
@@ -138,7 +138,7 @@ struct ContentView {
                     self.alert("Remove Error", removeError.localizedDescription)
                     return
                 }
-                logger.debug("DNS settings was removed")
+                //logger.debug("DNS settings was removed")
             }
         #endif
     }
@@ -146,7 +146,7 @@ struct ContentView {
     private func alert(_ title: String, _ message: String) {
         self.alertTitle = title
         self.alertMessage = message
-        self.alertIsPresented = true
+        self.isAlertPresented = true
     }
 }
 
@@ -180,7 +180,7 @@ extension ContentView: View {
             }
             .navigationTitle(Bundle.main.displayName!)
             .toolbar { self.toolbarContent }
-            .alert(self.alertTitle, isPresented: self.$alertIsPresented) {
+            .alert(self.alertTitle, isPresented: self.$isAlertPresented) {
             } message: {
                 Text(self.alertMessage)
             }
@@ -263,7 +263,7 @@ extension ContentView: View {
             }
             .navigationTitle(Bundle.main.displayName!)
             .toolbar { self.toolbarContent }
-            .alert(self.alertTitle, isPresented: self.$alertIsPresented) {
+            .alert(self.alertTitle, isPresented: self.$isAlertPresented) {
             } message: {
                 Text(self.alertMessage)
             }
@@ -331,18 +331,18 @@ extension ContentView: View {
                 }
                 if !self.isEnabled {
                     Button {
-                        self.guideIsPresented = true
+                        self.isGuidePresented = true
                     } label: {
                         Label("How to Activate", systemImage: "questionmark.circle")
                     }
                     .labelStyle(.titleAndIcon)
                     .font(.caption)
-                    .sheet(isPresented: self.$guideIsPresented) {
+                    .sheet(isPresented: self.$isGuidePresented) {
                         NavigationView {
                             HowToActivateView()
                                 .safeAreaInset(edge: .bottom) {
                                     Button("Dismiss") {
-                                        self.guideIsPresented = false
+                                        self.isGuidePresented = false
                                     }
                                     .buttonStyle(.borderedProminent)
                                     .controlSize(.large)

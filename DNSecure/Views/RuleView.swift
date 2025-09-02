@@ -41,7 +41,7 @@ extension RuleView: View {
                 )
             }
 
-            if self.rule.interfaceType.ssidIsUsed {
+            if self.rule.interfaceType.isSSIDUsed {
                 Section {
                     ForEach(0..<self.rule.ssidMatch.count, id: \.self) { i in
                         LazyTextField(

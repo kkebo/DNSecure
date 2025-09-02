@@ -12,6 +12,7 @@ struct RuleView {
     @Binding var rule: OnDemandRule
 }
 
+@MainActor
 extension RuleView: View {
     var body: some View {
         Form {

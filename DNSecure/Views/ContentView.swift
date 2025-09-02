@@ -41,8 +41,8 @@ struct ContentView {
         self.selection = self.servers.count - 1
     }
 
-    private func restoreFromPresets(resolvers: Set<Resolver>) {
-        self.servers.append(contentsOf: resolvers)
+    private func restoreFromPresets(resolver: Resolver) {
+        self.servers.append(resolver)
     }
 
     private func removeServers(at indexSet: IndexSet) {

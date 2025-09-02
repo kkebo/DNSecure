@@ -18,6 +18,8 @@ extension SSIDMatchView: View {
                             set: { self.rule.ssidMatch[i] = $0 }
                         )
                     )
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 }
                 .onDelete { self.rule.ssidMatch.remove(atOffsets: $0) }
                 .onMove { self.rule.ssidMatch.move(fromOffsets: $0, toOffset: $1) }

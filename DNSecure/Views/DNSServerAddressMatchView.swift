@@ -18,6 +18,10 @@ extension DNSServerAddressMatchView: View {
                             set: { self.rule.dnsServerAddressMatch[i] = $0 }
                         )
                     )
+                    .textContentType(.URL)
+                    .keyboardType(.numbersAndPunctuation)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 }
                 .onDelete { self.rule.dnsServerAddressMatch.remove(atOffsets: $0) }
                 .onMove { self.rule.dnsServerAddressMatch.move(fromOffsets: $0, toOffset: $1) }

@@ -28,6 +28,7 @@ extension LazyTextField: View {
             if self.isFocused && !self.localText.isEmpty {
                 Button("Clear", systemImage: "xmark.circle.fill") {
                     self.text.removeAll()
+                    self.localText.removeAll()
                 }
                 .foregroundStyle(Color.primary)
                 .opacity(0.2)

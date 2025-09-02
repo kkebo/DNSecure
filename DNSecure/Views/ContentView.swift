@@ -188,7 +188,9 @@ extension ContentView: View {
             if self.selection == -1 {
                 HowToActivateView()
             } else if let i = self.selection {
-                self.detailView(at: i)
+                NavigationStack {
+                    self.detailView(at: i)
+                }
             } else if !self.isEnabled {
                 HowToActivateView()
             } else {

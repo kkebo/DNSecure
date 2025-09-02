@@ -64,12 +64,10 @@ extension RuleView: View {
         .navigationTitle(self.rule.name)
     }
 
-    private var interfaceTypeMatchLabel: some View {
-        @available(iOS 16, *)
-        var modern: some View {
+    @ViewBuilder private var interfaceTypeMatchLabel: some View {
+        if #available(iOS 16, *) {
             LabeledContent("Interface Type Match", value: self.rule.interfaceType.description)
-        }
-        var legacy: some View {
+        } else {
             HStack {
                 Text("Interface Type Match")
                 Spacer()
@@ -77,15 +75,10 @@ extension RuleView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        guard #available(iOS 16, *) else {
-            return legacy
-        }
-        return modern
     }
 
-    private var ssidMatchLabel: some View {
-        @available(iOS 16, *)
-        var modern: some View {
+    @ViewBuilder private var ssidMatchLabel: some View {
+        if #available(iOS 16, *) {
             LabeledContent("SSID Match") {
                 if !self.rule.ssidMatch.isEmpty {
                     Text("\(self.rule.ssidMatch.count)")
@@ -93,8 +86,7 @@ extension RuleView: View {
                     Text("Not Used")
                 }
             }
-        }
-        var legacy: some View {
+        } else {
             HStack {
                 Text("SSID Match")
                 Spacer()
@@ -108,15 +100,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        guard #available(iOS 16, *) else {
-            return legacy
-        }
-        return modern
     }
 
-    private var dnsSearchDomainMatchLabel: some View {
-        @available(iOS 16, *)
-        var modern: some View {
+    @ViewBuilder private var dnsSearchDomainMatchLabel: some View {
+        if #available(iOS 16, *) {
             LabeledContent("DNS Search Domain Match") {
                 if !self.rule.dnsSearchDomainMatch.isEmpty {
                     Text("\(self.rule.dnsSearchDomainMatch.count)")
@@ -124,8 +111,7 @@ extension RuleView: View {
                     Text("Not Used")
                 }
             }
-        }
-        var legacy: some View {
+        } else {
             HStack {
                 Text("DNS Search Domain Match")
                 Spacer()
@@ -139,15 +125,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        guard #available(iOS 16, *) else {
-            return legacy
-        }
-        return modern
     }
 
-    private var dnsServerAddressMatchLabel: some View {
-        @available(iOS 16, *)
-        var modern: some View {
+    @ViewBuilder private var dnsServerAddressMatchLabel: some View {
+        if #available(iOS 16, *) {
             LabeledContent("DNS Server Address Match") {
                 if !self.rule.dnsServerAddressMatch.isEmpty {
                     Text("\(self.rule.dnsServerAddressMatch.count)")
@@ -155,8 +136,7 @@ extension RuleView: View {
                     Text("Not Used")
                 }
             }
-        }
-        var legacy: some View {
+        } else {
             HStack {
                 Text("DNS Server Address Match")
                 Spacer()
@@ -170,15 +150,10 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        guard #available(iOS 16, *) else {
-            return legacy
-        }
-        return modern
     }
 
-    private var probeURLLabel: some View {
-        @available(iOS 16, *)
-        var modern: some View {
+    @ViewBuilder private var probeURLLabel: some View {
+        if #available(iOS 16, *) {
             LabeledContent("Probe URL") {
                 if let url = self.rule.probeURL?.absoluteString {
                     Text(url)
@@ -186,8 +161,7 @@ extension RuleView: View {
                     Text("Not Used")
                 }
             }
-        }
-        var legacy: some View {
+        } else {
             HStack {
                 Text("Probe URL")
                 Spacer()
@@ -201,10 +175,6 @@ extension RuleView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        guard #available(iOS 16, *) else {
-            return legacy
-        }
-        return modern
     }
 }
 

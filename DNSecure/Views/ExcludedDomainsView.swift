@@ -17,6 +17,10 @@ extension ExcludedDomainsView: View {
                             set: { self.domains[i] = $0 }
                         )
                     )
+                    .textContentType(.URL)
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 }
                 .onDelete { self.domains.remove(atOffsets: $0) }
                 .onMove { self.domains.move(fromOffsets: $0, toOffset: $1) }

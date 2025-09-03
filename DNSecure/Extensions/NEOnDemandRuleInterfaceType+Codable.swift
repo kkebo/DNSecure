@@ -7,4 +7,4 @@
 
 import NetworkExtension
 
-extension NEOnDemandRuleInterfaceType: Codable {}
+extension NEOnDemandRuleInterfaceType: @retroactive Codable {}

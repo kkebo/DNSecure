@@ -5,7 +5,7 @@
 //  Created by Kenta Kubo on 7/1/20.
 //
 
-import NetworkExtension
+@preconcurrency import NetworkExtension
 import SwiftUI
 
 struct ContentView {

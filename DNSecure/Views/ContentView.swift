@@ -96,6 +96,7 @@ struct ContentView {
             }
 
             let manager = NEDNSSettingsManager.shared()
+            manager.localizedDescription = server.name
             manager.dnsSettings = server.configuration.toDNSSettings()
             manager.onDemandRules = server.onDemandRules.toNEOnDemandRules()
             manager.saveToPreferences { saveError in

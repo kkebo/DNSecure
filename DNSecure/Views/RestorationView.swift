@@ -48,6 +48,7 @@ extension RestorationView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.capsule)
+                        .hoverEffect()
                     }
                 }
             }

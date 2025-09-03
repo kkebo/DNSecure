@@ -46,7 +46,7 @@ extension DetailView: View {
                 EditButton()
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .overlay(alignment: .leading) {
-                        Text("On Demand Rules")
+                        Text("On-Demand Rules")
                     }
             }
         }

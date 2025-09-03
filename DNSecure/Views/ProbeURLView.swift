@@ -17,6 +17,10 @@ extension ProbeURLView: View {
         Form {
             Section {
                 LazyTextField("Probe URL", text: self.probeURL)
+                    .textContentType(.URL)
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
             } footer: {
                 Text(
                     "If a request sent to this URL results in a HTTP 200 OK response and all of the other conditions in the rule match, then the rule matches. If you don't want to use this rule, leave it empty."

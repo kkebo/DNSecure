@@ -18,6 +18,10 @@ extension DNSSearchDomainMatchView: View {
                             set: { self.rule.dnsSearchDomainMatch[i] = $0 }
                         )
                     )
+                    .textContentType(.URL)
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 }
                 .onDelete { self.rule.dnsSearchDomainMatch.remove(atOffsets: $0) }
                 .onMove { self.rule.dnsSearchDomainMatch.move(fromOffsets: $0, toOffset: $1) }

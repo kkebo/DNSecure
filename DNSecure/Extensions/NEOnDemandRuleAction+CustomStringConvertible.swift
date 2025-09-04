@@ -10,16 +10,11 @@ import NetworkExtension
 extension NEOnDemandRuleAction: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
-        case .connect:
-            return "Apply settings"
-        case .disconnect:
-            return "Do not apply settings"
-        case .evaluateConnection:
-            return "Apply with excluded domains"
-        case .ignore:
-            return "As is"
-        default:
-            return "Unknown"
+        case .connect: "Apply settings"
+        case .disconnect: "Do not apply settings"
+        case .evaluateConnection: "Apply with excluded domains"
+        case .ignore: "As is"
+        @unknown case _: "Unknown"
         }
     }
 }

@@ -51,10 +51,6 @@ extension DetailView: View {
             }
         }
         .navigationTitle(self.server.name)
-        .onChange(of: self.server) { _ in
-            guard self.isOn else { return }
-            self.isOn = false
-        }
     }
 
     @ViewBuilder private var serverConfigurationSections: some View {

@@ -67,6 +67,23 @@ extension RuleView: View {
                         Text($0.description)
                     }
                 }
+                if self.rule.action == .evaluateConnection {
+                    NavigationLink {
+                        ExcludedDomainsView(
+                            domains: .init(
+                                get: { self.rule.excludedDomains ?? [] },
+                                set: { self.rule.excludedDomains = $0 }
+                            )
+                        )
+                    } label: {
+                        HStack {
+                            Text("Excluded Domains")
+                            Spacer()
+                            Text("\(self.rule.excludedDomains?.count ?? 0)")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
             }
         }
         .navigationTitle(self.rule.name)

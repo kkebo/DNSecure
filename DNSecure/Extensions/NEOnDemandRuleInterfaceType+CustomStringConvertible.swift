@@ -10,20 +10,15 @@ import NetworkExtension
 extension NEOnDemandRuleInterfaceType: @retroactive CustomStringConvertible {
     public var description: String {
         switch self {
-        case .any:
-            return "Any"
+        case .any: "Any"
         #if os(macOS)
-            case .ethernet:
-                return "Ethernet"
+            case .ethernet: "Ethernet"
         #endif
-        case .wiFi:
-            return "Wi-Fi"
+        case .wiFi: "Wi-Fi"
         #if os(iOS)
-            case .cellular:
-                return "Cellular"
+            case .cellular: "Cellular"
         #endif
-        default:
-            return "Unknown"
+        @unknown case _: "Unknown"
         }
     }
 }

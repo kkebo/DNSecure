@@ -10,9 +10,9 @@ import NetworkExtension
 extension NEOnDemandRuleInterfaceType: @retroactive CaseIterable {
     public static var allCases: [Self] {
         #if os(macOS)
-            return [.any, .ethernet, .wiFi]
+            [.any, .ethernet, .wiFi]
         #else
-            return [.any, .wiFi, .cellular]
+            [.any, .wiFi, .cellular]
         #endif
     }
 }

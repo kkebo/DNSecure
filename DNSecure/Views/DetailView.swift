@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DetailView {
     @Binding var server: Resolver
-    @Binding var isOn: Bool
+    @Binding var isSelected: Bool
+    @Binding var isActivated: Bool
+    @State private var isGuidePresented = false
 
     private func binding(for id: UUID) -> Binding<OnDemandRule> {
         guard let index = self.server.onDemandRules.map(\.id).firstIndex(of: id) else {
@@ -24,7 +26,33 @@ extension DetailView: View {
     var body: some View {
         Form {
             Section {
-                Toggle("Use This Server", isOn: self.$isOn)
+                Toggle("Use This Server", isOn: self.$isSelected)
+                if self.isSelected && !self.isActivated {
+                    Button("One more step is required.", systemImage: "exclamationmark.triangle") {
+                        self.isGuidePresented = true
+                    }
+                    .labelStyle(.titleAndIcon)
+                    .tint(.red)
+                    .sheet(isPresented: self.$isGuidePresented) {
+                        NavigationView {
+                            HowToActivateView()
+                                .toolbar {
+                                    ToolbarItem(placement: .cancellationAction) {
+                                        if #available(iOS 26, *) {
+                                            Button("Close", systemImage: "xmark", role: .close) {
+                                                self.isGuidePresented = false
+                                            }
+                                        } else {
+                                            Button("Close", systemImage: "xmark", role: .cancel) {
+                                                self.isGuidePresented = false
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                        .navigationViewStyle(.stack)
+                    }
+                }
             }
             Section("Name") {
                 LazyTextField("Name", text: self.$server.name)
@@ -81,6 +109,7 @@ extension DetailView: View {
                 configuration: .dnsOverTLS(DoTConfiguration())
             )
         ),
-        isOn: .constant(true)
+        isSelected: .constant(true),
+        isActivated: .constant(true)
     )
 }

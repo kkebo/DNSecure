@@ -13,13 +13,21 @@ struct ContentView {
     @Environment(\.horizontalSizeClass) private var hSizeClass
     @Binding var servers: Resolvers
     @Binding var usedID: String?
-    @State private var isEnabled = false
+    @State private var isActivated = false
     @State private var selection: Int?
     @State private var isAlertPresented = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @State private var isGuidePresented = false
     @State private var isRestoring = false
+
+    private var navigationBarTitleDisplayMode: NavigationBarItem.TitleDisplayMode {
+        if #available(iOS 26, *) {
+            .inline
+        } else {
+            .automatic
+        }
+    }
 
     private func addNewDoTServer() {
         self.servers.append(
@@ -78,7 +86,7 @@ struct ContentView {
                     logger.error("\(err.localizedDescription)")
                     self.alert("Load Error", err.localizedDescription)
                 } else {
-                    self.isEnabled = manager.isEnabled
+                    self.isActivated = manager.isEnabled
                 }
             }
         #endif
@@ -168,7 +176,6 @@ extension ContentView: View {
     private var modernBody: some View {
         NavigationSplitView {
             List(selection: self.$selection) {
-                NavigationLink("Instructions", value: -1)
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(value: i) {
@@ -180,20 +187,29 @@ extension ContentView: View {
                 }
             }
             .navigationTitle(Bundle.main.displayName!)
-            .toolbar { self.toolbarContent }
+            .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
+            .toolbar {
+                if #available(iOS 26, *) {
+                    ToolbarItem(placement: .subtitle) {
+                        self.statusIndicator
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                self.toolbarContent
+            }
             .alert(self.alertTitle, isPresented: self.$isAlertPresented) {
             } message: {
                 Text(self.alertMessage)
             }
         } detail: {
-            if self.selection == -1 {
-                HowToActivateView()
-            } else if let i = self.selection {
+            if let i = self.selection, i >= 0 {
                 NavigationStack {
                     self.detailView(at: i)
+                        .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
                 }
-            } else if !self.isEnabled {
+            } else if !self.isActivated {
                 HowToActivateView()
+                    .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
             } else {
                 Text("Select a server on the sidebar")
                     .navigationBarHidden(true)
@@ -226,20 +242,6 @@ extension ContentView: View {
     private var legacyBody: some View {
         NavigationView {
             List {
-                if self.hSizeClass == .compact {
-                    NavigationLink(
-                        "Instructions",
-                        tag: -1,
-                        selection: self.$selection
-                    ) {
-                        HowToActivateView()
-                    }
-                } else {
-                    // Workaround for iOS 15
-                    Button("Instructions") {
-                        self.selection = -1
-                    }
-                }
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         if self.hSizeClass == .compact {
@@ -271,11 +273,9 @@ extension ContentView: View {
                 Text(self.alertMessage)
             }
 
-            if self.selection == -1 {
-                HowToActivateView()
-            } else if let i = self.selection {
+            if let i = self.selection, i >= 0 {
                 self.detailView(at: i)
-            } else if !self.isEnabled {
+            } else if !self.isActivated {
                 HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
@@ -308,54 +308,49 @@ extension ContentView: View {
 
     @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            Menu("Add", systemImage: "plus") {
-                Button("DNS-over-TLS", action: self.addNewDoTServer)
-                Button("DNS-over-HTTPS", action: self.addNewDoHServer)
-                Button("Restore from Presets") {
-                    self.isRestoring = true
-                }
-            }
-            .sheet(isPresented: self.$isRestoring) {
-                RestorationView(onAdd: self.restoreFromPresets)
+            if #available(iOS 26, *) {
+                EditButton()
+            } else {
+                self.addMenu
             }
         }
         ToolbarItem(placement: .topBarTrailing) {
-            EditButton()
-        }
-        ToolbarItem(placement: .status) {
-            VStack(spacing: 0) {
-                HStack {
-                    Circle()
-                        .frame(width: 10, height: 10)
-                        .foregroundStyle(self.isEnabled ? .green : .secondary)
-                    Text(self.isEnabled ? "Active" : "Inactive")
-                }
-                if !self.isEnabled {
-                    Button("How to Activate", systemImage: "questionmark.circle") {
-                        self.isGuidePresented = true
-                    }
-                    .labelStyle(.titleAndIcon)
-                    .font(.caption)
-                    .sheet(isPresented: self.$isGuidePresented) {
-                        NavigationView {
-                            HowToActivateView()
-                                .safeAreaInset(edge: .bottom) {
-                                    Button("Dismiss") {
-                                        self.isGuidePresented = false
-                                    }
-                                    .buttonStyle(.borderedProminent)
-                                    .controlSize(.large)
-                                    .hoverEffect()
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color(.systemBackground))
-                                }
-                        }
-                        .navigationViewStyle(.stack)
-                    }
-                }
+            if #available(iOS 26, *) {
+                self.addMenu
+            } else {
+                EditButton()
             }
         }
+        ToolbarItem(placement: .status) {
+            if #available(iOS 26, *) {
+            } else {
+                self.statusIndicator
+            }
+        }
+    }
+
+    private var addMenu: some View {
+        Menu("Add", systemImage: "plus") {
+            Button("DNS-over-TLS", action: self.addNewDoTServer)
+            Button("DNS-over-HTTPS", action: self.addNewDoHServer)
+            Button("Restore from Presets") {
+                self.isRestoring = true
+            }
+        }
+        .sheet(isPresented: self.$isRestoring) {
+            RestorationView(onAdd: self.restoreFromPresets)
+        }
+    }
+
+    private var statusIndicator: some View {
+        Label {
+            Text(self.isActivated ? "Active" : "Inactive")
+        } icon: {
+            Circle()
+                .fill(self.isActivated ? .green : .secondary)
+                .frame(width: 10, height: 10)
+        }
+        .labelStyle(.titleAndIcon)
     }
 
     private func sidebarRow(at i: Int) -> some View {
@@ -367,6 +362,10 @@ extension ContentView: View {
             }
             if self.usedID == self.servers[i].id.uuidString {
                 Spacer()
+                if !self.isActivated {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundStyle(.red)
+                }
                 Image(systemName: "checkmark")
             }
         }
@@ -375,7 +374,7 @@ extension ContentView: View {
     private func detailView(at i: Int) -> some View {
         DetailView(
             server: self.$servers[i],
-            isOn: .init(
+            isSelected: .init(
                 get: {
                     self.usedID == self.servers[i].id.uuidString
                 },
@@ -386,7 +385,8 @@ extension ContentView: View {
                         self.removeSettings()
                     }
                 }
-            )
+            ),
+            isActivated: self.$isActivated
         )
     }
 }

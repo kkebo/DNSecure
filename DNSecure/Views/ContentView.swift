@@ -121,7 +121,7 @@ struct ContentView {
                     self.removeSettings()
                     return
                 }
-                //logger.debug("DNS settings was saved")
+                logger.debug("DNS settings was saved")
             }
         #endif
     }
@@ -147,7 +147,7 @@ struct ContentView {
                     self.alert("Remove Error", removeError.localizedDescription)
                     return
                 }
-                //logger.debug("DNS settings was removed")
+                logger.debug("DNS settings was removed")
             }
         #endif
     }

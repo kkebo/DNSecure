@@ -189,12 +189,14 @@ extension ContentView: View {
             .navigationTitle(Bundle.main.displayName!)
             .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
             .toolbar {
-                if #available(iOS 26, *) {
-                    ToolbarItem(placement: .subtitle) {
-                        self.statusIndicator
-                            .foregroundStyle(.secondary)
+                #if canImport(SwiftUI, _version: 7)
+                    if #available(iOS 26, *) {
+                        ToolbarItem(placement: .subtitle) {
+                            self.statusIndicator
+                                .foregroundStyle(.secondary)
+                        }
                     }
-                }
+                #endif
                 self.toolbarContent
             }
             .alert(self.alertTitle, isPresented: self.$isAlertPresented) {
@@ -323,6 +325,9 @@ extension ContentView: View {
         }
         ToolbarItem(placement: .status) {
             if #available(iOS 26, *) {
+                #if !canImport(SwiftUI, _version: 7)
+                    self.statusIndicator
+                #endif
             } else {
                 self.statusIndicator
             }

@@ -38,15 +38,21 @@ extension DetailView: View {
                             HowToActivateView()
                                 .toolbar {
                                     ToolbarItem(placement: .cancellationAction) {
-                                        if #available(iOS 26, *) {
-                                            Button("Close", systemImage: "xmark", role: .close) {
-                                                self.isGuidePresented = false
+                                        #if canImport(SwiftUI, _version: 7)
+                                            if #available(iOS 26, *) {
+                                                Button("Close", systemImage: "xmark", role: .close) {
+                                                    self.isGuidePresented = false
+                                                }
+                                            } else {
+                                                Button("Close", systemImage: "xmark", role: .cancel) {
+                                                    self.isGuidePresented = false
+                                                }
                                             }
-                                        } else {
+                                        #else
                                             Button("Close", systemImage: "xmark", role: .cancel) {
                                                 self.isGuidePresented = false
                                             }
-                                        }
+                                        #endif
                                     }
                                 }
                         }

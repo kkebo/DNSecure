@@ -241,6 +241,7 @@ extension ContentView: View {
         }
     }
 
+    @available(iOS, deprecated: 16)
     private var legacyBody: some View {
         NavigationView {
             List {

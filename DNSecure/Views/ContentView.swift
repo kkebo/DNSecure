@@ -20,6 +20,11 @@ struct ContentView {
     @State private var alertMessage = ""
     @State private var isGuidePresented = false
     @State private var isRestoring = false
+    #if targetEnvironment(macCatalyst)
+        // Workaround for https://github.com/kkebo/DNSecure/issues/139
+        @State private var sidebarEditMode: EditMode = .inactive
+        @State private var detailEditMode: EditMode = .inactive
+    #endif
 
     private var navigationBarTitleDisplayMode: NavigationBarItem.TitleDisplayMode {
         if #available(iOS 26, *) {
@@ -203,12 +208,20 @@ extension ContentView: View {
             } message: {
                 Text(self.alertMessage)
             }
+            #if targetEnvironment(macCatalyst)
+                // Workaround for https://github.com/kkebo/DNSecure/issues/139
+                .environment(\.editMode, self.$sidebarEditMode)
+            #endif
         } detail: {
             if let i = self.selection, i >= 0 {
                 NavigationStack {
                     self.detailView(at: i)
                         .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
                 }
+                #if targetEnvironment(macCatalyst)
+                    // Workaround for https://github.com/kkebo/DNSecure/issues/139
+                    .environment(\.editMode, self.$detailEditMode)
+                #endif
             } else if !self.isActivated {
                 HowToActivateView()
                     .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)

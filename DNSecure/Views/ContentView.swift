@@ -325,7 +325,27 @@ extension ContentView: View {
     @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
             if #available(iOS 26, *) {
-                EditButton()
+                #if targetEnvironment(macCatalyst)
+                    // Workaround for the issue that the checkmark icon is hard to see if System Settings > Appearance > Theme > Color is Multicolor.
+                    Button {
+                        withAnimation {
+                            if !self.sidebarEditMode.isEditing {
+                                self.sidebarEditMode = .active
+                            } else {
+                                self.sidebarEditMode = .inactive
+                            }
+                        }
+                    } label: {
+                        if !self.sidebarEditMode.isEditing {
+                            Text("Edit")
+                        } else {
+                            Label("Done", systemImage: "checkmark")
+                        }
+                    }
+                    .tint(self.sidebarEditMode.isEditing ? .accentColor : .primary)
+                #else
+                    EditButton()
+                #endif
             } else {
                 self.addMenu
             }

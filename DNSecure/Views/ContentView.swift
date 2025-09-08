@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ContentView {
-    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var hSizeClass
     @Binding var servers: Resolvers
     @Binding var usedID: String?
@@ -239,19 +238,6 @@ extension ContentView: View {
                 self.updateStatus()
             }
         }
-        .onChange(of: self.scenePhase) { phase in
-            if phase == .background {
-                // FIXME: This is a workaround for self.$severs[i].
-                // That cannot save settings as soon as it is modified.
-                guard let id = self.usedID,
-                    let uuid = UUID(uuidString: id),
-                    let server = self.servers.find(by: uuid)
-                else {
-                    return
-                }
-                self.saveSettings(of: server)
-            }
-        }
     }
 
     @available(iOS, deprecated: 16)
@@ -305,19 +291,6 @@ extension ContentView: View {
                 .map(\.name)
             {
                 self.updateStatus()
-            }
-        }
-        .onChange(of: self.scenePhase) { phase in
-            if phase == .background {
-                // FIXME: This is a workaround for self.$severs[i].
-                // That cannot save settings as soon as it is modified.
-                guard let id = self.usedID,
-                    let uuid = UUID(uuidString: id),
-                    let server = self.servers.find(by: uuid)
-                else {
-                    return
-                }
-                self.saveSettings(of: server)
             }
         }
     }

@@ -85,6 +85,11 @@ extension DetailView: View {
             }
         }
         .navigationTitle(self.server.name)
+        .onChange(of: self.server) { [oldValue = self.server] newValue in
+            guard self.isSelected, oldValue.id == newValue.id else { return }
+            // When the selected server's configuration is modified, the server will be deactivated or deselected so that the user can save the changes by toggling the “Use This Server” switch again.
+            self.isSelected = false
+        }
     }
 
     @ViewBuilder private var serverConfigurationSections: some View {

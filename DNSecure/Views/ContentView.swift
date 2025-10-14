@@ -226,7 +226,7 @@ extension ContentView: View {
                     .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
             } else {
                 Text("Select a server on the sidebar")
-                    .navigationBarHidden(true)
+                    .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
             }
         }
         .onAppear(perform: self.updateStatus)
@@ -281,7 +281,6 @@ extension ContentView: View {
                 HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")
-                    .navigationBarHidden(true)
             }
         }
         .onAppear(perform: self.updateStatus)

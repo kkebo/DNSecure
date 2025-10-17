@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: ["main"]
 permissions: {}
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
 jobs:
   lint:
     runs-on: ubuntu-24.04-arm

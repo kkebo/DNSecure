@@ -43,7 +43,7 @@ let package = Package(
         .testTarget(
             name: "DNSecureTests",
             dependencies: [
-                "DNSecure"
+                .target(name: "DNSecure")
             ],
             path: "DNSecureTests"
         ),

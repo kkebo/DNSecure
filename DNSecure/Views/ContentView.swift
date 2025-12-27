@@ -180,6 +180,9 @@ extension ContentView: View {
     private var modernBody: some View {
         NavigationSplitView {
             List(selection: self.$selection) {
+                if !self.isActivated && self.hSizeClass == .compact {
+                    NavigationLink("Instructions", value: -1)
+                }
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         NavigationLink(value: i) {
@@ -221,7 +224,7 @@ extension ContentView: View {
                     // Workaround for https://github.com/kkebo/DNSecure/issues/139
                     .environment(\.editMode, self.$detailEditMode)
                 #endif
-            } else if !self.isActivated {
+            } else if !self.isActivated || self.selection == -1 {
                 HowToActivateView()
                     .navigationBarTitleDisplayMode(self.navigationBarTitleDisplayMode)
             } else {
@@ -244,6 +247,15 @@ extension ContentView: View {
     private var legacyBody: some View {
         NavigationView {
             List {
+                if !self.isActivated && self.hSizeClass == .compact {
+                    NavigationLink(
+                        "Instructions",
+                        tag: -1,
+                        selection: self.$selection
+                    ) {
+                        HowToActivateView()
+                    }
+                }
                 Section("Servers") {
                     ForEach(0..<self.servers.count, id: \.self) { i in
                         if self.hSizeClass == .compact {
@@ -277,7 +289,7 @@ extension ContentView: View {
 
             if let i = self.selection, i >= 0 {
                 self.detailView(at: i)
-            } else if !self.isActivated {
+            } else if !self.isActivated || self.selection == -1 {
                 HowToActivateView()
             } else {
                 Text("Select a server on the sidebar")

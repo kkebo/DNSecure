@@ -61,7 +61,7 @@ jobs:
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@45cbd0c69e560cd9e7cd7f8c32362050c9b7ded2  # v4.32.2
+        uses: github/codeql-action/init@9e907b5e64f6b83e7804b09294d44122997950d6  # v4.32.3
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -84,6 +84,6 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode_26.1.1.app
         run: xcodebuild build -project DNSecure.xcodeproj -scheme DNSecure -destination "platform=iOS Simulator,name=iPad Pro 13-inch (M5),OS=26.1" -quiet -showBuildTimingSummary
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@45cbd0c69e560cd9e7cd7f8c32362050c9b7ded2  # v4.32.2
+        uses: github/codeql-action/analyze@9e907b5e64f6b83e7804b09294d44122997950d6  # v4.32.3
         with:
           category: "/language:${{matrix.language}}"

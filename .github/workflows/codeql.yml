@@ -80,9 +80,7 @@ jobs:
 
         if: matrix.build-mode == 'manual'
         shell: bash
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_26.5.0.app
-        run: xcodebuild build -project DNSecure.xcodeproj -scheme DNSecure -destination "platform=iOS Simulator,name=iPad Pro 13-inch (M5),OS=26.5" -quiet -showBuildTimingSummary
+        run: xcodebuild build -project DNSecure.xcodeproj -scheme DNSecure -destination "generic/platform=iOS Simulator" -quiet -showBuildTimingSummary
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@54f647b7e1bb85c95cddabcd46b0c578ec92bc1a  # v4.36.3
         with:

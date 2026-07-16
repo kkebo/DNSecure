@@ -2,6 +2,7 @@
   "fileScopedDeclarationPrivacy" : {
     "accessLevel" : "private"
   },
+  "indentBlankLines" : false,
   "indentConditionalCompilationBlocks" : true,
   "indentSwitchCaseLabels" : false,
   "indentation" : {
@@ -19,6 +20,9 @@
     "allowedFunctions" : [
       "XCTAssertNoThrow"
     ]
+  },
+  "orderedImports" : {
+    "includeConditionalImports" : false
   },
   "prioritizeKeepingFunctionOutputTogether" : true,
   "reflowMultilineStringLiterals" : "never",

@@ -15,8 +15,8 @@ extension DNSSearchDomainMatchView: View {
                         // self.$rule.dnsSearchDomainMatch[i] causes crash on deletion
                         text: .init(
                             get: { self.rule.dnsSearchDomainMatch[i] },
-                            set: { self.rule.dnsSearchDomainMatch[i] = $0 }
-                        )
+                            set: { self.rule.dnsSearchDomainMatch[i] = $0 },
+                        ),
                     )
                     .textContentType(.URL)
                     .keyboardType(.URL)

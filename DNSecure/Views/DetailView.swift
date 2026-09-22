@@ -98,14 +98,14 @@ extension DetailView: View {
             DoTSections(
                 configuration: .init(
                     get: { configuration },
-                    set: { self.server.configuration = .dnsOverTLS($0) }
+                    set: { self.server.configuration = .dnsOverTLS($0) },
                 )
             )
         case .dnsOverHTTPS(let configuration):
             DoHSections(
                 configuration: .init(
                     get: { configuration },
-                    set: { self.server.configuration = .dnsOverHTTPS($0) }
+                    set: { self.server.configuration = .dnsOverHTTPS($0) },
                 )
             )
         }
@@ -117,10 +117,10 @@ extension DetailView: View {
         server: .constant(
             .init(
                 name: "My Server",
-                configuration: .dnsOverTLS(DoTConfiguration())
+                configuration: .dnsOverTLS(DoTConfiguration()),
             )
         ),
         isSelected: .constant(true),
-        isActivated: .constant(true)
+        isActivated: .constant(true),
     )
 }

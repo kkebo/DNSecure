@@ -19,9 +19,9 @@ enum Presets {
                         "2001:4860:4860::8888",
                         "2001:4860:4860::8844",
                     ],
-                    serverName: "dns.google"
+                    serverName: "dns.google",
                 )
-            )
+            ),
         ),
         .init(
             name: "Google Public DNS",
@@ -33,9 +33,9 @@ enum Presets {
                         "2001:4860:4860::8888",
                         "2001:4860:4860::8844",
                     ],
-                    serverURL: URL(string: "https://dns.google/dns-query")
+                    serverURL: URL(string: "https://dns.google/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "1.1.1.1",
@@ -47,9 +47,9 @@ enum Presets {
                         "2606:4700:4700::1111",
                         "2606:4700:4700::1001",
                     ],
-                    serverName: "cloudflare-dns.com"
+                    serverName: "cloudflare-dns.com",
                 )
-            )
+            ),
         ),
         .init(
             name: "1.1.1.1",
@@ -61,9 +61,9 @@ enum Presets {
                         "2606:4700:4700::1111",
                         "2606:4700:4700::1001",
                     ],
-                    serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
+                    serverURL: URL(string: "https://cloudflare-dns.com/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "1.1.1.1 (Block Malware)",
@@ -75,9 +75,9 @@ enum Presets {
                         "2606:4700:4700::1112",
                         "2606:4700:4700::1002",
                     ],
-                    serverName: "cloudflare-dns.com"
+                    serverName: "cloudflare-dns.com",
                 )
-            )
+            ),
         ),
         .init(
             name: "1.1.1.1 (Block Malware)",
@@ -89,9 +89,9 @@ enum Presets {
                         "2606:4700:4700::1112",
                         "2606:4700:4700::1002",
                     ],
-                    serverURL: URL(string: "https://security.cloudflare-dns.com/dns-query")
+                    serverURL: URL(string: "https://security.cloudflare-dns.com/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "Quad9 (Block Malware)",
@@ -103,9 +103,9 @@ enum Presets {
                         "2620:fe::fe",
                         "2620:fe::9",
                     ],
-                    serverName: "dns.quad9.net"
+                    serverName: "dns.quad9.net",
                 )
-            )
+            ),
         ),
         .init(
             name: "Quad9 (Block Malware)",
@@ -117,9 +117,9 @@ enum Presets {
                         "2620:fe::fe",
                         "2620:fe::9",
                     ],
-                    serverURL: URL(string: "https://dns.quad9.net/dns-query")
+                    serverURL: URL(string: "https://dns.quad9.net/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "LibreDNS",
@@ -128,9 +128,9 @@ enum Presets {
                     servers: [
                         "116.202.176.26"
                     ],
-                    serverName: "dot.libredns.gr"
+                    serverName: "dot.libredns.gr",
                 )
-            )
+            ),
         ),
         .init(
             name: "LibreDNS",
@@ -139,9 +139,9 @@ enum Presets {
                     servers: [
                         "116.202.176.26"
                     ],
-                    serverURL: URL(string: "https://doh.libredns.gr/dns-query")
+                    serverURL: URL(string: "https://doh.libredns.gr/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "LibreDNS (Block Ads / Trackers)",
@@ -150,9 +150,9 @@ enum Presets {
                     servers: [
                         "116.202.176.26"
                     ],
-                    serverURL: URL(string: "https://doh.libredns.gr/ads")
+                    serverURL: URL(string: "https://doh.libredns.gr/ads"),
                 )
-            )
+            ),
         ),
         .init(
             name: "AdGuard DNS",
@@ -164,9 +164,9 @@ enum Presets {
                         "2a10:50c0::1:ff",
                         "2a10:50c0::2:ff",
                     ],
-                    serverName: "dns-unfiltered.adguard.com"
+                    serverName: "dns-unfiltered.adguard.com",
                 )
-            )
+            ),
         ),
         .init(
             name: "AdGuard DNS",
@@ -178,9 +178,9 @@ enum Presets {
                         "2a10:50c0::1:ff",
                         "2a10:50c0::2:ff",
                     ],
-                    serverURL: URL(string: "https://dns-unfiltered.adguard.com/dns-query")
+                    serverURL: URL(string: "https://dns-unfiltered.adguard.com/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "AdGuard DNS (Block Ads / Trackers)",
@@ -192,9 +192,9 @@ enum Presets {
                         "2a10:50c0::ad1:ff",
                         "2a10:50c0::ad2:ff",
                     ],
-                    serverName: "dns.adguard.com"
+                    serverName: "dns.adguard.com",
                 )
-            )
+            ),
         ),
         .init(
             name: "AdGuard DNS (Block Ads / Trackers)",
@@ -206,9 +206,9 @@ enum Presets {
                         "2a10:50c0::ad1:ff",
                         "2a10:50c0::ad2:ff",
                     ],
-                    serverURL: URL(string: "https://dns.adguard.com/dns-query")
+                    serverURL: URL(string: "https://dns.adguard.com/dns-query"),
                 )
-            )
+            ),
         ),
         .init(
             name: "Freifunk Muenchen DNS",
@@ -220,9 +220,9 @@ enum Presets {
                         "2001:678:e68:f000::",
                         "2001:678:ed0:f000::",
                     ],
-                    serverName: "dot.ffmuc.net"
+                    serverName: "dot.ffmuc.net",
                 )
-            )
+            ),
         ),
         .init(
             name: "Freifunk Muenchen DNS",
@@ -234,9 +234,9 @@ enum Presets {
                         "2001:678:e68:f000::",
                         "2001:678:ed0:f000::",
                     ],
-                    serverURL: URL(string: "https://doh.ffmuc.net/dns-query")
+                    serverURL: URL(string: "https://doh.ffmuc.net/dns-query"),
                 )
-            )
+            ),
         ),
     ]
 }

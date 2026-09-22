@@ -132,7 +132,7 @@ extension Resolver: Codable {
         self.onDemandRules =
             try container.decodeIfPresent(
                 [OnDemandRule].self,
-                forKey: .onDemandRules
+                forKey: .onDemandRules,
             ) ?? []
     }
 }

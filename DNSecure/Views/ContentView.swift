@@ -37,7 +37,7 @@ struct ContentView {
         self.servers.append(
             .init(
                 name: "New",
-                configuration: .dnsOverTLS(DoTConfiguration())
+                configuration: .dnsOverTLS(DoTConfiguration()),
             )
         )
         self.selection = self.servers.count - 1
@@ -47,7 +47,7 @@ struct ContentView {
         self.servers.append(
             .init(
                 name: "New",
-                configuration: .dnsOverHTTPS(DoHConfiguration())
+                configuration: .dnsOverHTTPS(DoHConfiguration()),
             )
         )
         self.selection = self.servers.count - 1
@@ -251,7 +251,7 @@ extension ContentView: View {
                     NavigationLink(
                         "Instructions",
                         tag: -1,
-                        selection: self.$selection
+                        selection: self.$selection,
                     ) {
                         HowToActivateView()
                     }
@@ -261,7 +261,7 @@ extension ContentView: View {
                         if self.hSizeClass == .compact {
                             NavigationLink(
                                 tag: i,
-                                selection: self.$selection
+                                selection: self.$selection,
                             ) {
                                 self.detailView(at: i)
                             } label: {
@@ -407,9 +407,9 @@ extension ContentView: View {
                     } else {
                         self.removeSettings()
                     }
-                }
+                },
             ),
-            isActivated: self.$isActivated
+            isActivated: self.$isActivated,
         )
     }
 }

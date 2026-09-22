@@ -40,8 +40,8 @@ extension DoHSections: View {
                 "Server URL",
                 text: .init(
                     get: { self.configuration.serverURL?.absoluteString ?? "" },
-                    set: { self.configuration.serverURL = URL(string: $0) }
-                )
+                    set: { self.configuration.serverURL = URL(string: $0) },
+                ),
             )
             .textContentType(.URL)
             .keyboardType(.URL)
@@ -66,7 +66,7 @@ extension DoHSections: View {
                         "2606:4700:4700::1111",
                         "2606:4700:4700::1001",
                     ],
-                    serverURL: URL(string: "https://cloudflare-dns.com/dns-query")
+                    serverURL: URL(string: "https://cloudflare-dns.com/dns-query"),
                 )
             )
         )

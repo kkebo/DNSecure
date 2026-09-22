@@ -15,8 +15,8 @@ extension DNSServerAddressMatchView: View {
                         // self.$rule.dnsServerAddressMatch[i] causes crash on deletion
                         text: .init(
                             get: { self.rule.dnsServerAddressMatch[i] },
-                            set: { self.rule.dnsServerAddressMatch[i] = $0 }
-                        )
+                            set: { self.rule.dnsServerAddressMatch[i] = $0 },
+                        ),
                     )
                     .textContentType(.URL)
                     .keyboardType(.numbersAndPunctuation)

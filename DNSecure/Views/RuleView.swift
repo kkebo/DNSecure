@@ -62,7 +62,7 @@ extension RuleView: View {
                             .evaluateConnection,
                             .disconnect,
                         ],
-                        id: \.self
+                        id: \.self,
                     ) {
                         Text($0.description)
                     }
@@ -72,7 +72,7 @@ extension RuleView: View {
                         ExcludedDomainsView(
                             domains: .init(
                                 get: { self.rule.excludedDomains ?? [] },
-                                set: { self.rule.excludedDomains = $0 }
+                                set: { self.rule.excludedDomains = $0 },
                             )
                         )
                     } label: {

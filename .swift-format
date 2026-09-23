@@ -16,13 +16,15 @@
   "lineLength" : 120,
   "maximumBlankLines" : 1,
   "multiElementCollectionTrailingCommas" : true,
+  "multilineTrailingCommaBehavior" : "alwaysUsed",
   "noAssignmentInExpressions" : {
     "allowedFunctions" : [
       "XCTAssertNoThrow"
     ]
   },
   "orderedImports" : {
-    "includeConditionalImports" : false
+    "includeConditionalImports" : false,
+    "shouldGroupImports" : true
   },
   "prioritizeKeepingFunctionOutputTogether" : true,
   "reflowMultilineStringLiterals" : "never",

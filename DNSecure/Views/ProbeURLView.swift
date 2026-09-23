@@ -7,7 +7,7 @@ struct ProbeURLView {
     private var probeURL: Binding<String> {
         .init(
             get: { self.rule.probeURL?.absoluteString ?? "" },
-            set: { self.rule.probeURL = URL(string: $0) }
+            set: { self.rule.probeURL = URL(string: $0) },
         )
     }
 }

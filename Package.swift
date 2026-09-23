@@ -32,20 +32,20 @@ let package = Package(
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad])),
             ],
-            appCategory: .utilities
+            appCategory: .utilities,
         )
     ],
     targets: [
         .executableTarget(
             name: "DNSecure",
-            path: "DNSecure"
+            path: "DNSecure",
         ),
         .testTarget(
             name: "DNSecureTests",
             dependencies: [
                 .target(name: "DNSecure")
             ],
-            path: "DNSecureTests"
+            path: "DNSecureTests",
         ),
-    ]
+    ],
 )

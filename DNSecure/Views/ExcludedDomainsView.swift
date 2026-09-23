@@ -14,8 +14,8 @@ extension ExcludedDomainsView: View {
                         // self.$rule.excludedDomains[i] causes crash on deletion
                         text: .init(
                             get: { self.domains[i] },
-                            set: { self.domains[i] = $0 }
-                        )
+                            set: { self.domains[i] = $0 },
+                        ),
                     )
                     .textContentType(.URL)
                     .keyboardType(.URL)

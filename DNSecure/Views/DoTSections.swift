@@ -40,8 +40,8 @@ extension DoTSections: View {
                 "Server Name",
                 text: .init(
                     get: { self.configuration.serverName ?? "" },
-                    set: { self.configuration.serverName = $0 }
-                )
+                    set: { self.configuration.serverName = $0 },
+                ),
             )
             .textContentType(.URL)
             .keyboardType(.URL)
@@ -66,7 +66,7 @@ extension DoTSections: View {
                         "2606:4700:4700::1111",
                         "2606:4700:4700::1001",
                     ],
-                    serverName: "cloudflare-dns.com"
+                    serverName: "cloudflare-dns.com",
                 )
             )
         )

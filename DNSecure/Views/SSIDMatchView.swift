@@ -15,8 +15,8 @@ extension SSIDMatchView: View {
                         // self.$rule.ssidMatch[i] causes crash on deletion
                         text: .init(
                             get: { self.rule.ssidMatch[i] },
-                            set: { self.rule.ssidMatch[i] = $0 }
-                        )
+                            set: { self.rule.ssidMatch[i] = $0 },
+                        ),
                     )
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()

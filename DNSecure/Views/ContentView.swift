@@ -323,7 +323,7 @@ extension ContentView: View {
                         if !self.sidebarEditMode.isEditing {
                             Text("Edit")
                         } else {
-                            Label("Done", systemImage: "checkmark")
+                            Label("Done", systemImage: "checkmark", role: .confirm)
                         }
                     }
                     .tint(self.sidebarEditMode.isEditing ? .accentColor : .primary)

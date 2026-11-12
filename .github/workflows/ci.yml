@@ -11,17 +11,34 @@ defaults:
 jobs:
   lint:
     runs-on: ubuntu-26.04-arm
-    container: swift:6.4
+    container: swift:6.4.2-resolute@sha256:0384f00cf80f81064a907c249a0ad56a1648906f65075a95b1827e88de666e21
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/checkout@v7.0.1
       - run: swift format lint -rsp .
   yamllint:
     runs-on: ubuntu-26.04-arm
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/checkout@v7.0.1
       - run: yamllint --version
       - run: yamllint --strict --config-file .yamllint.yml .
+  lockfile:
+    runs-on: ubuntu-26.04-arm
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: gh extension install github/gh-actions-lock
+      - run: gh actions-lock --verify
+  results:
+    if: ${{ always() }}
+    runs-on: ubuntu-26.04-arm
+    needs: [lint, yamllint, lockfile]
+    steps:
+      - run: exit 1
+        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
